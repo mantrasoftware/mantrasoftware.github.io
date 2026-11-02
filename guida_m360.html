@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="it">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Guida Mantra 360</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Guida completa di Mantra 360: la ripresa perfetta, la preparazione, l'analisi, la regia e l'esportazione del video HD che segue l'azione.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: the program's manual as a scorer's binder. Sticky table of contents on the left (the "bench"), one long chapter flow on the right, module chapters colour-coded like the HUB tabs. */
+:root{
+  --bg:#101416; --surface:#171d20; --line:#2a3438; --fg:#e9ecea; --muted:#97a3a2;
+  --amber:#3fc2b5; --teal:#3fc2b5; --red:#ff6b5e; --on-accent:#121212; --kbd:#232b2f;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Share Tech Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f3efe6; --surface:#fbf8f2; --line:#ddd4c3; --fg:#1b2022; --muted:#5d6563;
+  --amber:#14897e; --teal:#14897e; --red:#b3261e; --on-accent:#ffffff; --kbd:#ece5d8; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#f3efe6; --surface:#fbf8f2; --line:#ddd4c3; --fg:#1b2022; --muted:#5d6563;
+  --amber:#14897e; --teal:#14897e; --red:#b3261e; --on-accent:#ffffff; --kbd:#ece5d8; color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6}
+a{color:var(--amber)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);text-transform:uppercase;line-height:.98;margin:0;letter-spacing:.01em;text-wrap:balance}
+h1{font-size:clamp(42px,7vw,76px);font-weight:900}
+h2{font-size:clamp(30px,4.4vw,44px);font-weight:800}
+h3{font-size:24px;font-weight:800;margin-top:10px}
+p{margin:0;max-width:68ch}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:900;font-size:22px;text-transform:uppercase;text-decoration:none;color:var(--fg)}
+.brand span{color:var(--amber)}
+.bar .back{margin-left:auto;font-size:14px;color:var(--muted);text-decoration:none}
+.bar .back:hover{color:var(--fg)}
+
+.intro{padding-block:48px 28px;display:flex;flex-direction:column;gap:16px}
+.intro p{font-size:18px;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;padding:3px 8px;color:var(--muted)}
+
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;padding-bottom:64px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start;max-height:calc(100vh - 100px);overflow:auto;display:flex;flex-direction:column;gap:2px;padding-right:6px}
+nav.toc a{display:flex;gap:10px;align-items:baseline;text-decoration:none;color:var(--muted);font-size:14px;padding:5px 8px;border-radius:6px;border-left:3px solid transparent}
+nav.toc a:hover{color:var(--fg);background:var(--surface)}
+nav.toc a b{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--amber);min-width:22px}
+nav.toc a.on{color:var(--fg);border-left-color:var(--amber);background:var(--surface)}
+nav.toc .grp{margin-top:12px;padding-left:8px}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:20px}
+  nav.toc{position:static;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;padding:10px}
+  nav.toc .grp{grid-column:1 / -1;margin-top:6px}
+}
+@media (max-width:480px){nav.toc{grid-template-columns:1fr}}
+
+main{display:flex;flex-direction:column;gap:64px;min-width:0}
+section.ch{display:flex;flex-direction:column;gap:18px;min-width:0}
+.ch-head{display:flex;flex-direction:column;gap:8px;border-bottom:2px solid var(--fg);padding-bottom:12px}
+.ch-head .where{font-family:var(--f-mono);font-size:13px;color:var(--amber);letter-spacing:.08em}
+.ch-head p{color:var(--muted)}
+
+ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:s}
+ol.steps > li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px}
+ol.steps > li::before{content:counter(s);font-family:var(--f-display);font-weight:900;font-size:28px;line-height:1;color:var(--amber);text-align:right;padding-top:2px}
+ol.steps > li > div{display:flex;flex-direction:column;gap:6px;min-width:0}
+ol.steps strong{font-weight:700}
+ul.dots{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:68ch}
+ul.dots li::marker{color:var(--amber)}
+
+.ui{font-family:var(--f-mono);font-size:.9em;letter-spacing:.02em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:0 5px;overflow-wrap:anywhere;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+kbd{font-family:var(--f-mono);font-size:.88em;background:var(--kbd);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 6px;white-space:nowrap}
+
+.note{border-left:4px solid var(--teal);background:var(--surface);border-radius:0 8px 8px 0;padding:12px 16px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.note.warn{border-left-color:var(--red)}
+.note .label{color:var(--teal)}
+.note.warn .label{color:var(--red)}
+
+figure.shot{margin:0;display:flex;flex-direction:column;gap:6px;max-width:820px}
+figure.shot .frame{aspect-ratio:16/9;max-width:100%;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--fg) 4%,transparent) 14px 28px);display:grid;place-items:center;text-align:center;padding:16px;position:relative;overflow:hidden}
+figure.shot .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+figure.shot .ph{font-family:var(--f-mono);font-size:13px;color:var(--muted);letter-spacing:.04em;max-width:46ch}
+figure.shot .ph b{display:block;color:var(--fg);font-weight:400;margin-bottom:4px}
+figure.shot .frame.has{aspect-ratio:auto;padding:0;border-style:solid;background:none;display:block}
+figure.shot .frame.has .ph{display:none}
+figure.shot .frame.has a{display:block;cursor:zoom-in}
+figure.shot .frame.has img{position:static;display:block;width:100%;height:auto}
+.shots2{display:grid;gap:16px;max-width:820px}
+.shots2 figure.shot:last-child{max-width:560px}
+figure.shot figcaption{font-size:14px;color:var(--muted)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-weight:400;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+@media (max-width:480px){td:first-child{white-space:normal}}
+
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.flow div{background:var(--surface);padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.flow b{font-family:var(--f-display);font-size:20px;text-transform:uppercase;font-weight:800}
+.flow span{font-size:13px;color:var(--muted)}
+.flow i{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--amber)}
+@media (max-width:760px){.flow{grid-template-columns:1fr 1fr}}
+
+details.faq{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 16px}
+details.faq summary{cursor:pointer;padding-block:13px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--amber)}
+details.faq[open] summary::after{content:"–"}
+details.faq > div{padding-bottom:14px;display:flex;flex-direction:column;gap:8px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Mantra <span>360</span></a>
+    <span class="label">Guida · versione 1.0 Alpha</span>
+    <a class="back" href="index.html">← Torna alla pagina dei download</a>
+  </div>
+</header>
+
+<div class="wrap intro">
+  <div class="label">Manuale d'uso</div>
+  <h1>Guida a Mantra 360</h1>
+  <p>Dalla ripresa a 360° della partita a un video HD che segue l'azione, come se ci fosse un operatore in palestra. Questa guida segue l'ordine in cui lavori: registri, prepari la ripresa, lasci analizzare la partita, controlli la regia ed esporti.</p>
+  <div class="chips"><span class="chip">Windows 10/11</span><span class="chip">Scheda NVIDIA consigliata</span><span class="chip">Italiano</span></div>
+</div>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Indice">
+    <span class="label grp" style="margin-top:0">Per iniziare</span>
+    <a href="#prima"><b>01</b>Prima di cominciare</a>
+    <a href="#ripresa"><b>02</b>La ripresa perfetta</a>
+    <a href="#progetto"><b>03</b>Progetti e finestra principale</a>
+    <span class="label grp">I quattro passi</span>
+    <a href="#prepara"><b>04</b>Prepara la ripresa</a>
+    <a href="#analizza"><b>05</b>Analizza la partita</a>
+    <a href="#editor"><b>06</b>Rivedi e correggi la regia</a>
+    <a href="#esporta"><b>07</b>Esporta il video HD</a>
+    <span class="label grp">Insieme a Mantra for Basket</span>
+    <a href="#tabellone"><b>08</b>Tabellone e tempi morti</a>
+    <span class="label grp">Aiuto</span>
+    <a href="#problemi"><b>09</b>Problemi comuni</a>
+    <a href="#file"><b>10</b>Dove sono i file</a>
+  </nav>
+
+  <main>
+    <!-- 01 -->
+    <section class="ch" id="prima">
+      <div class="ch-head"><span class="where">01 · PER INIZIARE</span><h2>Prima di cominciare</h2>
+        <p>Cosa serve, come si installa e dove finiscono i tuoi dati.</p></div>
+      <h3>Cosa ti serve</h3>
+      <ul class="dots">
+        <li><strong>Il video a 360° della partita</strong>, esportato dalla tua camera come video MP4 (o MOV) panoramico, cioè l'immagine sferica srotolata, due volte più larga che alta. Con le camere Insta360 lo ottieni dal programma della camera, esportando il video a 360°.</li>
+        <li><strong>Un computer Windows con scheda video NVIDIA</strong>: l'intelligenza artificiale e l'esportazione la usano per andare veloci. Con una GeForce RTX 2060 una partita intera si analizza in circa 8 minuti. Senza NVIDIA il programma funziona lo stesso, ma può richiedere ore.</li>
+        <li><strong>Spazio su disco</strong>: circa 6,5 GB per il programma, più lo spazio per i video a 360°, che sono molto pesanti.</li>
+      </ul>
+      <div class="note"><span class="label">Meglio in H.265</span><p>Quando esporti il video a 360° dal programma della camera, scegli il formato <strong>H.265 (HEVC)</strong>: è preferibile per la velocità di analisi ed esportazione.</p></div>
+      <h3>Installazione</h3>
+      <ol class="steps">
+        <li><div><p>Scarica <span class="ui">Mantra360_Setup.exe</span> e <strong>tutti</strong> i file <span class="ui">.bin</span> che lo accompagnano, nella stessa cartella. Il programma contiene già il motore di intelligenza artificiale, per questo è grande e funziona anche senza internet.</p></div></li>
+        <li><div><p>Avvia <span class="ui">Mantra360_Setup.exe</span>. Non servono diritti di amministratore.</p>
+          <p>Se Windows mostra <span class="ui">Windows ha protetto il PC</span>, clicca <span class="ui">Ulteriori informazioni</span> e poi <span class="ui">Esegui comunque</span>: l'installatore non ha una firma digitale a pagamento.</p></div></li>
+        <li><div><p>Accetta la licenza d'uso gratuita e, se vuoi, il collegamento sul desktop. Poi apri <strong>Mantra 360</strong> dal menu Start.</p></div></li>
+      </ol>
+      <div class="note"><span class="label">La cartella dati</span>
+        <p>Progetti, impostazioni e modelli dell'intelligenza artificiale stanno nella cartella <span class="ui">Mantra\Mantra360</span> dentro i tuoi Documenti. Se i Documenti sono sincronizzati con OneDrive, il programma usa invece <span class="ui">C:\Users\<em>tuo-nome</em>\Mantra</span>, così i file pesanti non finiscono nel cloud. Aggiornare o disinstallare il programma non tocca questa cartella.</p></div>
+      <p>La lingua si sceglie con i pulsanti <span class="ui">IT</span> ed <span class="ui">EN</span> in alto nella finestra principale e resta memorizzata.</p>
+    </section>
+
+    <!-- 02 -->
+    <section class="ch" id="ripresa">
+      <div class="ch-head"><span class="where">02 · PER INIZIARE</span><h2>La ripresa perfetta</h2>
+        <p>Il risultato si decide in palestra: una sola camera a 360° che vede tutto il campo, i giocatori e il tabellone.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schema · guida/m360-00-posizione.png</b>Pianta del campo: la camera a 360° a metà del lato lungo, il tabellone sul lato opposto.</div></div><figcaption>La posizione ideale: a metà campo, sul lato lungo.</figcaption></figure>
+      <ol class="steps">
+        <li><div><p><strong>A metà campo.</strong> Metti la camera al centro del lato lungo del campo, all'altezza della linea di metà campo: i due canestri sono alla stessa distanza e nessuna metà campo resta lontana. È la posizione più frequente, quella dello schema.</p></div></li>
+        <li><div><p><strong>Vicina al tabellone.</strong> Più la camera è vicina al tabellone, meglio si legge. Se il tabellone è a metà del lato lungo, la camera può stare anche dalla sua parte, ma non attaccata: troppo vicino la ripresa del tabellone è troppo distorta.</p></div></li>
+        <li><div><p><strong>In alto, sopra le teste.</strong> Abbastanza in alto da vedere il tabellone e da stare sopra le teste di giocatori, allenatori e pubblico, così nessuno la copre durante il gioco.</p></div></li>
+        <li><div><p><strong>Il tabellone deve leggersi.</strong> Prima di iniziare controlla che dalla camera si leggano bene tempo, punteggio e falli: da qui Mantra 360 ricava il video del tabellone per Mantra for Basket.</p></div></li>
+        <li><div><p><strong>Luce.</strong> Accendi tutte le luci della palestra ed evita le finestre in controluce. Se la camera lo permette, fissa l'esposizione e usa un tempo di scatto adatto alla rete elettrica per evitare lo sfarfallio delle lampade.</p></div></li>
+        <li><div><p><strong>Ferma per tutta la partita.</strong> Treppiede o asta robusti e ben fissati, lontano da tribune che vibrano e da dove passa la gente. La camera non deve muoversi né essere toccata fino alla fine.</p></div></li>
+        <li><div><p><strong>Massima definizione.</strong> Registra alla risoluzione più alta della camera e con il bitrate più alto: il video finale è un ritaglio HD dell'immagine a 360°, quindi più dettagli registri, più nitido sarà. Prepara memoria e batteria (o alimentazione) per tutta la partita.</p></div></li>
+      </ol>
+      <div class="note"><span class="label">Stessa posizione, zero lavoro</span><p>Se la volta dopo rimetti la camera nello stesso punto e alla stessa altezza, puoi riusare la preparazione della ripresa del progetto precedente e passare subito all'analisi.</p></div>
+    </section>
+
+    <!-- 03 -->
+    <section class="ch" id="progetto">
+      <div class="ch-head"><span class="where">03 · PER INIZIARE</span><h2>Progetti e finestra principale</h2>
+        <p>Ogni video a 360° è un progetto. La finestra principale ti accompagna nei quattro passi e ti dice sempre qual è il prossimo.</p></div>
+      <figure class="shot" style="max-width:560px"><div class="frame"><div class="ph"><b>Schermata 1 · guida/m360-01-principale.jpg</b>La finestra principale con un progetto aperto: i quattro passi con il loro stato e, sotto il passo 1, i pulsanti del tabellone.</div></div><figcaption>I quattro passi: OK = fatto, colorato = da fare, grigio = bloccato.</figcaption></figure>
+      <h3>Creare o aprire un progetto</h3>
+      <ol class="steps">
+        <li><div><p>Scrivi il nome in <span class="ui">Nuovo progetto</span>, per esempio <em>Falchi_Saette_1T</em>, e premi <span class="ui">CREA E SCEGLI IL VIDEO 360</span>. Scegli il video a 360°: si apre subito il passo 1.</p></div></li>
+        <li><div><p>Per riprendere un lavoro scegli il progetto in <span class="ui">Progetti salvati</span> e premi <span class="ui">APRI PROGETTO</span>. <span class="ui">📂 Apri cartella</span> mostra i file del progetto.</p></div></li>
+      </ol>
+      <p>Un progetto può essere una partita intera o un tempo di gioco: se la camera ha registrato in più file, fai un progetto per file.</p>
+      <h3>I quattro passi</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Passo</th><th>Cosa fa</th><th>Tu</th></tr></thead>
+        <tbody>
+          <tr><td>1 · Prepara la ripresa</td><td>Indichi dove sono il campo e le inquadrature di riferimento.</td><td>Pochi minuti, oppure riusi quella di un altro progetto.</td></tr>
+          <tr><td>2 · Analizza la partita</td><td>L'intelligenza artificiale trova giocatori e pallone e prepara la regia automatica.</td><td>Niente: lasci lavorare il computer.</td></tr>
+          <tr><td>3 · Rivedi e correggi la regia</td><td>Guardi la regia e correggi dove serve.</td><td>Facoltativo, ma consigliato.</td></tr>
+          <tr><td>4 · Esporta il video HD</td><td>Crea il video 1920×1080 che segue l'azione.</td><td>Scegli cosa esportare e dove salvarlo.</td></tr>
+        </tbody></table></div>
+      <p>Passando il mouse su un pulsante compare una spiegazione. Durante l'analisi e l'esportazione l'avanzamento è in alto, sotto la barra di stato. Il riquadro <span class="ui">Come funziona</span> in fondo alla finestra riassume tutto il percorso.</p>
+    </section>
+
+    <!-- 04 -->
+    <section class="ch" id="prepara">
+      <div class="ch-head"><span class="where">04 · PASSO 1</span><h2>Prepara la ripresa</h2>
+        <p>Dici al programma dove si trova il campo nell'immagine a 360° e quali inquadrature usare. Vale finché la camera resta nella stessa posizione.</p></div>
+      <p>Aprendo il passo, il programma chiede se hai già preparato la ripresa in un altro progetto con la camera nella stessa posizione. Rispondi <span class="ui">Sì</span> e scegli il file <span class="ui">calibration.json</span> di quel progetto: hai finito, passa all'analisi. Rispondi <span class="ui">No</span> per prepararla adesso.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 2 · guida/m360-02-prepara.jpg</b>Prepara la ripresa: la foto a 360° con area di gioco, linee del campo e inquadrature; a destra i tre passi e la verifica.</div></div><figcaption>Arancio = area di gioco, azzurro = campo calcolato, rettangoli = inquadrature.</figcaption></figure>
+      <ol class="steps">
+        <li><div><p><strong>Area di gioco.</strong> Due click sulla foto: in alto a sinistra e in basso a destra del campo. Fuori dall'area l'immagine si scurisce: l'intelligenza artificiale non guarda lì. Puoi saltarlo, perché il passo successivo la propone da solo. <span class="ui">🔄 Rifai l'area</span> ricomincia.</p></div></li>
+        <li><div><p><strong>Campo (consigliato).</strong> Premi <span class="ui">CALIBRA IL CAMPO (4 punti)</span>: si apre una finestra grande con uno schemino del campo che indica in rosso il punto da cliccare.</p>
+          <ul class="dots">
+            <li>il <strong>centro</strong> del cerchio di centrocampo;</li>
+            <li>dove la <strong>linea di centrocampo</strong> incontra la linea laterale dalla parte della camera;</li>
+            <li>lo <strong>spigolo sinistro</strong> e lo <strong>spigolo destro</strong> del campo dalla parte della camera. Se uno spigolo non si vede, premi <span class="ui">Salta punto</span> (o <kbd>S</kbd>).</li>
+          </ul>
+          <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 3 · guida/m360-03-campo.jpg</b>La finestra dei 4 punti: lo schemino in alto a sinistra indica in rosso il punto da cliccare.</div></div><figcaption>Il primo punto: il centro del cerchio di centrocampo.</figcaption></figure>
+          <p>Il programma allinea da solo il modello del campo alle linee del parquet e propone area, inquadrature e tiri liberi. Con il campo calibrato la regia segue solo chi è in campo e ignora panchine, tavolo e pubblico.</p></div></li>
+        <li><div><p><strong>Inquadrature (calamite).</strong> Sono le inquadrature verso cui tende l'operatore automatico. Scegli un pulsante, poi clicca o trascina sulla foto per spostarla; i cursori <span class="ui">Direzione</span>, <span class="ui">Altezza</span> e <span class="ui">Ampiezza in gradi</span> servono a rifinirla.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Pulsante</th><th>A cosa serve</th></tr></thead>
+            <tbody>
+              <tr><td>Calamita SX / DX</td><td>L'azione nella metà campo sinistra / destra. Sono anche i limiti oltre cui la camera non va.</td></tr>
+              <tr><td>Calamita CENTRO</td><td>Inquadratura larga a centrocampo, per transizioni e rimesse.</td></tr>
+              <tr><td>Tiro libero SX / DX</td><td>Centrala sulla lunetta: la camera si ferma qui durante i tiri liberi.</td></tr>
+              <tr><td>Panchina SX / DX</td><td>Facoltative: dove andare durante un time out. Senza, la camera va a centrocampo.</td></tr>
+              <tr><td>Tabellone</td><td>Facoltativo: inquadra stretto il tabellone per esportarne il video per Mantra for Basket. Non entra nella regia.</td></tr>
+            </tbody></table></div></div></li>
+        <li><div><p>Premi <span class="ui">FATTO: SALVA E CHIUDI</span>. Chiudere con la X chiede conferma e non salva nulla.</p></div></li>
+      </ol>
+      <div class="note"><span class="label">Nitidezza dell'inquadratura</span><p>Sotto i cursori il programma scrive <span class="ui">Nitidezza di questa inquadratura: ottima / buona / bassa</span>. Più stringi l'inquadratura, meno pixel veri del 360° finiscono nel video HD e l'immagine diventa più morbida.</p></div>
+      <h3>Il tabellone</h3>
+      <p>Selezionando <span class="ui">Tabellone (facolt.)</span> la prima volta, clicca sul tabellone nella foto: si apre una finestra ingrandita con l'anteprima di ciò che leggerà GEOSCANNER. Clicca il centro del tabellone e regola l'ampiezza con la rotella del mouse o con <span class="ui">- stringi</span> / <span class="ui">+ allarga</span>, finché le cifre riempiono il riquadro. Premi <span class="ui">OK</span>.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 4 · guida/m360-04-tabellone.jpg</b>La finestra ingrandita del tabellone con l'anteprima a destra.</div></div><figcaption>Stretto sulle cifre: per il tabellone la definizione non conta.</figcaption></figure>
+      <h3>Verifica (facoltativa)</h3>
+      <p><span class="ui">Cosa vede l'IA in questa foto</span> mostra i giocatori e il pallone riconosciuti dentro l'area. <span class="ui">Video di prova (10 secondi)</span> crea un breve video per vedere subito il risultato.</p>
+    </section>
+
+    <!-- 05 -->
+    <section class="ch" id="analizza">
+      <div class="ch-head"><span class="where">05 · PASSO 2</span><h2>Analizza la partita</h2>
+        <p>L'intelligenza artificiale guarda tutto il video, trova giocatori e pallone e prepara la regia automatica. Tu non devi fare niente.</p></div>
+      <ol class="steps">
+        <li><div><p>Premi <span class="ui">Analizza la partita</span>. L'avanzamento compare in alto; a fine lavoro senti un avviso a voce.</p></div></li>
+        <li><div><p>Con una GeForce RTX 2060 una partita intera richiede circa 8 minuti. Lascia lavorare il computer senza aprire altri programmi pesanti.</p></div></li>
+      </ol>
+      <p>Il motore di rilevamento si sceglie in <span class="ui">Motore IA</span>: quello predefinito, <span class="ui">RF-DETR Small</span>, è il migliore equilibrio tra precisione e velocità. <span class="ui">Confronta motori...</span> analizza gli stessi 40 fotogrammi con tutti i motori installati e scrive un rapporto con immagini affiancate.</p>
+      <div class="note"><span class="label">Quando rifarla</span><p>L'analisi va rifatta solo se cambi la preparazione della ripresa (passo 1). Le correzioni alla regia non la richiedono.</p></div>
+    </section>
+
+    <!-- 06 -->
+    <section class="ch" id="editor">
+      <div class="ch-head"><span class="where">06 · PASSO 3</span><h2>Rivedi e correggi la regia</h2>
+        <p>L'operatore automatico ha già fatto la regia di tutta la partita. Nell'editor la guardi e correggi solo dove serve. Niente è definitivo: <kbd>Ctrl</kbd>+<kbd>Z</kbd> annulla.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 5 · guida/m360-05-editor.jpg</b>L'editor della regia: monitor e radar in alto, ispettore a destra, timeline con le tracce AZIONE e REGIA in basso.</div></div><figcaption>Monitor, radar, ispettore e timeline.</figcaption></figure>
+      <h3>Cosa vedi</h3>
+      <ul class="dots">
+        <li><strong>PROGRAMMA</strong>: il video come uscirà.</li>
+        <li><strong>RADAR</strong>: giocatori e pallone visti dall'alto, le calamite e l'inquadratura attuale. Doppio click = punto fisso per il tratto.</li>
+        <li><strong>AZIONE</strong>: dove sta il gioco (linea bianca) e dove guarda la camera (linea gialla). Il fondo colorato è la zona del campo: rosso = SX, verde = centro, blu = DX.</li>
+        <li><strong>REGIA</strong>: la partita divisa in tratti, ognuno con una modalità: <span class="ui">AUTO</span> (operatore automatico), <span class="ui">SX</span>, <span class="ui">CENTRO</span>, <span class="ui">DX</span> o <span class="ui">PUNTO</span> fisso.</li>
+      </ul>
+      <h3>Correggere un punto</h3>
+      <ol class="steps">
+        <li><div><p>Porta il playhead dove la regia non ti piace. Per saltare a un tempo, clicca sul timecode (o <kbd>Ctrl</kbd>+<kbd>G</kbd>), scrivi per esempio <em>5:38</em> e premi <kbd>Invio</kbd>.</p></div></li>
+        <li><div><p>Segna l'intervallo con <kbd>I</kbd> (inizio) e <kbd>O</kbd> (fine), oppure taglia il tratto al playhead con <kbd>C</kbd>.</p></div></li>
+        <li><div><p>Scegli la modalità: <kbd>A</kbd> automatico, <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> calamita SX / CENTRO / DX, <kbd>P</kbd> o doppio click sul radar per un punto fisso.</p></div></li>
+        <li><div><p>Per rifinire, trascina i bordi dei tratti e le maniglie bianche dei raccordi. Nell'ispettore, in <span class="ui">TRATTO AL PLAYHEAD</span>, regoli <span class="ui">Ampiezza del tratto</span> e <span class="ui">Raccordo in entrata</span>.</p></div></li>
+        <li><div><p><span class="ui">Salva (Ctrl+S)</span> conserva il lavoro; <span class="ui">Salva e chiudi</span> torna alla finestra principale.</p></div></li>
+      </ol>
+      <h3>Le situazioni speciali</h3>
+      <p>Sulla traccia AZIONE le situazioni riconosciute compaiono come fasce colorate: <strong>arancio</strong> = time out, <strong>viola</strong> = tiri liberi, <strong>verde acqua</strong> = rimessa. Durante un time out la camera va a centrocampo o sulla panchina scelta; durante i tiri liberi si ferma sulla lunetta.</p>
+      <ul class="dots">
+        <li>Trascina i bordi di una fascia per allungarla o accorciarla.</li>
+        <li>Click destro su una fascia: ignorala, cambia la destinazione del time out o ripristina le scelte automatiche.</li>
+        <li>Click destro su un punto libero di AZIONE: aggiungi a mano un time out o dei tiri liberi.</li>
+      </ul>
+      <h3>L'operatore automatico</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Regolazione</th><th>Effetto</th></tr></thead>
+        <tbody>
+          <tr><td>Stile</td><td>Da calmo a reattivo: quanto in fretta la camera segue il gioco.</td></tr>
+          <tr><td>Anticipo</td><td>Quanto prima la camera parte rispetto al movimento del gioco.</td></tr>
+          <tr><td>Zoom canestro</td><td>Quanto stringe l'inquadratura quando l'azione si ferma vicino a un canestro: 0 = spento, 10% predefinito, massimo 25%.</td></tr>
+          <tr><td>Riconosci</td><td>Accende o spegne il riconoscimento di time out, tiri liberi e rimesse (le rimesse richiedono il campo calibrato).</td></tr>
+          <tr><td>Time out</td><td>Dove va la camera durante i time out: centrocampo, panchina SX o panchina DX.</td></tr>
+        </tbody></table></div>
+      <p>In <span class="ui">CALAMITE E PRESET</span> puoi ancora spostare le inquadrature con <span class="ui">Sposta</span> e un click sul radar: il monitor mostra subito il risultato. <span class="ui">Tutto automatico</span> riporta l'intera partita all'operatore.</p>
+      <h3>Tasti principali</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Tasto</th><th>Azione</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Spazio</kbd></td><td>Play / pausa</td></tr>
+          <tr><td><kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd></td><td>Indietro / pausa / avanti (ripeti per andare più veloce)</td></tr>
+          <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Un fotogramma (con <kbd>Shift</kbd>: un secondo)</td></tr>
+          <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Tratto precedente / successivo</td></tr>
+          <tr><td><kbd>C</kbd></td><td>Taglia il tratto al playhead</td></tr>
+          <tr><td><kbd>A</kbd> <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>P</kbd></td><td>Automatico / SX / CENTRO / DX / punto fisso</td></tr>
+          <tr><td><kbd>I</kbd> <kbd>O</kbd> <kbd>Esc</kbd></td><td>Segna inizio / fine / togli l'intervallo</td></tr>
+          <tr><td><kbd>Canc</kbd></td><td>Elimina il tratto (si unisce al precedente)</td></tr>
+          <tr><td>Rotella · <kbd>Shift</kbd>+rotella · <kbd>0</kbd></td><td>Zoom della timeline · scorri · tutta la partita</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> · <kbd>Ctrl</kbd>+<kbd>S</kbd> · <kbd>F1</kbd></td><td>Annulla · salva · aiuto completo</td></tr>
+        </tbody></table></div>
+    </section>
+
+    <!-- 07 -->
+    <section class="ch" id="esporta">
+      <div class="ch-head"><span class="where">07 · PASSO 4</span><h2>Esporta il video HD</h2>
+        <p>Crea il video finale 1920×1080 con l'audio originale, pronto per YouTube e per il montaggio.</p></div>
+      <figure class="shot" style="max-width:560px"><div class="frame"><div class="ph"><b>Schermata 6 · guida/m360-06-esporta.jpg</b>La finestra Esporta il video HD: cosa esportare, Togli i time out, il riquadro del tabellone e il riepilogo.</div></div><figcaption>Il riepilogo in basso dice quanto durerà il video.</figcaption></figure>
+      <ol class="steps">
+        <li><div><p>Premi <span class="ui">Esporta il video HD</span> e scegli cosa esportare:</p>
+          <ul class="dots">
+            <li><span class="ui">Tutta la registrazione</span>;</li>
+            <li><span class="ui">Solo il tratto IN-OUT segnato nell'editor</span>;</li>
+            <li><span class="ui">Dall'inizio alla fine del gioco, dal tabellone</span>: toglie l'attesa prima e dopo la partita (servono i dati del tabellone, capitolo 08).</li>
+          </ul></div></li>
+        <li><div><p>Se vuoi, spunta <span class="ui">Togli i time out</span>: vengono tagliate le fasce dei time out dell'editor, tenendo qualche secondo all'inizio e alla fine.</p></div></li>
+        <li><div><p>Premi <span class="ui">ESPORTA...</span> e scegli dove salvare il video.</p></div></li>
+      </ol>
+      <p>Con una GeForce RTX 2060 l'esportazione richiede circa due terzi della durata del video. A fine lavoro senti un avviso a voce. Il video usa una qualità costante che sale nelle azioni veloci ed è pronto per lo streaming.</p>
+      <div class="note"><span class="label">Nitidezza</span><p>Nella barra in alto dell'editor, <span class="ui">Nitidezza</span> regola il contrasto fine applicato al video esportato.</p></div>
+    </section>
+
+    <!-- 08 -->
+    <section class="ch" id="tabellone">
+      <div class="ch-head"><span class="where">08 · CON MANTRA FOR BASKET</span><h2>Tabellone e tempi morti</h2>
+        <p>Facoltativo. Con Mantra for Basket il tabellone diventa dati: Mantra 360 li usa per riconoscere meglio le situazioni e per esportare la partita senza tempi morti, già pronta per gli highlights.</p></div>
+      <ol class="steps">
+        <li><div><p><strong>Video del tabellone.</strong> Dopo aver segnato il tabellone al passo 1, premi <span class="ui">Video del tabellone (per GEOSCANNER)</span>. Esce un video 1280×720 lungo quanto il 360° e sincronizzato con lui, con il nome <span class="ui">NOME_TAB.mp4</span>.</p></div></li>
+        <li><div><p><strong>In Mantra for Basket</strong> GEOSCANNER legge quel video e REFINERY corregge i dati: ne esce <span class="ui">match_data_correct.json</span>.</p></div></li>
+        <li><div><p><strong>Dati del tabellone.</strong> Torna in Mantra 360 e premi <span class="ui">Dati del tabellone...</span>, poi scegli quel file. Se la durata dei dati non coincide con il video, il programma avvisa e non li usa.</p></div></li>
+        <li><div><p><strong>Esporta</strong> con <span class="ui">Dall'inizio alla fine del gioco</span> e, se vuoi, <span class="ui">Togli i time out</span>. Con i dati del tabellone, il taglio dei time out resta dentro il tempo a cronometro fermo.</p></div></li>
+      </ol>
+      <p>Insieme al video HD escono il video del tabellone con gli stessi tagli e il file <span class="ui">NOME_match_data.json</span>, con i dati riallineati al video tagliato. In Mantra for Basket vanno nella stessa unit: i video in RAW, il file dati in DATA, senza rinominarlo.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 7 · guida/m360-07-traccia-tabellone.jpg</b>La timeline dell'editor con i dati del tabellone collegati: la traccia TABELLONE sopra AZIONE.</div></div><figcaption>Canestri, falli e cronometro sopra la traccia AZIONE; la fascia arancio è un time out che parte dal cronometro fermo.</figcaption></figure>
+      <h3>Cosa cambia con i dati del tabellone</h3>
+      <ul class="dots">
+        <li>Nell'editor compare la traccia <strong>TABELLONE</strong>: pallini = canestri (arancio casa, blu ospiti), tacche rosse = falli, striscia verde = cronometro in corsa, linea tratteggiata = cambio di periodo.</li>
+        <li>Le situazioni riconosciute mentre il cronometro corre vengono scartate: niente falsi tiri liberi o time out durante il gioco.</li>
+        <li>Il time out parte quando il cronometro si ferma e finisce quando riparte: la camera si muove con calma e torna sul gioco al momento giusto.</li>
+      </ul>
+      <div class="note"><span class="label">Aperto dall'HUB di Mantra for Basket</span><p>Se hai installato anche Mantra for Basket, nel suo HUB compare la scheda <span class="ui">MANTRA 360 ↗</span>. Aprendo Mantra 360 da lì, il progetto prende il nome della unit, i dati di REFINERY si collegano da soli e la casella <span class="ui">Salva nella unit di Mantra for Basket</span> mette video e dati già nelle cartelle giuste. I due programmi restano separati: si scambiano solo file.</p></div>
+    </section>
+
+    <!-- 09 -->
+    <section class="ch" id="problemi">
+      <div class="ch-head"><span class="where">09 · AIUTO</span><h2>Problemi comuni</h2></div>
+      <details class="faq"><summary>L'analisi o l'esportazione sono molto lente</summary><div>
+        <p>Senza scheda NVIDIA il programma lavora solo con il processore e può richiedere ore. Con una scheda NVIDIA aggiorna i driver. Esporta il video a 360° in H.265 (HEVC), che è più veloce da leggere: vedi il capitolo 01.</p></div></details>
+      <details class="faq"><summary>La camera segue gente fuori dal campo</summary><div>
+        <p>Calibra il campo al passo 1 con <span class="ui">CALIBRA IL CAMPO (4 punti)</span>: la regia seguirà solo chi è in campo. Controlla anche che l'area di gioco non comprenda le tribune. Poi rifai l'analisi.</p></div></details>
+      <details class="faq"><summary>Un time out o un tiro libero non è stato riconosciuto, o è sbagliato</summary><div>
+        <p>Nell'editor, click destro sulla traccia AZIONE per aggiungerlo a mano, oppure click destro sulla fascia sbagliata e <span class="ui">ignora</span>. Per i tiri liberi controlla che i preset Tiro libero SX / DX siano centrati esattamente sulla lunetta.</p></div></details>
+      <details class="faq"><summary>I dati del tabellone non vengono usati</summary><div>
+        <p>La durata dei dati deve coincidere con quella del video a 360°. Usa il video del tabellone esportato da Mantra 360 (parte dallo stesso fotogramma) e il <span class="ui">match_data_correct.json</span> di REFINERY letto da quel video.</p></div></details>
+      <details class="faq"><summary>L'esportazione si interrompe con un errore</summary><div>
+        <p>Il dettaglio è nel file <span class="ui">render_log.txt</span> nella cartella del progetto (<span class="ui">📂 Apri cartella</span>). Allega questo file quando segnali un problema.</p></div></details>
+    </section>
+
+    <!-- 10 -->
+    <section class="ch" id="file">
+      <div class="ch-head"><span class="where">10 · AIUTO</span><h2>Dove sono i file</h2>
+        <p>Tutto sta nella cartella dati <span class="ui">Mantra\Mantra360</span> (capitolo 01). Il video a 360° resta dove l'hai messo tu.</p></div>
+      <div class="tbl"><table>
+        <thead><tr><th>File o cartella</th><th>Cosa contiene</th></tr></thead>
+        <tbody>
+          <tr><td>Mantra_Projects\<em>progetto</em></td><td>Un progetto: preparazione, analisi, regia e registri.</td></tr>
+          <tr><td>calibration.json</td><td>La preparazione della ripresa: si riusa in un altro progetto con la camera nella stessa posizione.</td></tr>
+          <tr><td>tracking_data.json</td><td>Il risultato dell'analisi: giocatori e pallone.</td></tr>
+          <tr><td>regia.json</td><td>La regia con le tue correzioni.</td></tr>
+          <tr><td>render_log.txt</td><td>Il registro dell'ultima esportazione.</td></tr>
+          <tr><td>models</td><td>I modelli dell'intelligenza artificiale.</td></tr>
+          <tr><td>logs</td><td>I registri del programma.</td></tr>
+        </tbody></table></div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap"><span>© 2026 Stefano Sala · Mantra 360 è gratuito.</span><span class="label">Guida 1.0 Alpha · in italiano</span></div>
+</footer>
+
+<script>
+// Indice: evidenzia il capitolo visibile. Le schermate si mostrano da sole quando il file esiste.
+const links=[...document.querySelectorAll("nav.toc a")];
+const secs=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>{
+    for(const e of es){ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }
+  },{rootMargin:"-20% 0px -70% 0px"});
+  secs.forEach(s=>io.observe(s));
+}
+/* aperta dal programma (file sul computer): niente link alla pagina dei download */
+if(location.protocol==="file:"){
+  document.querySelectorAll('a[href="index.html"], a[href^="index.html#"]').forEach(x=>{
+    if(x.classList.contains("back")) x.remove(); else {x.removeAttribute("href"); x.style.cursor="default";}
+  });
+}
+document.querySelectorAll("figure.shot .ph b").forEach(b=>{
+  const src=b.textContent.split("·")[1]?.trim(); if(!src) return;
+  const img=new Image(); img.alt=b.parentElement.textContent.replace(b.textContent,"").trim();
+  img.onload=()=>{const f=b.closest(".frame"),a=document.createElement("a");a.href=src;a.target="_blank";a.rel="noopener";a.title="Apri a grandezza piena";a.append(img);f.append(a);f.classList.add("has");};
+  img.decoding="async"; img.src=src;
+});
+</script>

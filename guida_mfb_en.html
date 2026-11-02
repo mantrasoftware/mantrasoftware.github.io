@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mantra for Basket guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Complete guide to Mantra for Basket: from the HUB to GEOSCANNER, REFINERY, STUDIO, AUTOPILOT, BAKE, SKINMAPPER and STATISTICS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: the program's manual as a scorer's binder. Sticky table of contents on the left (the "bench"), one long chapter flow on the right, module chapters colour-coded like the HUB tabs. */
+:root{
+  --bg:#101416; --surface:#171d20; --line:#2a3438; --fg:#e9ecea; --muted:#97a3a2;
+  --amber:#f2a93b; --teal:#3fc2b5; --red:#ff6b5e; --on-accent:#121212; --kbd:#232b2f;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Share Tech Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f3efe6; --surface:#fbf8f2; --line:#ddd4c3; --fg:#1b2022; --muted:#5d6563;
+  --amber:#a8650c; --teal:#14897e; --red:#b3261e; --on-accent:#ffffff; --kbd:#ece5d8; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#f3efe6; --surface:#fbf8f2; --line:#ddd4c3; --fg:#1b2022; --muted:#5d6563;
+  --amber:#a8650c; --teal:#14897e; --red:#b3261e; --on-accent:#ffffff; --kbd:#ece5d8; color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6}
+a{color:var(--amber)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);text-transform:uppercase;line-height:.98;margin:0;letter-spacing:.01em;text-wrap:balance}
+h1{font-size:clamp(42px,7vw,76px);font-weight:900}
+h2{font-size:clamp(30px,4.4vw,44px);font-weight:800}
+h3{font-size:24px;font-weight:800;margin-top:10px}
+p{margin:0;max-width:68ch}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:900;font-size:22px;text-transform:uppercase;text-decoration:none;color:var(--fg)}
+.brand span{color:var(--amber)}
+.bar .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:6px;padding:2px}
+.bar .langs a{font-family:var(--f-mono);font-size:12px;text-decoration:none;color:var(--muted);padding:3px 7px;border-radius:4px}
+.bar .langs a[aria-current]{background:var(--fg);color:var(--bg)}
+.bar .langs a:hover{color:var(--fg)}
+@media (max-width:600px){.bar{gap:8px 12px;padding-block:8px}.bar .label{display:none}.bar .back{font-size:13px;width:100%}}
+.bar .langs{margin-left:auto}
+.bar .back{font-size:14px;color:var(--muted);text-decoration:none}
+.bar .back:hover{color:var(--fg)}
+
+.intro{padding-block:48px 28px;display:flex;flex-direction:column;gap:16px}
+.intro p{font-size:18px;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;padding:3px 8px;color:var(--muted)}
+
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;padding-bottom:64px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start;max-height:calc(100vh - 100px);overflow:auto;display:flex;flex-direction:column;gap:2px;padding-right:6px}
+nav.toc a{display:flex;gap:10px;align-items:baseline;text-decoration:none;color:var(--muted);font-size:14px;padding:5px 8px;border-radius:6px;border-left:3px solid transparent}
+nav.toc a:hover{color:var(--fg);background:var(--surface)}
+nav.toc a b{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--amber);min-width:22px}
+nav.toc a.on{color:var(--fg);border-left-color:var(--amber);background:var(--surface)}
+nav.toc .grp{margin-top:12px;padding-left:8px}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:20px}
+  nav.toc{position:static;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;padding:10px}
+  nav.toc .grp{grid-column:1 / -1;margin-top:6px}
+}
+@media (max-width:480px){nav.toc{grid-template-columns:1fr}}
+
+main{display:flex;flex-direction:column;gap:64px;min-width:0}
+section.ch{display:flex;flex-direction:column;gap:18px;min-width:0}
+.ch-head{display:flex;flex-direction:column;gap:8px;border-bottom:2px solid var(--fg);padding-bottom:12px}
+.ch-head .where{font-family:var(--f-mono);font-size:13px;color:var(--amber);letter-spacing:.08em}
+.ch-head p{color:var(--muted)}
+
+ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:s}
+ol.steps > li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px}
+ol.steps > li::before{content:counter(s);font-family:var(--f-display);font-weight:900;font-size:28px;line-height:1;color:var(--amber);text-align:right;padding-top:2px}
+ol.steps > li > div{display:flex;flex-direction:column;gap:6px;min-width:0}
+ol.steps strong{font-weight:700}
+ul.dots{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:68ch}
+ul.dots li::marker{color:var(--amber)}
+
+.ui{font-family:var(--f-mono);font-size:.9em;letter-spacing:.02em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:0 5px;overflow-wrap:anywhere;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+kbd{font-family:var(--f-mono);font-size:.88em;background:var(--kbd);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 6px;white-space:nowrap}
+
+.note{border-left:4px solid var(--teal);background:var(--surface);border-radius:0 8px 8px 0;padding:12px 16px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.note.warn{border-left-color:var(--red)}
+.note .label{color:var(--teal)}
+.note.warn .label{color:var(--red)}
+
+figure.shot{margin:0;display:flex;flex-direction:column;gap:6px;max-width:820px}
+figure.shot .frame{aspect-ratio:16/9;max-width:100%;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--fg) 4%,transparent) 14px 28px);display:grid;place-items:center;text-align:center;padding:16px;position:relative;overflow:hidden}
+figure.shot .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+figure.shot .ph{font-family:var(--f-mono);font-size:13px;color:var(--muted);letter-spacing:.04em;max-width:46ch}
+figure.shot .ph b{display:block;color:var(--fg);font-weight:400;margin-bottom:4px}
+figure.shot .frame.has{aspect-ratio:auto;padding:0;border-style:solid;background:none;display:block}
+figure.shot .frame.has .ph{display:none}
+figure.shot .frame.has a{display:block;cursor:zoom-in}
+figure.shot .frame.has img{position:static;display:block;width:100%;height:auto}
+.shots2{display:grid;gap:16px;max-width:820px}
+.shots2 figure.shot:last-child{max-width:560px}
+figure.shot figcaption{font-size:14px;color:var(--muted)}
+figure.shot figcaption .priv{display:block;font-style:italic;font-size:13px;margin-top:2px}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-weight:400;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+@media (max-width:480px){td:first-child{white-space:normal}}
+
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.flow div{background:var(--surface);padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.flow b{font-family:var(--f-display);font-size:20px;text-transform:uppercase;font-weight:800}
+.flow span{font-size:13px;color:var(--muted)}
+.flow i{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--amber)}
+@media (max-width:760px){.flow{grid-template-columns:1fr 1fr}}
+
+details.faq{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 16px}
+details.faq summary{cursor:pointer;padding-block:13px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--amber)}
+details.faq[open] summary::after{content:"–"}
+details.faq > div{padding-bottom:14px;display:flex;flex-direction:column;gap:8px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">Mantra <span>for Basket</span></a>
+    <span class="label">Guide · version 1.0 Alpha</span>
+    <nav class="langs" aria-label="Lingua / Language"><a href="guida_mfb.html" hreflang="it">IT</a><a href="guida_mfb_en.html" hreflang="en" aria-current="true">EN</a><a href="guida_mfb_es.html" hreflang="es">ES</a><a href="guida_mfb_fr.html" hreflang="fr">FR</a></nav>
+    <a class="back" href="index.html">← Back to the download page</a>
+  </div>
+</header>
+
+<div class="wrap intro">
+  <div class="label">User guide</div>
+  <h1>Mantra for Basket guide</h1>
+  <p>From the game video to a video with score, clock and fouls on screen. This guide follows the order you actually work in: you set up the game in the HUB, read the scoreboard, correct the data, direct the highlights and export.</p>
+  <div class="chips"><span class="chip">Windows 10/11</span><span class="chip">English</span><span class="chip">Screenshots in Italian</span></div>
+</div>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <span class="label grp" style="margin-top:0">Getting started</span>
+    <a href="#prima"><b>01</b>Before you start</a>
+    <a href="#hub"><b>02</b>The HUB and the match</a>
+    <a href="#archivio"><b>03</b>Archive and files</a>
+    <span class="label grp">The workflow</span>
+    <a href="#geoscanner"><b>04</b>GEOSCANNER</a>
+    <a href="#refinery"><b>05</b>REFINERY</a>
+    <a href="#studio"><b>06</b>STUDIO</a>
+    <a href="#autopilot"><b>07</b>AUTOPILOT</a>
+    <a href="#bake"><b>08</b>BAKE</a>
+    <span class="label grp">Tools</span>
+    <a href="#skinmapper"><b>09</b>SKINMAPPER</a>
+    <a href="#stats"><b>10</b>STATISTICS</a>
+    <span class="label grp">Help</span>
+    <a href="#problemi"><b>11</b>Common problems</a>
+    <a href="#file"><b>12</b>Where the files are</a>
+  </nav>
+
+  <main>
+    <!-- 01 -->
+    <section class="ch" id="prima">
+      <div class="ch-head"><span class="where">01 · GETTING STARTED</span><h2>Before you start</h2>
+        <p>What you need, how to film the game, how to install and where your data goes.</p></div>
+      <div class="note"><span class="label">About this guide</span><p>The buttons are named as they appear with English selected in the program (EN, top right). The screenshots show the program in Italian.</p></div>
+      <h3>What you need</h3>
+      <ul class="dots">
+        <li><strong>The game video</strong> (.mp4, .mov, .mkv, .avi). If the game was recorded in several consecutive files, each file will be a <em>unit</em>.</li>
+        <li><strong>The scoreboard video</strong>: a dedicated video is strongly recommended, ideally a tight shot of the scoreboard where clock, score and fouls are easy to read. Two things are essential: the shot must be <strong>steady</strong>, as fixed as possible, and it must be <strong>exactly as long as the game video</strong>. With Mantra 360 you get it cropped automatically.</li>
+        <li><strong>The team logos</strong>: PNG with a transparent background, ideally square and at least 300 pixels. The program includes six sample logos to try things out.</li>
+      </ul>
+      <h3>The perfect recording</h3>
+      <p>The result is decided in the gym: you need two recordings, one locked on the scoreboard and one following the game.</p>
+      <ol class="steps">
+        <li><div><p><strong>The scoreboard, tight.</strong> Frame only the scoreboard: clock, score, fouls and period should fill the picture and be clearly readable. Fixed focus and exposure, no reflections on the digits.</p></div></li>
+        <li><div><p><strong>Fixed, as steady as possible.</strong> Tripod, no zoom and no movement for the whole game. If the camera stays in the same position, next time you reuse the preset in GEOSCANNER and start straight away.</p></div></li>
+        <li><div><p><strong>The game.</strong> The second camera follows the play.</p></div></li>
+        <li><div><p><strong>Synchronised to the frame.</strong> The same moment must fall at the same point in both videos, from start to finish, and the two videos must be the same length:</p>
+          <ul class="dots">
+            <li>start both recordings together;</li>
+            <li>give a signal both cameras can see, for example a hand clap or a flash;</li>
+            <li>trim the start of both videos exactly on that frame;</li>
+            <li>use the same frame rate (for example 25 or 30 fps) and do not interrupt the recordings.</li>
+          </ul></div></li>
+      </ol>
+      <div class="note"><span class="label">Automatic with Mantra 360</span><p>If you film with a 360° camera, Mantra 360 takes both the game and the scoreboard from the same recording: the two videos are already in sync and the same length. Tips on placing the 360° camera are in the <a href="index.html#riprese">Filming</a> section of the download page.</p></div>
+      <div class="note warn"><span class="label">How to tell if they are out of sync</span><p>In AUTOPILOT the score changes before or after the basket you see in the video. If so, check how the start of the two videos was trimmed.</p></div>
+      <h3>Installation</h3>
+      <ol class="steps">
+        <li><div><p>Run <span class="ui">MantraForBasket_Setup.exe</span>. No administrator rights are needed.</p>
+          <p>If Windows shows <span class="ui">Windows protected your PC</span>, click <span class="ui">More info</span> and then <span class="ui">Run anyway</span>: the installer has no paid digital signature.</p></div></li>
+        <li><div><p>Accept the free licence and, if you like, the desktop shortcut.</p></div></li>
+        <li><div><p>Open <strong>Mantra for Basket</strong> from the Start menu: the HUB opens.</p></div></li>
+      </ol>
+      <div class="note"><span class="label">The data folder</span>
+        <p>Matches, skins, fonts, logos and settings are kept in the <span class="ui">Mantra\MantraForBasket</span> folder inside your Documents. If your Documents are synced with OneDrive, the program uses <span class="ui">C:\Users\<em>your-name</em>\Mantra</span> instead, so your videos do not end up in the cloud. Updating or uninstalling the program does not touch this folder.</p></div>
+    </section>
+
+    <!-- 02 -->
+    <section class="ch" id="hub">
+      <div class="ch-head"><span class="where">02 · HUB</span><h2>The HUB and the match</h2>
+        <p>The HUB is the control desk: you choose the match to work on and open every module from there, always on the right files.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 1 · guida/mfb-01-hub.jpg</b>The HUB with the PROJECT tab open: match, unit and the WORKFLOW column.</div></div><figcaption>The PROJECT tab of the HUB.</figcaption></figure>
+      <h3>Match and unit</h3>
+      <p>A <strong>match</strong> is a folder with the two teams and the date. Inside it there are one or more <strong>units</strong>: each unit is one continuous block of recording, for example 01 for the first period, 02 for the second and 05 for overtime. Each unit has its own RAW (videos), DATA (data) and RENDER (finished videos) folders.</p>
+      <ol class="steps">
+        <li><div><p>In the <span class="ui">PROJECT</span> tab type the <span class="ui">HOME TEAM</span> and the <span class="ui">AWAY TEAM</span> and press <span class="ui">CREATE NEW MATCH ENVIRONMENT</span>. For a match you have already created, use <span class="ui">Open existing match</span>.</p></div></li>
+        <li><div><p>In <span class="ui">UNIT (PERIOD)</span> choose an existing unit or type the number of a new one in <span class="ui">New n.</span></p></div></li>
+        <li><div><p>Press <span class="ui">CONFIRM AND OPEN THE WORKSPACES</span>. <span class="ui">ACTIVE WORK ON:</span> appears with match and unit, and the module tabs unlock.</p></div></li>
+      </ol>
+      <h3>The tabs</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Tab</th><th>Module</th><th>What it is for</th></tr></thead>
+        <tbody>
+          <tr><td>CAPTURE</td><td>GEOSCANNER</td><td>Reads the scoreboard from the video and creates the match data.</td></tr>
+          <tr><td>REVIEW</td><td>REFINERY</td><td>Checks and corrects the data: anomalies, fouls, scores.</td></tr>
+          <tr><td>DIRECT</td><td>STUDIO + AUTOPILOT</td><td>Teams, colours, graphics and the choice of plays to show.</td></tr>
+          <tr><td>GRAPHICS</td><td>SKINMAPPER</td><td>Creates and edits skins, the graphics of the score.</td></tr>
+          <tr><td>EXPORT</td><td>BAKE</td><td>Creates the final video with the graphics.</td></tr>
+          <tr><td>STATISTICS</td><td>STATS</td><td>Infographics of how the game went and files for Excel.</td></tr>
+          <tr><td>ARCHIVE</td><td>—</td><td>Match folders, importing and exporting files.</td></tr>
+          <tr><td>MANTRA 360 ↗</td><td>Mantra 360</td><td>Only appears if Mantra 360 is installed: opens it on the active unit.</td></tr>
+          <tr><td>HELP · ABOUT</td><td>—</td><td>This guide, first steps, contacts, version and credits.</td></tr>
+        </tbody></table></div>
+      <p>The <span class="ui">UNIT STATUS</span> column shows how far you are: source videos, data read from the scoreboard, corrected data, directing project, finished videos. Each item turns into <span class="ui">✓ Data present</span> when the module has done its job.</p>
+      <div class="note"><span class="label">The workflow in short</span>
+        <div class="flow" style="margin-top:6px">
+          <div><i>1</i><b>GEOSCANNER</b><span>reads the scoreboard</span></div>
+          <div><i>2</i><b>REFINERY</b><span>corrects the data</span></div>
+          <div><i>3</i><b>STUDIO</b><span>teams and graphics</span></div>
+          <div><i>4</i><b>AUTOPILOT</b><span>picks the plays</span></div>
+          <div><i>5</i><b>BAKE</b><span>creates the video</span></div>
+        </div></div>
+    </section>
+
+    <!-- 03 -->
+    <section class="ch" id="archivio">
+      <div class="ch-head"><span class="where">03 · ARCHIVE</span><h2>Archive and files</h2>
+        <p>The safe way to put videos into the match and to deliver the finished work.</p></div>
+      <p>The <span class="ui">GUIDE: WHERE TO PUT THE FILES</span> button tells you which folder each thing goes in and opens it for you. The rule is simple: videos go in the unit's RAW folder, logos in the match's <span class="ui">_COMMON</span> folder (shared by all units). DATA and RENDER are filled by the modules.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 9 · guida/mfb-09-archivio.jpg</b>The ARCHIVE tab: matches and units on the left, the files of the DATA folder in the middle, the RAW / OCR DATA / CORRECTED / PROJECT indicators at the top.</div></div><figcaption>The archive: every match, every unit and the status of its files.</figcaption></figure>
+      <h3>Importing</h3>
+      <ol class="steps">
+        <li><div><p>In the <span class="ui">ARCHIVE</span> tab press <span class="ui">Import…</span>, or drag the files into the window.</p></div></li>
+        <li><div><p>Choose the destination match and unit and the mode:</p>
+          <ul class="dots">
+            <li><span class="ui">Copy (recommended)</span>: the original file stays where it is.</li>
+            <li><span class="ui">Move</span>: the original is removed only after the copy has been verified.</li>
+            <li><span class="ui">Link (videos only, no copy)</span>: takes no space, but on Windows it needs Developer Mode or the same disk.</li>
+          </ul></div></li>
+        <li><div><p>Press <span class="ui">IMPORT</span>. If a file already exists you can keep both, skip it or replace it: the old one goes to the match's trash, it is not deleted.</p></div></li>
+      </ol>
+      <h3>Delivering the work</h3>
+      <p><span class="ui">Export package…</span> gathers into one folder the finished videos, the infographics, the statistics CSV files, the markers and, if you like, the corrected data and a full backup. With <span class="ui">Standard name</span> the files get names like <span class="ui">Teams_Date_Unit_name</span>.</p>
+      <div class="note"><span class="label">Nothing gets lost</span><p><span class="ui">Move to trash</span> puts the files in the match's <span class="ui">_to_delete</span> folder: you can always restore them from there. Do not move files by hand while a module is open.</p></div>
+    </section>
+
+    <!-- 04 -->
+    <section class="ch" id="geoscanner">
+      <div class="ch-head"><span class="where">04 · CAPTURE</span><h2>GEOSCANNER</h2>
+        <p>Reads the scoreboard frame by frame and writes the match data: clock, score, fouls and period. The setup depends on how the camera frames the scoreboard: you can save it and reuse it as long as the camera stays in the same position.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 2 · guida/mfb-02-geoscanner.jpg</b>GEOSCANNER while mapping: the tuning window of one digit with the 7 points on the segments, and the OCR MAPPING grid on the right (green = ready).</div></div><figcaption>Mapping a digit: one point per segment. The <span class="ui">NEXT STEP</span> line always tells you what is missing.</figcaption></figure>
+      <ol class="steps">
+        <li><div><p><strong>Load the scoreboard video</strong> with <span class="ui">1. LOAD SCOREBOARD VIDEO</span>.</p></div></li>
+        <li><div><p><strong>Choose what the scoreboard looks like.</strong> In <span class="ui">SCOREBOARD TOPOLOGY</span>:</p>
+          <ul class="dots">
+            <li><span class="ui">TYPE A</span>: always shows MM:SS, no tenths;</li>
+            <li><span class="ui">TYPE B</span>: in the last minute it switches to seconds and tenths (SS.d);</li>
+            <li><span class="ui">TYPE C</span>: always shows tenths (MM:SS.d).</li>
+          </ul>
+          <p>In <span class="ui">TEAM FOULS MODE</span> choose whether fouls are 7-segment digits or LED dots, or whether to ignore them.</p></div></li>
+        <li><div><p><strong>Set the foundations</strong> with <span class="ui">SET FOUNDATIONS</span>:</p>
+          <ul class="dots">
+            <li>click the <strong>4 corners</strong> of the scoreboard (<kbd>R</kbd> to start again);</li>
+            <li>press <kbd>Space</kbd> to create the <strong>ghost</strong>: the program runs quickly through the whole video and builds a clean image of the scoreboard. <kbd>Space</kbd> pauses, <kbd>Esc</kbd> continues;</li>
+            <li>draw a box around the <strong>anchor</strong>, a part of the scoreboard that never changes, used to follow small movements of the shot;</li>
+            <li>draw a box around the <strong>period area</strong>.</li>
+          </ul></div></li>
+        <li><div><p><strong>Map the digits</strong> in the <span class="ui">OCR MAPPING</span> grid: click a digit (red = to do), draw a box around it and place the points on the segments. When it turns green it is ready. In the box: click to place, drag to move, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> for 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> width, <kbd>Z</kbd>/<kbd>X</kbd> height, <kbd>Enter</kbd> to confirm.</p></div></li>
+        <li><div><p><strong>Sample the periods</strong> (optional, but needed if the video contains more than one period). The program must see what the period indicator on the scoreboard looks like in each of them:</p>
+          <ul class="dots">
+            <li>with the <span class="ui">VIDEO TIMELINE</span> bar move the video until the scoreboard shows the first period, then sample it with <span class="ui">SAMPLE PERIOD</span>, using the crosshair;</li>
+            <li>move the bar again to a point where the scoreboard shows the next period and sample it the same way;</li>
+            <li>repeat for every period in the video.</li>
+          </ul>
+          <p>This way, during the analysis, the program recognises the change of period by itself.</p></div></li>
+        <li><div><p><strong>Start the analysis</strong> with <span class="ui">START TURBO ANALYSIS</span>. The <span class="ui">GEAR</span> decides how many frames to skip between one reading and the next: 1 is maximum precision, 25 maximum speed. You can stop with <kbd>Q</kbd>. When the analysis ends you hear a spoken notice.</p></div></li>
+        <li><div><p>Press <span class="ui">OPEN REFINERY</span> to check the data.</p></div></li>
+      </ol>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 10 · guida/mfb-10-analisi.jpg</b>The analysis running: the MANTRA ENGINE window shows live the clock, period, score and fouls read from the scoreboard.</div></div><figcaption>During the analysis you see live what the program is reading.</figcaption></figure>
+      <div class="note"><span class="label">Same framing, zero work</span><p>With <span class="ui">EXPORT PRESET</span> you save foundations and mapping; next time, if the camera is in the same position and frames the scoreboard the same way, use <span class="ui">IMPORT PRESET</span> and you can start the analysis straight away. If the camera has moved, even slightly, redo the foundations.</p></div>
+      <p><span class="ui">ENABLE FILTERS</span>, <span class="ui">B/W THRESHOLD</span> and <span class="ui">CONTRAST</span> only change the preview: they help you see better, they do not change how the numbers are read.</p>
+    </section>
+
+    <!-- 05 -->
+    <section class="ch" id="refinery">
+      <div class="ch-head"><span class="where">05 · REVIEW</span><h2>REFINERY</h2>
+        <p>No automatic reading is perfect. REFINERY finds the suspicious rows by itself, shows you the matching frame and gives you the tools to fix them quickly. At the end it saves <span class="ui">match_data_correct.json</span>.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 3 · guida/mfb-03-refinery.jpg</b>REFINERY with an anomaly row selected, the video frame on the right and ATOMIC SURGERY below.</div></div><figcaption>Data list, frame of the row and correction tools.</figcaption></figure>
+      <h3>The check</h3>
+      <ol class="steps">
+        <li><div><p>With <span class="ui">LOAD VIDEO</span> open the game video: every row you select shows its frame. If video and data are not aligned, move the <span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> and <span class="ui">&gt;&gt;</span> = 1 second, <span class="ui">&lt;</span> and <span class="ui">&gt;</span> = 1 frame).</p></div></li>
+        <li><div><p>Use <span class="ui">CLEAN</span> to automatically remove spikes in points and fouls and fouls carried over at the start of a quarter, and <span class="ui">⚓ AUTO</span> to find the start of the last minute of every quarter.</p></div></li>
+        <li><div><p>Jump from one anomaly to the next with <kbd>F8</kbd> (back: <kbd>Shift</kbd>+<kbd>F8</kbd>) or with <span class="ui">Anomalies only</span>, and fix them.</p></div></li>
+        <li><div><p>Press <span class="ui">SAVE &amp; CLOSE</span>.</p></div></li>
+      </ol>
+      <h3>The anomalies</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Mark</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td>⚡ GLITCH</td><td>A value that appears and disappears: a typical reading error on one frame.</td></tr>
+          <tr><td>♻ CARRY</td><td>Fouls left over from the previous quarter at the start of the new one.</td></tr>
+          <tr><td>WARP · DROP</td><td>The clock jumps or the score goes down: check the frame.</td></tr>
+          <tr><td>⚠ RAPID</td><td>Points rising too fast to be true.</td></tr>
+          <tr><td>FORMAT? · FIX 00.</td><td>Clock format to be fixed (MM:SS or SS.D).</td></tr>
+        </tbody></table></div>
+      <h3>The tools</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>⚓ LAST MINUTE</td><td>From the selected row to the end of the quarter, converts the clock to seconds and tenths (last minute).</td></tr>
+          <tr><td>🔗 MERGE</td><td>Gives all the selected, adjacent rows the score and fouls of the last one.</td></tr>
+          <tr><td>🧹 CLEAN</td><td>Finds and fixes spikes, dirty transitions and carried-over fouls.</td></tr>
+          <tr><td>🪄 AUTO-FILL</td><td>Spreads the clock evenly between the first and the last selected row (at least 3).</td></tr>
+          <tr><td>⟲ UNDO</td><td>Undoes the last change; the number next to it says how many can be undone.</td></tr>
+          <tr><td>⇄ SWAP</td><td>Switches the clock format of the selected rows between MM:SS and SS.D.</td></tr>
+        </tbody></table></div>
+      <h3>Atomic surgery</h3>
+      <p>To correct by hand: select one or more rows, type only the cells to change (empty cells stay as they are) and press <kbd>Enter</kbd> or <span class="ui">APPLY CHANGES</span>. The cursor jumps to the next cell by itself while you type. <kbd>Space</kbd> copies the values from the previous row, <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes.</p>
+      <div class="note"><span class="label">Adjacent rows</span><p>MERGE and AUTO-FILL work on rows that follow one another: if <span class="ui">Anomalies only</span> or <span class="ui">Baskets only</span> is on, some rows are hidden. Turn the filters off before using them.</p></div>
+    </section>
+
+    <!-- 06 -->
+    <section class="ch" id="studio">
+      <div class="ch-head"><span class="where">06 · DIRECT</span><h2>STUDIO</h2>
+        <p>Sets up the match and prepares the directing in three steps. What you see in the preview is what will come out in the final video, text size included.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 4 · guida/mfb-04-studio.jpg</b>STUDIO with both teams set up (sample logos), the BasketCourt skin and the GRAPHICS PREVIEW.</div></div><figcaption>The three steps of STUDIO and the graphics preview. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
+      <ol class="steps">
+        <li><div><p><strong>Match.</strong> Choose the <span class="ui">MATCH VIDEO</span> and, if the scoreboard is in a separate recording, the <span class="ui">OCR VIDEO</span>. If it does not find the data corrected by REFINERY, STUDIO asks whether to use the raw GEOSCANNER data. <span class="ui">LOAD PROJECT</span> reopens a saved job; <span class="ui">MANAGE CUTS (CLIPPER)</span> shows the list of clips so you can edit or delete them.</p></div></li>
+        <li><div><p><strong>Look and teams.</strong> Choose the <span class="ui">Graphic</span> (the skin). For each team: name, <span class="ui">Fill</span> and <span class="ui">Border</span> colour, <span class="ui">Black Text</span> if the name reads better dark, and the <span class="ui">Logo</span>. The <span class="ui">EVENT LOGO</span> is optional: with the MyCity skin you can use one of the cities in <span class="ui">assets\logos\Citta</span>.</p>
+          <p>With <span class="ui">Compact graphics: position</span> you choose the corner where the small score appears during play; <span class="ui">Big graphics</span> sets how many seconds the big one stays at the start and end of a clip. Try both versions with <span class="ui">Big</span> and <span class="ui">Compact</span> under the preview.</p></div></li>
+        <li><div><p><strong>Directing.</strong> Set the period the video starts from, the period's starting <span class="ui">Timer (min)</span> and whether to enable the score effects. Then press <span class="ui">LAUNCH DIRECTOR (AUTOPILOT)</span>.</p></div></li>
+      </ol>
+      <p>When you have finished directing, <span class="ui">FINALIZE IN BAKE &amp; EXPORT</span> opens BAKE with the project already loaded.</p>
+    </section>
+
+    <!-- 07 -->
+    <section class="ch" id="autopilot">
+      <div class="ch-head"><span class="where">07 · DIRECT</span><h2>AUTOPILOT</h2>
+        <p>The control room: you watch the game, choose the plays to keep (the <em>clips</em>) and fix score and graphics where needed. Almost everything is done from the keyboard; <kbd>?</kbd> shows the full legend.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 5 · guida/mfb-05-autopilot.jpg</b>AUTOPILOT: video at the top, list of clips, timeline with the CLIP / POINTS / FOULS / PERIOD lanes.</div></div><figcaption>The timeline lanes: clips, points, fouls and period. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
+      <h3>The fastest way</h3>
+      <ol class="steps">
+        <li><div><p>Press <kbd>H</kbd>: AUTOPILOT creates a clip around every basket of the game. <kbd>C</kbd> does the same for the home team only, <kbd>O</kbd> for the away team.</p></div></li>
+        <li><div><p>Adjust how much to take before and after each basket: <kbd>W</kbd>/<kbd>E</kbd> for the start, <kbd>T</kbd>/<kbd>Y</kbd> for the end, one second at a time.</p></div></li>
+        <li><div><p>Go through the clips with the arrows and remove the ones you don't like with <kbd>D</kbd>. Merge two nearby clips by selecting them and pressing <kbd>N</kbd>.</p></div></li>
+        <li><div><p>Exit and save with <kbd>Q</kbd> (or <span class="ui">Exit &amp; Save</span>, clicked twice).</p></div></li>
+      </ol>
+      <h3>Clips by hand</h3>
+      <p><kbd>R</kbd> starts recording a clip and <kbd>R</kbd> again closes it. With <kbd>[</kbd> and <kbd>]</kbd> you mark the start and end of the part of the game to export. <kbd>B</kbd> chooses big or compact graphics for the selected clip; pressed several times it also changes the corner of the compact graphics.</p>
+      <h3>Keys</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Key</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Space</kbd></td><td>Play / pause</td></tr>
+          <tr><td><kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd></td><td>Back / pause / fast forward</td></tr>
+          <tr><td><kbd>A</kbd> <kbd>F</kbd></td><td>5 seconds back / forward</td></tr>
+          <tr><td><kbd>,</kbd> <kbd>.</kbd></td><td>One frame back / forward</td></tr>
+          <tr><td><kbd>←</kbd> <kbd>→</kbd> · <kbd>↑</kbd> <kbd>↓</kbd></td><td>Start of the previous / next clip · end of the previous / next clip</td></tr>
+          <tr><td><kbd>+</kbd> <kbd>-</kbd></td><td>Timeline zoom</td></tr>
+          <tr><td><kbd>R</kbd></td><td>Starts / closes a clip</td></tr>
+          <tr><td><kbd>H</kbd> <kbd>C</kbd> <kbd>O</kbd></td><td>Automatic highlights: all / home / away</td></tr>
+          <tr><td><kbd>W</kbd> <kbd>E</kbd> · <kbd>T</kbd> <kbd>Y</kbd></td><td>Clip start −/+ 1 s · clip end −/+ 1 s</td></tr>
+          <tr><td><kbd>N</kbd></td><td>Merges the selected clips (no selection: home bonus)</td></tr>
+          <tr><td><kbd>D</kbd> · <kbd>Z</kbd> · <kbd>Esc</kbd></td><td>Delete the selection · undo · deselect</td></tr>
+          <tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> · <kbd>4</kbd></td><td>Home +1, +2, +3 points · home −1</td></tr>
+          <tr><td><kbd>7</kbd> <kbd>8</kbd> <kbd>9</kbd> · <kbd>6</kbd></td><td>Away +1, +2, +3 points · away −1</td></tr>
+          <tr><td><kbd>5</kbd> · <kbd>0</kbd></td><td>Team foul home · away</td></tr>
+          <tr><td><kbd>M</kbd></td><td>Away bonus</td></tr>
+          <tr><td><kbd>U</kbd> · <kbd>I</kbd></td><td>±100 points home · away (for scoreboards with hundreds)</td></tr>
+          <tr><td><kbd>P</kbd></td><td>Go to the next period</td></tr>
+          <tr><td><kbd>G</kbd> · <kbd>X</kbd></td><td>Graphics on/off · score effects on/off</td></tr>
+          <tr><td><kbd>[</kbd> <kbd>]</kbd> · <kbd>B</kbd></td><td>Game start / end · big or compact graphics for the clip</td></tr>
+          <tr><td><kbd>V</kbd></td><td>Audience view (the video as viewers will see it)</td></tr>
+          <tr><td><kbd>S</kbd> · <kbd>Q</kbd> · <kbd>?</kbd></td><td>Quick save · exit and save · legend</td></tr>
+        </tbody></table></div>
+      <div class="note"><span class="label">If the program closes</span><p>If something goes wrong while directing, AUTOPILOT immediately saves a recovery copy, <span class="ui">autopilot_recovery.json</span>, in the data folder. In STUDIO open that file with <span class="ui">LOAD PROJECT</span>, choose the videos, press <span class="ui">LAUNCH DIRECTOR (AUTOPILOT)</span> and then <span class="ui">EDIT EXISTING</span>.</p></div>
+    </section>
+
+    <!-- 08 -->
+    <section class="ch" id="bake">
+      <div class="ch-head"><span class="where">08 · EXPORT</span><h2>BAKE</h2>
+        <p>Creates the final video: cuts the clips, adds the graphics and uses the computer's graphics card to go as fast as possible.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 6 · guida/mfb-06-bake.jpg</b>BAKE with the project loaded, the WYSIWYG PREVIEW and the EXPORT &amp; QUALITY box.</div></div><figcaption>The BAKE preview is identical to the video that will be created. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
+      <ol class="steps">
+        <li><div><p><span class="ui">LOAD PROJECT OR CONFIG</span>: if you come from STUDIO it is already loaded. If the original video has been moved, BAKE asks you where it is.</p></div></li>
+        <li><div><p>Check teams, event and <span class="ui">SKIN</span>. With <span class="ui">PLAY PREVIEW</span> you watch the result before exporting, at the speed you choose.</p></div></li>
+        <li><div><p>Choose what to create:</p>
+          <ul class="dots">
+            <li><span class="ui">MASTER MP4</span>: the finished video, with graphics and audio;</li>
+            <li><span class="ui">EDIT KIT</span>: clean video plus the graphics separately with transparency, to finish in an editing program;</li>
+            <li><span class="ui">GRAPHICS ONLY</span>: just the graphics, in ProRes 4444 with transparency.</li>
+          </ul></div></li>
+        <li><div><p>Choose the <span class="ui">QUALITY PRESET</span>:</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Preset</th><th>For</th></tr></thead>
+            <tbody>
+              <tr><td>YOUTUBE (HD)</td><td>Publishing online, good quality (14 Mbps).</td></tr>
+              <tr><td>SOCIAL (SD)</td><td>Lighter file to share (7 Mbps).</td></tr>
+              <tr><td>PRO MASTER</td><td>Maximum quality in HEVC, for archive or editing (25 Mbps).</td></tr>
+              <tr><td>FAST CHECK</td><td>Quick test at half resolution, to check cuts and graphics.</td></tr>
+            </tbody></table></div></div></li>
+        <li><div><p>If you need them, turn on <span class="ui">Generate Markers (EDL + CSV)</span>: one marker for each basket, to import into editing programs. Then press <span class="ui">START PROCESS (TURBO)</span>. When the job is done you hear a spoken notice.</p></div></li>
+      </ol>
+      <h3>The result</h3>
+      <div class="shots2">
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 11 · guida/mfb-11-risultato-grande.jpg</b>A frame of the finished video with the big graphics.</div></div><figcaption>Big graphics, at the start and end of a clip. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 12 · guida/mfb-12-risultato-ridotta.jpg</b>A frame of the finished video with the compact graphics in a corner.</div></div><figcaption>Compact graphics, during play. <span class="priv">Blurred for privacy, as above.</span></figcaption></figure>
+      </div>
+      <div class="note"><span class="label">The graphics card</span><p>Below the options BAKE shows which encoder it is using (NVIDIA, AMD, Intel). If it says <span class="ui">No usable GPU: using the CPU</span>, the export still works but is slower: update the graphics card drivers.</p></div>
+    </section>
+
+    <!-- 09 -->
+    <section class="ch" id="skinmapper">
+      <div class="ch-head"><span class="where">09 · GRAPHICS</span><h2>SKINMAPPER</h2>
+        <p>The skin is the graphics of the score: shapes, colours and the position of names, points, clock, fouls and logos. Every skin has a big and a compact version.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 7 · guida/mfb-07-skinmapper.jpg</b>SKINMAPPER in DRAW mode: layers on the right, properties below, the skin in the middle with the real preview.</div></div><figcaption>The two modes: DRAW for the shapes, DATA for the position of the text.</figcaption></figure>
+      <h3>Two modes</h3>
+      <ul class="dots">
+        <li><span class="ui">✏ DRAW</span>: you add and edit shapes (rectangle, ellipse, polygon, line, text, image), with layers, fills, gradients, outlines and shadows. Shapes can use the <strong>team colours</strong>: in a game they take the ones chosen in STUDIO.</li>
+        <li><span class="ui">◎ DATA</span>: you place the elements that change during the game (scores, names, fouls, logos, bonus, clock, period, event logo) and choose their colour, font and size.</li>
+      </ul>
+      <h3>Creating a skin</h3>
+      <ol class="steps">
+        <li><div><p><span class="ui">NEW FROM TEMPLATE</span>: choose the style (Classic, Dark, Light), the shape of the big graphics (Full or Thin) and of the compact one (Bar or Square), and give it a name. Otherwise start from a <span class="ui">BLANK CANVAS</span>, from a PNG (<span class="ui">NEW (LOAD PNG)</span>) or from an SVG drawing (<span class="ui">IMPORT SVG</span>, for example from Affinity).</p></div></li>
+        <li><div><p>When importing an SVG, choose which colours of the drawing become the <strong>team colours</strong>; the others stay fixed.</p></div></li>
+        <li><div><p>Refine in DRAW, then switch to DATA and place the text. <span class="ui">⇋ MIRROR ALL (A→B)</span> copies the home team's side onto the away side.</p></div></li>
+        <li><div><p>Create the compact version with <span class="ui">GENERATE COMPACT FROM BIG</span> or <span class="ui">SQUARE COMPACT</span>.</p></div></li>
+        <li><div><p>Save with <span class="ui">SAVE PROJECT</span>. The skin appears straight away in STUDIO and BAKE.</p></div></li>
+      </ol>
+      <div class="note"><span class="label">See the real sizes</span><p>Turn on <span class="ui">Real preview (as BAKE)</span>: the skin is drawn as in the final video, over a frame of the latest game or an image chosen with <span class="ui">BACKGROUND…</span>. This way the text has the size it will really have.</p></div>
+      <p>Keys in DRAW: arrows to move by 1 pixel (<kbd>Shift</kbd> for 10), <kbd>Del</kbd> deletes, <kbd>Ctrl</kbd>+<kbd>D</kbd> duplicates, <kbd>Ctrl</kbd> while dragging to move without snapping, <kbd>Ctrl</kbd>+wheel to zoom. Grid and snap are turned on and off from the bar at the top.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="ch" id="stats">
+      <div class="ch-head"><span class="where">10 · STATISTICS</span><h2>STATISTICS</h2>
+        <p>Match infographics ready to publish, and the data for Excel.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 8 · guida/mfb-08-stats.jpg</b>STATISTICS with an Advantage (Momentum) chart in the preview, sample logos.</div></div><figcaption>An infographic of how the game went.</figcaption></figure>
+      <ol class="steps">
+        <li><div><p>STATISTICS gathers the data of all the match's units by itself (<span class="ui">Reload Global Data</span> to update them).</p></div></li>
+        <li><div><p>Choose the theme (Dark, Light or Transparent, to lay over a video), the team colours and logos.</p></div></li>
+        <li><div><p>Choose the chart type: <span class="ui">Advantage (Momentum)</span>, <span class="ui">Trend (Lines)</span> or <span class="ui">Shot Breakdown (Bars)</span>, and the period.</p></div></li>
+        <li><div><p><span class="ui">GENERATE GRAPHIC (PNG)</span> creates the image; <span class="ui">EXPORT DATA FOR EXCEL (CSV)</span> creates the file with all the match data.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- 11 -->
+    <section class="ch" id="problemi">
+      <div class="ch-head"><span class="where">11 · HELP</span><h2>Common problems</h2></div>
+      <details class="faq"><summary>GEOSCANNER misreads some digits</summary><div>
+        <p>Reopen the <span class="ui">OCR MAPPING</span> and check the digit that is wrong: the box must contain the whole digit and the points must sit in the middle of the segments. If the camera moved during the game, redo the foundations. For difficult stretches use a lower <span class="ui">GEAR</span>.</p>
+        <p>Any isolated errors that remain are found and fixed by REFINERY.</p></div></details>
+      <details class="faq"><summary>In REFINERY the video does not match the data</summary><div>
+        <p>Move the <span class="ui">OFFSET</span> until the frame shows the scoreboard of the selected row. It happens when the scoreboard video and the game video do not start at the same moment.</p></div></details>
+      <details class="faq"><summary>The clock in the last minute is wrong</summary><div>
+        <p>Many scoreboards switch from MM:SS to seconds and tenths in the last minute. Use <span class="ui">⚓ AUTO</span> for all quarters, or select the row where the last minute starts and press <span class="ui">⚓ LAST MINUTE</span>.</p></div></details>
+      <details class="faq"><summary>A module does not open or closes immediately</summary><div>
+        <p>The HUB shows a message with the <span class="ui">RETRY</span> button. The details of the error are in the <span class="ui">logs\mantra_hub.log</span> file in the data folder; modules started without a console write to <span class="ui">logs\console.log</span>. Attach these files when you report a problem: the HELP tab has the email address and a button that opens the logs folder.</p></div></details>
+      <details class="faq"><summary>Exporting is slow</summary><div>
+        <p>Look at the encoder line in BAKE: if it says CPU, the graphics card is not being used. Update the drivers and leave <span class="ui">Decode video on the GPU</span> turned on. For a quick check of the cuts use the <span class="ui">FAST CHECK</span> preset.</p></div></details>
+      <details class="faq"><summary>A skin font is missing on this computer</summary><div>
+        <p>If a skin uses a Microsoft Office font that is not installed (Garamond, Goudy, Eras, Papyrus, Chiller), the program automatically uses a free font that looks similar. To use your own fonts, choose the file in SKINMAPPER: it is copied into the data folder and keeps working even if you move the skin.</p></div></details>
+    </section>
+
+    <!-- 12 -->
+    <section class="ch" id="file">
+      <div class="ch-head"><span class="where">12 · HELP</span><h2>Where the files are</h2>
+        <p>Everything you create is in the data folder. To make a backup, just copy it.</p></div>
+      <div class="tbl"><table>
+        <thead><tr><th>Folder or file</th><th>Contents</th></tr></thead>
+        <tbody>
+          <tr><td>MATCH_ARCHIVE\<em>date_Home_Vs_Away</em></td><td>One match</td></tr>
+          <tr><td>… \_COMMON</td><td>Logos and resources shared by all units</td></tr>
+          <tr><td>… \UNIT_01\01_RAW</td><td>Game and scoreboard videos</td></tr>
+          <tr><td>… \UNIT_01\01_DATA</td><td>Data read (<span class="ui">match_data.json</span>), corrected (<span class="ui">match_data_correct.json</span>) and the directing project</td></tr>
+          <tr><td>… \UNIT_01\01_RENDER</td><td>Finished videos and markers</td></tr>
+          <tr><td>assets\skins · fonts · logos</td><td>Your skins, the fonts copied from the skins, the logos</td></tr>
+          <tr><td>logs</td><td>Logs to attach when you report a problem</td></tr>
+        </tbody></table></div>
+      <p>The installed program only contains the program: you can update or reinstall it without losing anything.</p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap"><span>© 2026 Stefano Sala · Mantra for Basket is free.</span><span class="label">Guide 1.0 Alpha · English</span></div>
+</footer>
+
+<script>
+// Indice: evidenzia il capitolo visibile. Le schermate si mostrano da sole quando il file esiste.
+const links=[...document.querySelectorAll("nav.toc a")];
+const secs=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>{
+    for(const e of es){ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }
+  },{rootMargin:"-20% 0px -70% 0px"});
+  secs.forEach(s=>io.observe(s));
+}
+/* aperta dal programma (file sul computer): niente link alla pagina dei download */
+if(location.protocol==="file:"){
+  document.querySelectorAll('a[href="index.html"], a[href^="index.html#"]').forEach(x=>{
+    if(x.classList.contains("back")) x.remove(); else {x.removeAttribute("href"); x.style.cursor="default";}
+  });
+}
+document.querySelectorAll("figure.shot .ph b").forEach(b=>{
+  const src=b.textContent.split("·")[1]?.trim(); if(!src) return;
+  const img=new Image(); img.alt=b.parentElement.textContent.replace(b.textContent,"").trim();
+  img.onload=()=>{const f=b.closest(".frame"),a=document.createElement("a");a.href=src;a.target="_blank";a.rel="noopener";a.title="Open full size";a.append(img);f.append(a);f.classList.add("has");};
+  img.decoding="async"; img.src=src;
+});
+</script>

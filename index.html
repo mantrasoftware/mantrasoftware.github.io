@@ -1,0 +1,712 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mantra Basket Software</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mantra for Basket e Mantra 360: software gratuito per trasformare le partite di basket registrate in video e highlights.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: gym at night. Scoreboard hero, two product "benches" side by side, a numbered game-flow strip, specs table, FAQ. Dark-first. */
+:root{
+  --bg:#101416;          /* gym floor in the dark */
+  --surface:#171d20;
+  --line:#2a3438;
+  --fg:#e9ecea;
+  --muted:#97a3a2;
+  --amber:#f2a93b;       /* scoreboard digits — Mantra for Basket */
+  --teal:#3fc2b5;        /* court paint — Mantra 360 */
+  --on-accent:#121212;
+  --board:#0a0c0c;
+  --court:#2b3a3a;       /* court lines */
+  --ball:#e2702c;
+  --seam:#3a1d0c;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Share Tech Mono",ui-monospace,"Consolas",monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f3efe6; --surface:#fbf8f2; --line:#ddd4c3; --fg:#1b2022; --muted:#5d6563;
+  --amber:#b8700f; --teal:#14897e; --on-accent:#ffffff; --board:#121616; --court:#d8ccb5; color-scheme:light;}}
+:root[data-theme="light"]{
+  --bg:#f3efe6; --surface:#fbf8f2; --line:#ddd4c3; --fg:#1b2022; --muted:#5d6563;
+  --amber:#b8700f; --teal:#14897e; --on-accent:#ffffff; --board:#121616; --court:#d8ccb5; color-scheme:light;}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px));}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;letter-spacing:.01em}
+.label{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:900;font-size:24px;text-transform:uppercase;text-decoration:none;letter-spacing:.02em}
+.brand span{color:var(--amber)}
+nav.links{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
+nav.links a{text-decoration:none;font-size:14px;color:var(--muted)}
+nav.links a:hover{color:var(--fg)}
+.lang{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--muted);font-family:var(--f-mono);font-size:13px;padding:6px 9px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+@media (max-width:720px){nav.links{display:none}.lang{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:64px 56px;display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.hero > *{min-width:0}
+.hero h1{font-size:clamp(46px,7.4vw,92px);font-weight:900}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:56ch;margin:22px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;padding:13px 20px;border-radius:8px;text-decoration:none;border:1px solid transparent;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.amber{background:var(--amber);color:var(--on-accent)}
+.btn.teal{background:var(--teal);color:var(--on-accent)}
+.btn.ghost{border-color:var(--line);color:var(--fg)}
+.note{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-top:16px}
+
+/* scoreboard */
+.board{background:var(--board);border-radius:14px;padding:22px 20px 18px;color:#f4efe2;box-shadow:0 0 0 6px #1d2427, 0 24px 60px rgba(0,0,0,.35);font-family:var(--f-mono)}
+.board .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:10px;text-align:center}
+.board .team{font-size:13px;letter-spacing:.2em;color:#9aa5a3}
+.board .pts{font-size:clamp(54px,8vw,84px);line-height:1;color:#ffb444;text-shadow:0 0 18px rgba(255,170,60,.45)}
+.board .clock{font-size:clamp(26px,3.6vw,36px);color:#ff5e4a;text-shadow:0 0 14px rgba(255,80,60,.5);padding-bottom:8px}
+.board .meta{display:flex;justify-content:space-between;margin-top:16px;border-top:1px dashed #333c3e;padding-top:12px;font-size:13px;color:#9aa5a3;letter-spacing:.08em}
+.board .meta b{color:#3fe0cf;font-weight:400}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff5e4a;margin-right:6px;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* hero band: a real frame from an exported video, blurred court and crisp score bug */
+.hero-wrap{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:calc(100svh - 110px);padding-bottom:24px}
+.hero{grid-template-columns:minmax(0,1fr);padding-block:48px 8px;position:relative;z-index:2}
+.hero-wrap > .hero{width:100%}
+.hero > div{max-width:860px}
+.hero h1{font-size:clamp(40px,5.4vw,74px)}
+.hero p.sub{margin:16px 0 22px}
+.band{margin:-24px 0 0;position:relative;z-index:1;width:100%;flex:1 1 auto;min-height:200px;max-height:min(46svh,736px);overflow:hidden;background:#1a1410}
+.band img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 74%;transform-origin:50% 74%;animation:drift 22s ease-in-out infinite alternate}
+.band::before,.band::after{content:"";position:absolute;left:0;right:0;height:28%;z-index:1;pointer-events:none}
+.band::before{top:0;background:linear-gradient(var(--bg),transparent)}
+.band::after{bottom:0;height:10%;background:linear-gradient(transparent,var(--bg))}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.05)}}
+@media (prefers-reduced-motion: reduce){.band img{animation:none}}
+@media (max-width:720px){.hero-wrap{min-height:0}.band{flex:none;aspect-ratio:2278/736;min-height:0;max-height:none;margin-top:8px}.band::before{height:18%}}
+.ball{display:inline-block;width:1em;height:1em;vertical-align:-.12em}
+.ball circle{fill:var(--ball)}
+.ball path{fill:none;stroke:var(--seam);stroke-width:1.4}
+.board-stack{position:relative}
+.board-stack .ball{position:absolute;width:76px;height:76px;right:-18px;bottom:-30px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));animation:bounce 2.6s ease-in-out infinite}
+@keyframes bounce{50%{transform:translateY(-10px) rotate(14deg)}}
+.court-line{display:block;width:100%;height:46px;color:var(--court);margin-bottom:8px}
+.feat li::before{content:none}
+.feat li .ball{width:14px;height:14px;margin-top:5px}
+.prod.m360 .feat .ball circle{fill:var(--teal)}
+
+/* screenshots */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{font:600 14px var(--f-body);padding:9px 14px;border-radius:8px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.shots{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:14px}
+.shot{margin:0;min-width:0;display:flex;flex-direction:column;gap:8px}
+.shot:first-child{grid-row:span 2}
+.frame{background:var(--board);border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:16/9;max-width:100%;position:relative}
+.shot:first-child .frame{aspect-ratio:auto;height:100%;min-height:200px}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .ph{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:16px;color:#8d9896;font:13px/1.5 var(--f-mono);letter-spacing:.06em;
+  background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(255,255,255,.03) 14px 28px)}
+.frame.missing img{display:none}
+.frame.missing .ph{display:grid}
+.shot figcaption{font-size:14px;color:var(--muted)}
+@media (max-width:720px){.shots{grid-template-columns:1fr}.shot:first-child{grid-row:auto}.shot:first-child .frame{aspect-ratio:16/9;height:auto;min-height:0}}
+
+/* products */
+section{padding-block:56px}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(34px,4.6vw,52px);font-weight:800}
+.sec-head p{color:var(--muted);max-width:62ch;margin:0}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prod{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0;position:relative;overflow:hidden}
+.prod::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;border:2px solid var(--c);opacity:.35}
+.prod.mfb{--c:var(--amber)} .prod.m360{--c:var(--teal)}
+.prod .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.prod h3{font-size:40px;font-weight:900}
+.prod h3 span{color:var(--c)}
+.tag{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--c);border:1px solid var(--c);border-radius:4px;padding:3px 7px}
+.prod p{margin:0;color:var(--muted)}
+.feat{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.feat li{display:grid;grid-template-columns:14px 1fr;gap:10px;align-items:start;font-size:15px}
+.feat b{font-family:var(--f-mono);font-weight:400;color:var(--fg);letter-spacing:.04em}
+.prod .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:8px}
+.alone{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+/* workflow */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.flow li{padding:22px 20px;border-right:1px solid var(--line);min-width:0;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.flow li:last-child{border-right:0}
+.flow .q{font-family:var(--f-mono);font-size:13px;color:var(--amber);letter-spacing:.1em}
+.flow li:nth-child(2) .q{color:var(--teal)}
+.flow .who{font-family:var(--f-display);text-transform:uppercase;font-size:22px;font-weight:800}
+.flow p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:860px){.flow{grid-template-columns:1fr 1fr}.flow li:nth-child(2){border-right:0}.flow li:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.priv{margin:6px 0 0;font-size:13px;font-style:italic;color:var(--muted)}
+/* contacts */
+.contacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ct{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ct b{font-family:var(--f-display);text-transform:uppercase;font-size:24px;font-weight:800}
+.ct p{margin:0;color:var(--muted);font-size:15px}
+.ct .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:6px}
+.btn.mail{overflow-wrap:anywhere;font-family:var(--f-mono);font-weight:400;font-size:14px}
+@media (max-width:860px){.contacts{grid-template-columns:1fr}}
+/* shooting tips */
+.shoot{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cam{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.cam.m360{--c:var(--teal)} .cam.mfb{--c:var(--amber)}
+.cam h3{font-size:34px;font-weight:900}
+.cam h3 span{color:var(--c)}
+.cam .lead{margin:0;color:var(--muted)}
+.plan{width:100%;max-width:420px;height:auto;display:block;margin:4px 0}
+.plan .court{fill:none;stroke:var(--muted);stroke-width:1.5;opacity:.55}
+.plan .sb{fill:var(--board);stroke:var(--c);stroke-width:1.5}
+.plan .t{fill:var(--muted);font:11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.plan .cam-dot{fill:var(--c)}
+.plan .ring{fill:none;stroke:var(--c);stroke-width:1.2;opacity:.6;transform-box:fill-box;transform-origin:center;animation:ping 2.8s ease-out infinite}
+.plan .ring.r2{animation-delay:1.4s}
+@keyframes ping{from{transform:scale(.6);opacity:.7}to{transform:scale(1.6);opacity:0}}
+@media (prefers-reduced-motion: reduce){.plan .ring{animation:none}}
+.plan .cone{stroke:var(--c);stroke-width:1;stroke-dasharray:3 4}
+.plan .cone.a{fill:color-mix(in srgb,var(--c) 30%,transparent)}
+.plan .cone.b{fill:color-mix(in srgb,var(--c) 10%,transparent)}
+.plan .cam-dot.b{fill:var(--fg)}
+.tips{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.tips li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
+.tips .ball{width:14px;height:14px;margin-top:5px}
+.cam.m360 .tips .ball circle{fill:var(--teal)}
+.tips b{display:block;font-weight:700;margin-bottom:2px}
+.tips p{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+@media (max-width:860px){.shoot{grid-template-columns:1fr}.cam{padding:22px}}
+
+/* specs */
+.specs{border-top:1px solid var(--line)}
+.spec{display:grid;grid-template-columns:200px 1fr;gap:20px;padding-block:18px;border-bottom:1px solid var(--line)}
+.spec dt{font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--muted);padding-top:3px}
+.spec dd{margin:0;max-width:65ch}
+
+/* faq */
+.faq{display:grid;gap:10px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 20px}
+summary{cursor:pointer;padding-block:16px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);color:var(--amber);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 18px;color:var(--muted);max-width:65ch}
+
+.preview{background:var(--amber);color:var(--on-accent);font-family:var(--f-mono);font-size:13px;letter-spacing:.04em;padding-block:8px;text-align:center}
+.btn.soon{opacity:.55;cursor:default;pointer-events:none}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer .label{font-size:12px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-block:40px;gap:32px}
+  .products{grid-template-columns:1fr}
+  .spec{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:520px){
+  .flow{grid-template-columns:1fr}
+  .flow li{border-right:0;border-bottom:1px solid var(--line)}
+  .flow li:last-child{border-bottom:0}
+  .prod{padding:22px}
+  .prod h3{font-size:34px}
+}
+</style>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">Mantra<svg class="ball" style="margin-left:4px" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg></a>
+    <nav class="links">
+      <a href="#programmi" data-i="nav_products"></a>
+      <a href="#schermate" data-i="nav_shots"></a>
+      <a href="#flusso" data-i="nav_workflow"></a>
+      <a href="#riprese" data-i="nav_shoot"></a>
+      <a href="#requisiti" data-i="nav_req"></a>
+      <a href="#faq" data-i="nav_faq"></a>
+      <a href="#contatti" data-i="nav_ct"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="l-it" data-l="it">IT</button>
+      <button type="button" id="l-en" data-l="en">EN</button>
+      <button type="button" id="l-es" data-l="es">ES</button>
+      <button type="button" id="l-fr" data-l="fr">FR</button>
+    </div>
+  </div>
+</header>
+
+<div class="preview" id="preview"><div class="wrap" data-i="preview"></div></div>
+<main id="top">
+ <div class="hero-wrap">
+  <div class="wrap hero">
+    <div>
+      <div class="label" data-i="hero_eyebrow"></div>
+      <h1 style="margin-top:14px" data-i="hero_title" data-html="1"></h1>
+      <p class="sub" data-i="hero_sub"></p>
+      <div class="cta">
+        <a class="btn amber" href="#programmi" data-i="hero_cta"></a>
+        <a class="btn ghost" href="#flusso" data-i="hero_how"></a>
+      </div>
+      <div class="note" data-i="hero_note"></div>
+    </div>
+  </div>
+  <figure class="band" aria-hidden="true">
+    <img src="img/hero_partita.jpg" alt="" width="2278" height="736" decoding="async">
+  </figure>
+  <div class="wrap"><p class="priv" data-i="priv_note"></p></div>
+ </div>
+
+  <section id="programmi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label" data-i="prod_eyebrow"></div>
+        <h2 data-i="prod_title"></h2>
+      </div>
+      <div class="products">
+        <article class="prod mfb">
+          <div class="top"><h3>Mantra <span>for Basket</span></h3><span class="tag">Alpha · 1.0</span></div>
+          <div class="label" style="color:var(--c)" data-i="mfb_tag"></div>
+          <p data-i="mfb_desc"></p>
+          <ul class="feat">
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span><b>GEOSCANNER</b> · <span data-i="mfb_f1"></span></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span><b>REFINERY</b> · <span data-i="mfb_f2"></span></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span><b>STUDIO</b> · <span data-i="mfb_f3"></span></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span><b>SKINMAPPER</b> · <span data-i="mfb_f6"></span></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span><b>AUTOPILOT</b> · <span data-i="mfb_f4"></span></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span><b>BAKE</b> · <span data-i="mfb_f5"></span></span></li>
+          </ul>
+          <div class="actions">
+            <a class="btn amber" id="dl-mfb" href="#" target="_blank" rel="noopener" data-i="dl_mfb"></a>
+            <a class="btn ghost" id="rel-mfb" href="#" target="_blank" rel="noopener" data-i="dl_all"></a>
+            <a class="btn ghost" id="guide-mfb" href="guida_mfb.html" data-i="guide_mfb"></a>
+          </div>
+          <div class="alone"><span data-i="standalone"></span> · <span data-i="size_mfb"></span></div>
+        </article>
+
+        <article class="prod m360">
+          <div class="top"><h3>Mantra <span>360</span></h3><span class="tag">Alpha · 1.0</span></div>
+          <div class="label" style="color:var(--c)" data-i="m360_tag"></div>
+          <p data-i="m360_desc"></p>
+          <ul class="feat">
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span data-i="m360_f1"></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span data-i="m360_f2"></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span data-i="m360_f3"></span></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span data-i="m360_f4"></span></li>
+          </ul>
+          <div class="actions">
+            <a class="btn teal" id="dl-360" href="#" target="_blank" rel="noopener" data-i="dl_360"></a>
+            <a class="btn ghost" id="rel-360" href="#" target="_blank" rel="noopener" data-i="dl_all"></a>
+            <a class="btn ghost" href="guida_m360.html" data-i="guide_mfb"></a>
+          </div>
+          <div class="alone"><span data-i="standalone"></span> · <span data-i="size_360"></span></div>
+          <div class="alone" data-i="m360_files"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="schermate">
+    <div class="wrap">
+      <svg class="court-line" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><line x1="0" y1="23" x2="520" y2="23"/><circle cx="600" cy="23" r="20"/><line x1="680" y1="23" x2="1200" y2="23"/></svg>
+      <div class="sec-head">
+        <div class="label" data-i="gal_eyebrow"></div>
+        <h2 data-i="gal_title"></h2>
+      </div>
+      <div class="tabs" role="tablist">
+        <button type="button" id="t-mfb" role="tab" aria-selected="true" data-g="mfb">Mantra for Basket</button>
+        <button type="button" id="t-360" role="tab" aria-selected="false" data-g="m360">Mantra 360</button>
+      </div>
+      <div class="shots" data-g="mfb">
+        <figure class="shot"><div class="frame"><img src="screenshots/mfb-1.jpg" alt=""><div class="ph">screenshots/mfb-1.jpg</div></div><figcaption data-i="cap_mfb1"></figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="screenshots/mfb-2.jpg" alt=""><div class="ph">screenshots/mfb-2.jpg</div></div><figcaption data-i="cap_mfb2"></figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="screenshots/mfb-3.jpg" alt=""><div class="ph">screenshots/mfb-3.jpg</div></div><figcaption data-i="cap_mfb3"></figcaption></figure>
+        <p class="priv" data-i="priv_note" style="grid-column:1 / -1"></p>
+      </div>
+      <div class="shots" data-g="m360" hidden>
+        <figure class="shot"><div class="frame"><img src="screenshots/m360-1.jpg" alt=""><div class="ph">screenshots/m360-1.jpg</div></div><figcaption data-i="cap_3601"></figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="screenshots/m360-2.jpg" alt=""><div class="ph">screenshots/m360-2.jpg</div></div><figcaption data-i="cap_3602"></figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="screenshots/m360-3.jpg" alt=""><div class="ph">screenshots/m360-3.jpg</div></div><figcaption data-i="cap_3603"></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="flusso">
+    <div class="wrap">
+      <svg class="court-line" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><line x1="0" y1="23" x2="520" y2="23"/><circle cx="600" cy="23" r="20"/><line x1="680" y1="23" x2="1200" y2="23"/></svg>
+      <div class="sec-head">
+        <div class="label" data-i="wf_eyebrow"></div>
+        <h2 data-i="wf_title"></h2>
+        <p data-i="wf_sub"></p>
+      </div>
+      <ol class="flow">
+        <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span class="q">Q1</span><span class="who" data-i="wf1_who"></span><p data-i="wf1"></p></li>
+        <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span class="q">Q2</span><span class="who">Mantra 360</span><p data-i="wf2"></p></li>
+        <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span class="q">Q3</span><span class="who">Geoscanner + Refinery</span><p data-i="wf3"></p></li>
+        <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><span class="q">Q4</span><span class="who">Mantra for Basket</span><p data-i="wf4"></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="riprese">
+    <div class="wrap">
+      <svg class="court-line" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><line x1="0" y1="23" x2="520" y2="23"/><circle cx="600" cy="23" r="20"/><line x1="680" y1="23" x2="1200" y2="23"/></svg>
+      <div class="sec-head">
+        <div class="label" data-i="sh_eyebrow"></div>
+        <h2 data-i="sh_title"></h2>
+        <p data-i="sh_sub"></p>
+      </div>
+      <div class="shoot">
+        <article class="cam m360">
+          <h3>Mantra <span>360</span></h3>
+          <p class="lead" data-i="sh360_lead"></p>
+          <svg class="plan" viewBox="0 0 320 200" role="img" aria-labelledby="pl360">
+            <title id="pl360" data-i="sh360_alt"></title>
+            <g class="court"><rect x="20" y="30" width="280" height="140" rx="2"/><line x1="160" y1="30" x2="160" y2="170"/><circle cx="160" cy="100" r="18"/><path d="M20 62 h26 a38 38 0 0 1 0 76 h-26"/><path d="M300 62 h-26 a38 38 0 0 0 0 76 h26"/></g>
+            <rect class="sb" x="140" y="14" width="40" height="12" rx="2"/>
+            <text class="t" x="160" y="10" text-anchor="middle" data-i="sh_board"></text>
+            <circle class="ring" cx="160" cy="184" r="10"/><circle class="ring r2" cx="160" cy="184" r="17"/>
+            <circle class="cam-dot" cx="160" cy="184" r="5"/>
+            <text class="t" x="186" y="196" data-i="sh360_cam"></text>
+          </svg>
+          <ul class="tips">
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="sh360_1_t"></b><p data-i="sh360_1"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="sh360_2_t"></b><p data-i="sh360_2"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="sh360_3_t"></b><p data-i="sh360_3"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="sh360_4_t"></b><p data-i="sh360_4"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="sh360_5_t"></b><p data-i="sh360_5"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="sh360_6_t"></b><p data-i="sh360_6"></p></div></li>
+          </ul>
+        </article>
+        <article class="cam mfb">
+          <h3>Mantra <span>for Basket</span></h3>
+          <p class="lead" data-i="shmfb_lead"></p>
+          <svg class="plan" viewBox="0 0 320 200" role="img" aria-labelledby="plmfb">
+            <title id="plmfb" data-i="shmfb_alt"></title>
+            <g class="court"><rect x="20" y="30" width="280" height="140" rx="2"/><line x1="160" y1="30" x2="160" y2="170"/><circle cx="160" cy="100" r="18"/><path d="M20 62 h26 a38 38 0 0 1 0 76 h-26"/><path d="M300 62 h-26 a38 38 0 0 0 0 76 h26"/></g>
+            <rect class="sb" x="140" y="14" width="40" height="12" rx="2"/>
+            <text class="t" x="160" y="10" text-anchor="middle" data-i="sh_board"></text>
+            <path class="cone a" d="M110 186 L146 26 L174 26 Z"/>
+            <path class="cone b" d="M214 186 L24 40 L296 40 Z"/>
+            <circle class="cam-dot a" cx="110" cy="186" r="5"/><text class="t" x="20" y="197" data-i="shmfb_cam1"></text>
+            <circle class="cam-dot b" cx="214" cy="186" r="5"/><text class="t" x="226" y="197" data-i="shmfb_cam2"></text>
+          </svg>
+          <ul class="tips">
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="shmfb_1_t"></b><p data-i="shmfb_1"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="shmfb_2_t"></b><p data-i="shmfb_2"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="shmfb_3_t"></b><p data-i="shmfb_3"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="shmfb_4_t"></b><p data-i="shmfb_4"></p></div></li>
+            <li><svg class="ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M1 12h22M12 1v22M4.2 4.2c3.6 3.2 3.6 12.4 0 15.6M19.8 4.2c-3.6 3.2-3.6 12.4 0 15.6"/></svg><div><b data-i="shmfb_5_t"></b><p data-i="shmfb_5"></p></div></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="requisiti">
+    <div class="wrap">
+      <svg class="court-line" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><line x1="0" y1="23" x2="520" y2="23"/><circle cx="600" cy="23" r="20"/><line x1="680" y1="23" x2="1200" y2="23"/></svg>
+      <div class="sec-head">
+        <div class="label" data-i="req_eyebrow"></div>
+        <h2 data-i="req_title"></h2>
+      </div>
+      <dl class="specs">
+        <div class="spec"><dt data-i="req_os"></dt><dd data-i="req_os_v"></dd></div>
+        <div class="spec"><dt data-i="req_gpu"></dt><dd data-i="req_gpu_v"></dd></div>
+        <div class="spec"><dt data-i="req_size"></dt><dd data-i="req_size_v"></dd></div>
+        <div class="spec"><dt data-i="req_fmt"></dt><dd data-i="req_fmt_v"></dd></div>
+        <div class="spec"><dt data-i="req_src"></dt><dd data-i="req_src_v"></dd></div>
+        <div class="spec"><dt data-i="req_data"></dt><dd data-i="req_data_v"></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <svg class="court-line" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><line x1="0" y1="23" x2="520" y2="23"/><circle cx="600" cy="23" r="20"/><line x1="680" y1="23" x2="1200" y2="23"/></svg>
+      <div class="sec-head">
+        <div class="label">FAQ</div>
+        <h2 data-i="faq_title"></h2>
+      </div>
+      <div class="faq">
+        <details><summary data-i="q1"></summary><p data-i="a1"></p></details>
+        <details><summary data-i="q2"></summary><p data-i="a2"></p></details>
+        <details><summary data-i="q3"></summary><p data-i="a3"></p></details>
+        <details><summary data-i="q5"></summary><p data-i="a5"></p></details>
+        <details><summary data-i="q6"></summary><p data-i="a6"></p></details>
+        <details><summary data-i="q4"></summary><p data-i="a4"></p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <div class="wrap">
+      <svg class="court-line" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><line x1="0" y1="23" x2="520" y2="23"/><circle cx="600" cy="23" r="20"/><line x1="680" y1="23" x2="1200" y2="23"/></svg>
+      <div class="sec-head">
+        <div class="label" data-i="ct_eyebrow"></div>
+        <h2 data-i="ct_title"></h2>
+        <p data-i="ct_sub"></p>
+      </div>
+      <div class="contacts">
+        <div class="ct">
+          <b data-i="ct_q_t"></b><p data-i="ct_q"></p>
+          <div class="actions"><a class="btn amber" id="ct-disc" target="_blank" rel="noopener" data-i="ct_q_btn"></a></div>
+        </div>
+        <div class="ct">
+          <b data-i="ct_bug_t"></b><p data-i="ct_bug"></p>
+          <div class="actions"><a class="btn ghost" id="ct-iss-mfb" target="_blank" rel="noopener">Mantra for Basket</a><a class="btn ghost" id="ct-iss-360" target="_blank" rel="noopener">Mantra 360</a></div>
+        </div>
+        <div class="ct">
+          <b data-i="ct_mail_t"></b><p data-i="ct_mail"></p>
+          <div class="actions"><a class="btn ghost mail" id="ct-mail"><span id="ct-mail-txt">MantraSoftwareHouse [at] proton.me</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Stefano Sala · <span data-i="foot"></span></span>
+    <span class="label">Mantra for Basket · Mantra 360</span>
+  </div>
+</footer>
+
+<script>
+/* ===== CONFIGURA QUI I TUOI REPOSITORY GITHUB ===== */
+/* Vuoti = anteprima: i pulsanti di download restano disattivati e compare la fascia "anteprima" in alto.
+   Alla pubblicazione: inserire gli indirizzi dei repository e mettere PREVIEW = false. */
+const LINKS = {
+  mfb: "https://github.com/mantrasoftware/mantra-for-basket",
+  m360: "https://github.com/mantrasoftware/mantra-360"
+};
+const PREVIEW = false;
+/* ================================================== */
+
+const T = {
+it:{nav_ct:"Contatti",ct_eyebrow:"Domande e segnalazioni",ct_title:"Scrivici",ct_sub:"Mantra è un progetto gratuito: domande, idee e segnalazioni aiutano a migliorarlo.",ct_q_t:"Hai una domanda",ct_q:"Come si fa, se si può, un consiglio sulla ripresa: chiedi nelle discussioni. Le risposte restano visibili e aiutano anche gli altri. Serve un account GitHub gratuito.",ct_q_btn:"Apri le discussioni",ct_bug_t:"Qualcosa non funziona",ct_bug:"Descrivi cosa stavi facendo, cosa ti aspettavi e cosa è successo. Se puoi, allega i registri: le guide spiegano dove trovarli.",ct_mail_t:"Preferisci l'email",ct_mail:"Per tutto il resto, o se non usi GitHub, scrivi a questo indirizzo.",priv_note:"Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.",nav_shoot:"Riprese",nav_guide:"Guida",guide_mfb:"Guida d'uso",sh_eyebrow:"Prima di premere REC",sh_title:"La ripresa perfetta",sh_sub:"Il risultato si decide in palestra. Pochi accorgimenti mentre registri valgono più di qualsiasi correzione dopo.",sh_board:"tabellone",sh360_lead:"Una sola camera 360° che vede tutto: campo, giocatori e tabellone.",sh360_alt:"Pianta del campo: la camera 360° a metà del lato lungo, il tabellone sul lato opposto.",sh360_cam:"camera 360°",sh360_1_t:"A metà campo",sh360_1:"Mettila al centro del lato lungo del campo, all'altezza della linea di metà campo: così i due canestri sono alla stessa distanza e nessuna metà campo resta lontana. Più la camera è vicina al tabellone, meglio è: se il tabellone è a metà del lato lungo può stare anche dalla sua parte, ma non attaccata, o la ripresa è troppo distorta.",sh360_2_t:"In alto, sopra le teste",sh360_2:"Abbastanza in alto da vedere il tabellone e da stare sopra le teste di giocatori, allenatori e pubblico, così nessuno la copre durante il gioco.",sh360_3_t:"Il tabellone deve leggersi",sh360_3:"Prima di iniziare controlla che dalla camera si leggano bene tempo, punteggio e falli: Mantra 360 ricava da qui il video del tabellone per Mantra for Basket.",sh360_4_t:"Luce",sh360_4:"Accendi tutte le luci della palestra ed evita le finestre in controluce. Se la camera lo permette, fissa l'esposizione e usa un tempo di scatto adatto alla rete elettrica per evitare lo sfarfallio delle lampade.",sh360_5_t:"Ferma per tutta la partita",sh360_5:"Treppiede o asta robusti e ben fissati, lontano da tribune che vibrano e da dove passa la gente. La camera non deve muoversi né essere toccata fino alla fine.",sh360_6_t:"Massima definizione",sh360_6:"Registra alla risoluzione più alta della camera e con il bitrate più alto: il video finale è un ritaglio HD dell'immagine a 360°, quindi più dettagli registri, più nitido sarà. Prepara memoria e batteria (o alimentazione) per tutta la partita.",shmfb_lead:"Due riprese: una fissa sul tabellone, una che segue la partita.",shmfb_alt:"Pianta del campo: una camera inquadra stretto il tabellone, una seconda camera riprende la partita.",shmfb_cam1:"camera tabellone",shmfb_cam2:"camera partita",shmfb_1_t:"Il tabellone, stretto",shmfb_1:"Inquadra solo il tabellone: tempo, punteggio, falli e periodo devono riempire l'immagine ed essere ben leggibili. Messa a fuoco ed esposizione fisse, senza riflessi sulle cifre.",shmfb_2_t:"Fisso, il più stabile possibile",shmfb_2:"Treppiede, niente zoom e niente movimenti per tutta la partita. Se la camera resta nella stessa posizione, la volta dopo in GEOSCANNER riusi il preset e parti subito.",shmfb_3_t:"La partita",shmfb_3:"La seconda camera segue il gioco.",shmfb_4_t:"Sincronizzati al fotogramma",shmfb_4:"Lo stesso istante deve cadere nello stesso punto dei due video, dall'inizio alla fine, e i video devono durare uguale. Avvia le registrazioni insieme, fai un segnale visibile da entrambe le camere (un battito di mani o un flash) e taglia l'inizio dei due video su quel fotogramma. Usa la stessa frequenza di fotogrammi e non interrompere le registrazioni.",shmfb_5_t:"Con Mantra 360 è automatico",shmfb_5:"Se riprendi in 360°, partita e tabellone escono dalla stessa registrazione: sono già sincronizzati e durano uguale.",mfb_f6:"crea skin grafiche personalizzate dalle tue immagini, con i colori delle squadre che si adattano a ogni partita",nav_shots:"Schermate",gal_eyebrow:"Dai programmi veri",gal_title:"Guarda come lavora",cap_mfb1:"Highlights con punteggio e grafiche della squadra",cap_mfb2:"GEOSCANNER legge il tabellone",cap_mfb3:"Regia degli highlights sulla timeline",cap_3601:"Il video finale segue l'azione",cap_3602:"Regia a segmenti sulla timeline",cap_3603:"Il video del tabellone ritagliato",req_fmt:"Formato video",req_fmt_v:"Video orizzontale 16:9 in HD, pensato per YouTube, schermi e archivio della squadra.",nav_products:"Programmi",nav_workflow:"Come funziona",nav_req:"Requisiti",nav_faq:"FAQ",
+hero_eyebrow:"Software gratuito per il basket filmato",
+hero_title:"Dalla partita registrata al <em>video da condividere</em>",
+hero_sub:"Due programmi gratuiti per squadre e appassionati: Mantra 360 dirige la ripresa a 360°, Mantra for Basket legge il tabellone e monta highlights con le tue grafiche.",
+hero_cta:"Scarica gratis",hero_how:"Come funziona",hero_note:"Versioni alpha · Windows 10/11 64 bit · gratis, nessuna licenza da acquistare",
+home:"CASA",guest:"OSPITI",fouls:"FALLI",
+prod_eyebrow:"Due programmi, gratis",prod_title:"Scegli da dove partire",
+mfb_tag:"Montaggio, dati e grafiche",
+mfb_desc:"Legge il tabellone dal video, ripulisce i dati e monta highlights con punteggio, tempo e falli in sovrimpressione.",
+mfb_f1:"lettura OCR del tabellone",mfb_f2:"correzione semi-automatica dei dati",mfb_f3:"colori, nomi e loghi delle squadre",mfb_f4:"regia degli highlights su timeline",mfb_f5:"esportazione del video con le grafiche",
+m360_tag:"Regia automatica 360°",
+m360_desc:"Prende la registrazione 360° e produce un video HD che segue l'azione, con movimenti di camera fluidi.",
+m360_f1:"Rilevamento dei giocatori con RF-DETR",m360_f2:"Operatore automatico, correggibile a segmenti sulla timeline",m360_f3:"Un video per quarto, con tempi morti rimovibili",m360_f4:"Video del tabellone sincronizzato, pronto per GEOSCANNER",
+dl_mfb:"Scarica Mantra for Basket",dl_360:"Scarica Mantra 360",dl_all:"Tutte le versioni",standalone:"Funziona anche da solo.",
+wf_eyebrow:"Il flusso completo",wf_title:"Insieme vanno più lontano",wf_sub:"Ogni programma si usa da solo. Con una ripresa a 360° la catena completa è questa:",
+wf1_who:"In palestra",wf1:"Registri la partita con una camera 360° che inquadra anche il tabellone.",
+wf2:"Produce il video della partita che segue l'azione e il video ritagliato del tabellone.",
+wf3:"Leggono il tabellone fotogramma per fotogramma e ripuliscono i dati.",
+wf4:"Monta gli highlights con punteggio e grafiche della tua squadra.",
+req_eyebrow:"Prima di installare",req_title:"Requisiti",
+req_os:"Sistema",req_os_v:"Windows 10 o 11 a 64 bit. Le versioni per Linux e macOS sono in programma.",
+req_gpu:"Scheda video",req_gpu_v:"Mantra 360 usa la scheda video NVIDIA (CUDA) per il rilevamento: con una GeForce RTX 2060 una partita intera si analizza in circa 8 minuti. Senza NVIDIA funziona, ma l'analisi può richiedere ore. Mantra for Basket non ha bisogno di una scheda particolare.",
+req_src:"Riprese",req_src_v:"Per la lettura del tabellone è altamente consigliato un video dedicato, meglio una ripresa stretta: deve essere stabile (il più fissa possibile) e avere la stessa durata del video della partita. Non serve altissima definizione.",
+req_data:"I tuoi dati",req_data_v:"Progetti e impostazioni vengono salvati nella cartella Mantra del tuo utente, separati dal programma: aggiornare non li cancella.",
+faq_title:"Domande frequenti",
+q1:"È davvero gratis?",a1:"Sì. Niente versioni a pagamento, niente registrazione, niente pubblicità. Durante l'installazione trovi la licenza d'uso gratuita: puoi usarlo e passarlo ad altri, ma non venderlo.",
+q2:"Cosa vuol dire alpha?",a2:"I programmi sono usati su partite vere, ma possono avere bug e cambiare tra una versione e l'altra. Tieni una copia dei tuoi progetti.",
+q3:"Posso usare Mantra for Basket senza camera 360°?",a3:"Sì. Serve il video della partita e, altamente consigliato, un video dedicato al tabellone: stabile e della stessa durata.",
+q4:"Come segnalo un problema?",a4:"Apri una segnalazione nella sezione Issues della pagina GitHub del programma, descrivendo cosa stavi facendo.",
+foot:"Distribuiti gratuitamente.",
+preview:"ANTEPRIMA · La pubblicazione avverrà al termine dei test: i download non sono ancora attivi.",
+size_mfb:"download ~120 MB",
+size_360:"download ~2,2 GB",
+m360_files:"Il download è composto da Mantra360_Setup.exe e da file .bin: scaricali tutti nella stessa cartella.",
+req_size:"Download e spazio",
+req_size_v:"Mantra for Basket: download circa 120 MB, installato circa 0,5 GB. Mantra 360: download circa 2,2 GB (PyTorch e il modello di rilevamento sono inclusi, funziona anche senza internet), installato circa 6,5 GB. In più lo spazio per i tuoi video.",
+q5:"Windows dice “Windows ha protetto il PC”: è normale?",
+a5:"Sì: gli installatori non hanno una firma digitale a pagamento, quindi al primo avvio Windows SmartScreen mostra questo avviso. Clicca “Ulteriori informazioni” e poi “Esegui comunque”. Scarica i programmi solo da questa pagina.",
+q6:"Perché Mantra 360 è così grande?",
+a6:"Contiene il motore di intelligenza artificiale (PyTorch con il supporto per le schede NVIDIA) e il modello che riconosce giocatori e pallone, così funziona subito e senza connessione. Il download è diviso in più file per restare sotto i 2 GB ciascuno."},
+
+en:{nav_ct:"Contact",ct_eyebrow:"Questions and reports",ct_title:"Get in touch",ct_sub:"Mantra is a free project: questions, ideas and bug reports help make it better.",ct_q_t:"Got a question",ct_q:"How to do something, whether it's possible, advice on filming: ask in the discussions. Answers stay visible and help others too. A free GitHub account is needed.",ct_q_btn:"Open the discussions",ct_bug_t:"Something doesn't work",ct_bug:"Describe what you were doing, what you expected and what happened. If you can, attach the logs: the guides explain where to find them.",ct_mail_t:"Prefer email",ct_mail:"For anything else, or if you don't use GitHub, write to this address.",priv_note:"People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.",nav_shoot:"Filming",nav_guide:"Guide",guide_mfb:"User guide",sh_eyebrow:"Before you hit REC",sh_title:"The perfect recording",sh_sub:"The result is decided in the gym. A few precautions while recording are worth more than any fix afterwards.",sh_board:"scoreboard",sh360_lead:"A single 360° camera that sees everything: court, players and scoreboard.",sh360_alt:"Court plan: the 360° camera at the middle of the long side, the scoreboard on the opposite side.",sh360_cam:"360° camera",sh360_1_t:"At half court",sh360_1:"Place it in the middle of the long side of the court, level with the half-court line: both baskets are then the same distance away and neither half is left far off. The closer the camera is to the scoreboard, the better: if the scoreboard is at the middle of a long side, the camera can go on that side too, but not right next to it, or the picture gets too distorted.",sh360_2_t:"High, above the heads",sh360_2:"High enough to see the scoreboard and to stay above the heads of players, coaches and spectators, so nobody blocks it during play.",sh360_3_t:"The scoreboard must be readable",sh360_3:"Before starting, check that clock, score and fouls are clearly readable from the camera: Mantra 360 builds the scoreboard video for Mantra for Basket from here.",sh360_4_t:"Light",sh360_4:"Switch on all the gym lights and avoid windows behind the action. If your camera allows it, lock the exposure and use a shutter speed matched to the mains frequency to avoid flickering lights.",sh360_5_t:"Still for the whole game",sh360_5:"A sturdy, well-secured tripod or pole, away from vibrating stands and walkways. The camera must not move or be touched until the end.",sh360_6_t:"Maximum resolution",sh360_6:"Record at the camera's highest resolution and bitrate: the final video is an HD crop of the 360° image, so the more detail you record, the sharper it will be. Bring enough memory and battery (or mains power) for the whole game.",shmfb_lead:"Two recordings: one locked on the scoreboard, one following the game.",shmfb_alt:"Court plan: one camera frames the scoreboard tightly, a second camera films the game.",shmfb_cam1:"scoreboard cam",shmfb_cam2:"game cam",shmfb_1_t:"The scoreboard, tight",shmfb_1:"Frame only the scoreboard: clock, score, fouls and period should fill the picture and be clearly readable. Fixed focus and exposure, no reflections on the digits.",shmfb_2_t:"Fixed, as steady as possible",shmfb_2:"Tripod, no zoom and no movement for the whole game. If the camera stays in the same position, next time you reuse the preset in GEOSCANNER and start straight away.",shmfb_3_t:"The game",shmfb_3:"The second camera follows the play.",shmfb_4_t:"Synchronised to the frame",shmfb_4:"The same moment must fall at the same point in both videos, from start to finish, and the videos must be the same length. Start both recordings together, give a signal both cameras can see (a hand clap or a flash) and trim the start of both videos on that frame. Use the same frame rate and do not interrupt the recordings.",shmfb_5_t:"Automatic with Mantra 360",shmfb_5:"If you film in 360°, game and scoreboard come from the same recording: they are already in sync and the same length.",mfb_f6:"builds custom graphic skins from your own images, with team colours that adapt to every game",nav_shots:"Screenshots",gal_eyebrow:"From the real programs",gal_title:"See it at work",cap_mfb1:"Highlights with score and team graphics",cap_mfb2:"GEOSCANNER reads the scoreboard",cap_mfb3:"Directing highlights on the timeline",cap_3601:"The final video follows the action",cap_3602:"Segment-based directing on the timeline",cap_3603:"The cropped scoreboard video",req_fmt:"Video format",req_fmt_v:"Landscape 16:9 HD video, made for YouTube, screens and team archives.",nav_products:"Software",nav_workflow:"How it works",nav_req:"Requirements",nav_faq:"FAQ",
+hero_eyebrow:"Free software for filmed basketball",
+hero_title:"From recorded game to <em>shareable video</em>",
+hero_sub:"Two free programs for teams and enthusiasts: Mantra 360 directs your 360° footage, Mantra for Basket reads the scoreboard and cuts highlights with your own graphics.",
+hero_cta:"Download free",hero_how:"How it works",hero_note:"Alpha releases · Windows 10/11 64-bit · free, nothing to buy",
+home:"HOME",guest:"GUEST",fouls:"FOULS",
+prod_eyebrow:"Two programs, free",prod_title:"Pick your starting point",
+mfb_tag:"Editing, data and graphics",
+mfb_desc:"Reads the scoreboard from video, cleans the data and cuts highlights with score, clock and fouls on screen.",
+mfb_f1:"scoreboard OCR",mfb_f2:"semi-automatic data correction",mfb_f3:"team colours, names and logos",mfb_f4:"highlight directing on a timeline",mfb_f5:"video export with graphics",
+m360_tag:"Automatic 360° direction",
+m360_desc:"Takes your 360° recording and outputs an HD video that follows the action with smooth camera moves.",
+m360_f1:"Player detection with RF-DETR",m360_f2:"Automatic operator, editable in segments on the timeline",m360_f3:"One video per quarter, dead time removable",m360_f4:"Synced scoreboard video, ready for GEOSCANNER",
+dl_mfb:"Download Mantra for Basket",dl_360:"Download Mantra 360",dl_all:"All releases",standalone:"Works on its own too.",
+wf_eyebrow:"The full workflow",wf_title:"Better together",wf_sub:"Each program works on its own. With 360° footage, the full chain looks like this:",
+wf1_who:"At the gym",wf1:"Record the game with a 360° camera that also sees the scoreboard.",
+wf2:"Produces the game video following the action and a cropped scoreboard video.",
+wf3:"Read the scoreboard frame by frame and clean up the data.",
+wf4:"Cuts highlights with score and your team's graphics.",
+req_eyebrow:"Before installing",req_title:"Requirements",
+req_os:"System",req_os_v:"Windows 10 or 11, 64-bit. Linux and macOS versions are planned.",
+req_gpu:"Graphics card",req_gpu_v:"Mantra 360 uses an NVIDIA graphics card (CUDA) for detection: on a GeForce RTX 2060 a full game is analysed in about 8 minutes. Without NVIDIA it still works, but analysis can take hours. Mantra for Basket needs no special card.",
+req_src:"Footage",req_src_v:"For scoreboard reading a dedicated video is strongly recommended, ideally a tight shot: it must be steady (as fixed as possible) and last exactly as long as the match video. Very high resolution is not required.",
+req_data:"Your data",req_data_v:"Projects and settings are saved in the Mantra folder in your user profile, apart from the program, so updating doesn't erase them.",
+faq_title:"FAQ",
+q1:"Is it really free?",a1:"Yes. No paid tiers, no sign-up, no ads. The free licence is shown during installation: you may use it and pass it on, but not sell it.",
+q2:"What does alpha mean?",a2:"The programs are used on real games, but may have bugs and change between releases. Keep a backup of your projects.",
+q3:"Can I use Mantra for Basket without a 360° camera?",a3:"Yes. You need the match video and, strongly recommended, a dedicated scoreboard video: steady and the same length.",
+q4:"How do I report a problem?",a4:"Open an issue in the Issues section of the program's GitHub page and describe what you were doing.",
+foot:"Distributed free of charge.",
+preview:"PREVIEW · Publishing will happen once testing is complete: downloads are not active yet.",
+size_mfb:"~120 MB download",
+size_360:"~2.2 GB download",
+m360_files:"The download is Mantra360_Setup.exe plus .bin files: save them all in the same folder.",
+req_size:"Download and disk",
+req_size_v:"Mantra for Basket: about 120 MB download, about 0.5 GB installed. Mantra 360: about 2.2 GB download (PyTorch and the detection model included, works offline), about 6.5 GB installed. Plus room for your videos.",
+q5:"Windows says “Windows protected your PC”: is that normal?",
+a5:"Yes: the installers have no paid digital signature, so on first run Windows SmartScreen shows this warning. Click “More info” and then “Run anyway”. Only download the programs from this page.",
+q6:"Why is Mantra 360 so big?",
+a6:"It contains the AI engine (PyTorch with NVIDIA support) and the model that recognises players and ball, so it works straight away and offline. The download is split into several files, each under 2 GB."},
+
+es:{nav_ct:"Contacto",ct_eyebrow:"Preguntas y avisos",ct_title:"Escríbenos",ct_sub:"Mantra es un proyecto gratuito: preguntas, ideas y avisos de errores ayudan a mejorarlo.",ct_q_t:"Tienes una pregunta",ct_q:"Cómo se hace algo, si se puede, un consejo sobre la grabación: pregunta en las discusiones. Las respuestas quedan visibles y ayudan también a otros. Se necesita una cuenta gratuita de GitHub.",ct_q_btn:"Abrir las discusiones",ct_bug_t:"Algo no funciona",ct_bug:"Describe qué estabas haciendo, qué esperabas y qué ocurrió. Si puedes, adjunta los registros: las guías explican dónde encontrarlos.",ct_mail_t:"Prefieres el correo",ct_mail:"Para todo lo demás, o si no usas GitHub, escribe a esta dirección.",priv_note:"Las personas aparecen difuminadas por su privacidad: no es un efecto del programa, el vídeo exportado es nítido.",nav_shoot:"Grabación",nav_guide:"Guía",guide_mfb:"Guía de uso",sh_eyebrow:"Antes de pulsar REC",sh_title:"La grabación perfecta",sh_sub:"El resultado se decide en el pabellón. Unos pocos cuidados al grabar valen más que cualquier corrección posterior.",sh_board:"marcador",sh360_lead:"Una sola cámara 360° que lo ve todo: pista, jugadores y marcador.",sh360_alt:"Plano de la pista: la cámara 360° en el centro del lado largo, el marcador en el lado opuesto.",sh360_cam:"cámara 360°",sh360_1_t:"En medio campo",sh360_1:"Colócala en el centro del lado largo de la pista, a la altura de la línea de medio campo: así las dos canastas quedan a la misma distancia y ninguna mitad queda lejos. Cuanto más cerca esté la cámara del marcador, mejor: si el marcador está en el centro de un lado largo, puede ir también en ese lado, pero no pegada, o la imagen queda demasiado deformada.",sh360_2_t:"Alta, por encima de las cabezas",sh360_2:"Lo bastante alta para ver el marcador y quedar por encima de las cabezas de jugadores, entrenadores y público, para que nadie la tape durante el juego.",sh360_3_t:"El marcador debe leerse",sh360_3:"Antes de empezar comprueba que desde la cámara se leen bien tiempo, tanteo y faltas: Mantra 360 obtiene de aquí el vídeo del marcador para Mantra for Basket.",sh360_4_t:"Luz",sh360_4:"Enciende todas las luces del pabellón y evita las ventanas a contraluz. Si la cámara lo permite, fija la exposición y usa una velocidad de obturación adecuada a la red eléctrica para evitar el parpadeo de las lámparas.",sh360_5_t:"Quieta todo el partido",sh360_5:"Trípode o mástil robustos y bien sujetos, lejos de gradas que vibran y de zonas de paso. La cámara no debe moverse ni tocarse hasta el final.",sh360_6_t:"Máxima resolución",sh360_6:"Graba con la resolución y el bitrate más altos de la cámara: el vídeo final es un recorte HD de la imagen 360°, así que cuanto más detalle grabes, más nítido será. Prepara memoria y batería (o alimentación) para todo el partido.",shmfb_lead:"Dos grabaciones: una fija en el marcador y otra que sigue el partido.",shmfb_alt:"Plano de la pista: una cámara encuadra el marcador de cerca, una segunda cámara graba el partido.",shmfb_cam1:"cámara marcador",shmfb_cam2:"cámara partido",shmfb_1_t:"El marcador, cerrado",shmfb_1:"Encuadra solo el marcador: tiempo, tanteo, faltas y periodo deben llenar la imagen y leerse bien. Enfoque y exposición fijos, sin reflejos en las cifras.",shmfb_2_t:"Fijo, lo más estable posible",shmfb_2:"Trípode, sin zoom y sin movimientos durante todo el partido. Si la cámara queda en la misma posición, la próxima vez reutilizas el preset en GEOSCANNER y empiezas enseguida.",shmfb_3_t:"El partido",shmfb_3:"La segunda cámara sigue el juego.",shmfb_4_t:"Sincronizados al fotograma",shmfb_4:"El mismo instante debe caer en el mismo punto de los dos vídeos, de principio a fin, y los vídeos deben durar lo mismo. Inicia las grabaciones a la vez, haz una señal visible para ambas cámaras (una palmada o un flash) y recorta el inicio de los dos vídeos en ese fotograma. Usa la misma frecuencia de fotogramas y no interrumpas las grabaciones.",shmfb_5_t:"Con Mantra 360 es automático",shmfb_5:"Si grabas en 360°, partido y marcador salen de la misma grabación: ya están sincronizados y duran lo mismo.",mfb_f6:"crea skins gráficas personalizadas a partir de tus imágenes, con colores de equipo que se adaptan a cada partido",nav_shots:"Capturas",gal_eyebrow:"De los programas reales",gal_title:"Míralo en acción",cap_mfb1:"Highlights con marcador y gráficos del equipo",cap_mfb2:"GEOSCANNER lee el marcador",cap_mfb3:"Realización de highlights en la línea de tiempo",cap_3601:"El vídeo final sigue la jugada",cap_3602:"Realización por segmentos en la línea de tiempo",cap_3603:"El vídeo recortado del marcador",req_fmt:"Formato de vídeo",req_fmt_v:"Vídeo horizontal 16:9 en HD, pensado para YouTube, pantallas y el archivo del equipo.",nav_products:"Programas",nav_workflow:"Cómo funciona",nav_req:"Requisitos",nav_faq:"FAQ",
+hero_eyebrow:"Software gratuito para baloncesto grabado",
+hero_title:"Del partido grabado al <em>vídeo para compartir</em>",
+hero_sub:"Dos programas gratuitos para equipos y aficionados: Mantra 360 realiza tu grabación 360° y Mantra for Basket lee el marcador y monta highlights con tus gráficos.",
+hero_cta:"Descargar gratis",hero_how:"Cómo funciona",hero_note:"Versiones alpha · Windows 10/11 64 bits · gratis, nada que comprar",
+home:"LOCAL",guest:"VISITA",fouls:"FALTAS",
+prod_eyebrow:"Dos programas, gratis",prod_title:"Elige por dónde empezar",
+mfb_tag:"Montaje, datos y gráficos",
+mfb_desc:"Lee el marcador del vídeo, limpia los datos y monta highlights con marcador, tiempo y faltas en pantalla.",
+mfb_f1:"lectura OCR del marcador",mfb_f2:"corrección semiautomática de datos",mfb_f3:"colores, nombres y logos de los equipos",mfb_f4:"realización de highlights en línea de tiempo",mfb_f5:"exportación del vídeo con gráficos",
+m360_tag:"Realización automática 360°",
+m360_desc:"Toma tu grabación 360° y genera un vídeo HD que sigue la jugada con movimientos de cámara fluidos.",
+m360_f1:"Detección de jugadores con RF-DETR",m360_f2:"Operador automático, editable por segmentos en la línea de tiempo",m360_f3:"Un vídeo por cuarto, con tiempos muertos eliminables",m360_f4:"Vídeo del marcador sincronizado, listo para GEOSCANNER",
+dl_mfb:"Descargar Mantra for Basket",dl_360:"Descargar Mantra 360",dl_all:"Todas las versiones",standalone:"También funciona por sí solo.",
+wf_eyebrow:"El flujo completo",wf_title:"Juntos llegan más lejos",wf_sub:"Cada programa se usa por separado. Con una grabación 360°, la cadena completa es esta:",
+wf1_who:"En el pabellón",wf1:"Grabas el partido con una cámara 360° que también ve el marcador.",
+wf2:"Genera el vídeo del partido siguiendo la jugada y un vídeo recortado del marcador.",
+wf3:"Leen el marcador fotograma a fotograma y limpian los datos.",
+wf4:"Monta los highlights con marcador y gráficos de tu equipo.",
+req_eyebrow:"Antes de instalar",req_title:"Requisitos",
+req_os:"Sistema",req_os_v:"Windows 10 u 11 de 64 bits. Están previstas versiones para Linux y macOS.",
+req_gpu:"Tarjeta gráfica",req_gpu_v:"Mantra 360 usa la tarjeta gráfica NVIDIA (CUDA) para la detección: con una GeForce RTX 2060 un partido entero se analiza en unos 8 minutos. Sin NVIDIA funciona, pero el análisis puede tardar horas. Mantra for Basket no necesita una tarjeta especial.",
+req_src:"Grabaciones",req_src_v:"Para leer el marcador es muy recomendable un vídeo dedicado, mejor un plano cerrado: debe ser estable (lo más fijo posible) y durar lo mismo que el vídeo del partido. No hace falta altísima resolución.",
+req_data:"Tus datos",req_data_v:"Proyectos y ajustes se guardan en la carpeta Mantra de tu usuario, separados del programa: actualizar no los borra.",
+faq_title:"Preguntas frecuentes",
+q1:"¿Es realmente gratis?",a1:"Sí. Sin versiones de pago, sin registro, sin publicidad. Durante la instalación verás la licencia de uso gratuita: puedes usarlo y pasarlo a otros, pero no venderlo.",
+q2:"¿Qué significa alpha?",a2:"Los programas se usan en partidos reales, pero pueden tener errores y cambiar entre versiones. Guarda una copia de tus proyectos.",
+q3:"¿Puedo usar Mantra for Basket sin cámara 360°?",a3:"Sí. Necesitas el vídeo del partido y, muy recomendable, un vídeo dedicado al marcador: estable y de la misma duración.",
+q4:"¿Cómo informo de un problema?",a4:"Abre un issue en la sección Issues de la página GitHub del programa y describe qué estabas haciendo.",
+foot:"Distribuidos gratuitamente.",
+preview:"VISTA PREVIA · La publicación llegará al terminar las pruebas: las descargas aún no están activas.",
+size_mfb:"descarga ~120 MB",
+size_360:"descarga ~2,2 GB",
+m360_files:"La descarga consta de Mantra360_Setup.exe y archivos .bin: guárdalos todos en la misma carpeta.",
+req_size:"Descarga y espacio",
+req_size_v:"Mantra for Basket: descarga de unos 120 MB, unos 0,5 GB instalado. Mantra 360: descarga de unos 2,2 GB (incluye PyTorch y el modelo de detección, funciona sin internet), unos 6,5 GB instalado. Más el espacio para tus vídeos.",
+q5:"Windows dice “Windows protegió su PC”: ¿es normal?",
+a5:"Sí: los instaladores no tienen una firma digital de pago, así que en la primera ejecución Windows SmartScreen muestra este aviso. Pulsa “Más información” y luego “Ejecutar de todas formas”. Descarga los programas solo desde esta página.",
+q6:"¿Por qué Mantra 360 ocupa tanto?",
+a6:"Contiene el motor de inteligencia artificial (PyTorch con soporte para NVIDIA) y el modelo que reconoce jugadores y balón, así funciona enseguida y sin conexión. La descarga se divide en varios archivos de menos de 2 GB."},
+
+fr:{nav_ct:"Contact",ct_eyebrow:"Questions et signalements",ct_title:"Écrivez-nous",ct_sub:"Mantra est un projet gratuit : questions, idées et signalements aident à l'améliorer.",ct_q_t:"Une question",ct_q:"Comment faire, si c'est possible, un conseil de tournage : posez-la dans les discussions. Les réponses restent visibles et aident aussi les autres. Un compte GitHub gratuit est nécessaire.",ct_q_btn:"Ouvrir les discussions",ct_bug_t:"Quelque chose ne marche pas",ct_bug:"Décrivez ce que vous faisiez, ce que vous attendiez et ce qui s'est passé. Si possible, joignez les journaux : les guides expliquent où les trouver.",ct_mail_t:"Vous préférez l'e-mail",ct_mail:"Pour tout le reste, ou si vous n'utilisez pas GitHub, écrivez à cette adresse.",priv_note:"Les personnes sont floutées pour respecter leur vie privée : ce n'est pas un effet du logiciel, la vidéo exportée est nette.",nav_shoot:"Tournage",nav_guide:"Guide",guide_mfb:"Guide d'utilisation",sh_eyebrow:"Avant d'appuyer sur REC",sh_title:"La captation parfaite",sh_sub:"Le résultat se joue dans le gymnase. Quelques précautions pendant l'enregistrement valent mieux que toutes les corrections après coup.",sh_board:"tableau",sh360_lead:"Une seule caméra 360° qui voit tout : terrain, joueurs et tableau d'affichage.",sh360_alt:"Plan du terrain : la caméra 360° au milieu du grand côté, le tableau sur le côté opposé.",sh360_cam:"caméra 360°",sh360_1_t:"Au milieu du terrain",sh360_1:"Placez-la au centre du grand côté du terrain, au niveau de la ligne médiane : les deux paniers sont alors à la même distance et aucune moitié ne reste loin. Plus la caméra est proche du tableau, mieux c'est : si le tableau est au milieu d'un grand côté, elle peut aussi se placer de ce côté, mais pas collée, sinon l'image est trop déformée.",sh360_2_t:"En hauteur, au-dessus des têtes",sh360_2:"Assez haut pour voir le tableau et rester au-dessus des têtes des joueurs, des entraîneurs et du public, afin que personne ne la masque pendant le jeu.",sh360_3_t:"Le tableau doit être lisible",sh360_3:"Avant de commencer, vérifiez que le temps, le score et les fautes se lisent bien depuis la caméra : c'est de là que Mantra 360 tire la vidéo du tableau pour Mantra for Basket.",sh360_4_t:"Lumière",sh360_4:"Allumez toutes les lumières du gymnase et évitez les fenêtres à contre-jour. Si la caméra le permet, bloquez l'exposition et utilisez une vitesse d'obturation adaptée au réseau électrique pour éviter le scintillement des lampes.",sh360_5_t:"Immobile tout le match",sh360_5:"Trépied ou mât robustes et bien fixés, loin des tribunes qui vibrent et des passages. La caméra ne doit ni bouger ni être touchée jusqu'à la fin.",sh360_6_t:"Définition maximale",sh360_6:"Enregistrez à la résolution et au débit les plus élevés de la caméra : la vidéo finale est un recadrage HD de l'image 360°, donc plus vous enregistrez de détails, plus elle sera nette. Prévoyez assez de mémoire et de batterie (ou une alimentation) pour tout le match.",shmfb_lead:"Deux prises de vue : une fixe sur le tableau, une qui suit le match.",shmfb_alt:"Plan du terrain : une caméra cadre le tableau en plan serré, une seconde caméra filme le match.",shmfb_cam1:"caméra tableau",shmfb_cam2:"caméra match",shmfb_1_t:"Le tableau, en plan serré",shmfb_1:"Cadrez uniquement le tableau : temps, score, fautes et période doivent remplir l'image et être bien lisibles. Mise au point et exposition fixes, sans reflets sur les chiffres.",shmfb_2_t:"Fixe, le plus stable possible",shmfb_2:"Trépied, pas de zoom ni de mouvement pendant tout le match. Si la caméra reste au même endroit, la fois suivante vous réutilisez le preset dans GEOSCANNER et démarrez aussitôt.",shmfb_3_t:"Le match",shmfb_3:"La seconde caméra suit le jeu.",shmfb_4_t:"Synchronisées à l'image près",shmfb_4:"Le même instant doit tomber au même endroit dans les deux vidéos, du début à la fin, et les vidéos doivent avoir la même durée. Lancez les enregistrements ensemble, faites un signal visible par les deux caméras (un clap des mains ou un flash) et coupez le début des deux vidéos sur cette image. Utilisez la même fréquence d'images et n'interrompez pas les enregistrements.",shmfb_5_t:"Automatique avec Mantra 360",shmfb_5:"Si vous filmez en 360°, match et tableau proviennent du même enregistrement : ils sont déjà synchronisés et ont la même durée.",mfb_f6:"crée des habillages personnalisés à partir de vos images, avec des couleurs d'équipe qui s'adaptent à chaque match",nav_shots:"Captures",gal_eyebrow:"Tirées des vrais logiciels",gal_title:"Voyez-les à l'œuvre",cap_mfb1:"Highlights avec score et habillage de l'équipe",cap_mfb2:"GEOSCANNER lit le tableau d'affichage",cap_mfb3:"Réalisation des highlights sur la timeline",cap_3601:"La vidéo finale suit l'action",cap_3602:"Réalisation par segments sur la timeline",cap_3603:"La vidéo recadrée du tableau",req_fmt:"Format vidéo",req_fmt_v:"Vidéo horizontale 16:9 en HD, pensée pour YouTube, les écrans et les archives du club.",nav_products:"Logiciels",nav_workflow:"Fonctionnement",nav_req:"Configuration",nav_faq:"FAQ",
+hero_eyebrow:"Logiciels gratuits pour le basket filmé",
+hero_title:"Du match enregistré à la <em>vidéo à partager</em>",
+hero_sub:"Deux logiciels gratuits pour les clubs et les passionnés : Mantra 360 réalise votre captation 360°, Mantra for Basket lit le tableau d'affichage et monte des highlights avec vos habillages.",
+hero_cta:"Télécharger gratuitement",hero_how:"Fonctionnement",hero_note:"Versions alpha · Windows 10/11 64 bits · gratuit, rien à acheter",
+home:"LOCAUX",guest:"VISITEURS",fouls:"FAUTES",
+prod_eyebrow:"Deux logiciels, gratuits",prod_title:"Choisissez votre point de départ",
+mfb_tag:"Montage, données et habillage",
+mfb_desc:"Lit le tableau d'affichage dans la vidéo, nettoie les données et monte des highlights avec score, chrono et fautes à l'écran.",
+mfb_f1:"lecture OCR du tableau",mfb_f2:"correction semi-automatique des données",mfb_f3:"couleurs, noms et logos des équipes",mfb_f4:"réalisation des highlights sur timeline",mfb_f5:"export vidéo avec habillage",
+m360_tag:"Réalisation automatique 360°",
+m360_desc:"Prend votre enregistrement 360° et produit une vidéo HD qui suit l'action avec des mouvements de caméra fluides.",
+m360_f1:"Détection des joueurs avec RF-DETR",m360_f2:"Opérateur automatique, modifiable par segments sur la timeline",m360_f3:"Une vidéo par quart-temps, temps morts supprimables",m360_f4:"Vidéo du tableau synchronisée, prête pour GEOSCANNER",
+dl_mfb:"Télécharger Mantra for Basket",dl_360:"Télécharger Mantra 360",dl_all:"Toutes les versions",standalone:"Fonctionne aussi seul.",
+wf_eyebrow:"La chaîne complète",wf_title:"Ensemble, ils vont plus loin",wf_sub:"Chaque logiciel s'utilise seul. Avec une captation 360°, la chaîne complète est la suivante :",
+wf1_who:"Au gymnase",wf1:"Vous filmez le match avec une caméra 360° qui voit aussi le tableau d'affichage.",
+wf2:"Produit la vidéo du match qui suit l'action et une vidéo recadrée du tableau.",
+wf3:"Lisent le tableau image par image et nettoient les données.",
+wf4:"Monte les highlights avec le score et l'habillage de votre équipe.",
+req_eyebrow:"Avant d'installer",req_title:"Configuration requise",
+req_os:"Système",req_os_v:"Windows 10 ou 11, 64 bits. Des versions Linux et macOS sont prévues.",
+req_gpu:"Carte graphique",req_gpu_v:"Mantra 360 utilise la carte graphique NVIDIA (CUDA) pour la détection : avec une GeForce RTX 2060, un match entier s'analyse en 8 minutes environ. Sans NVIDIA cela fonctionne, mais l'analyse peut prendre des heures. Mantra for Basket n'a pas besoin d'une carte particulière.",
+req_src:"Captations",req_src_v:"Pour la lecture du tableau, une vidéo dédiée est vivement conseillée, de préférence en plan serré : elle doit être stable (le plus fixe possible) et durer exactement autant que la vidéo du match. Une très haute définition n'est pas nécessaire.",
+req_data:"Vos données",req_data_v:"Projets et réglages sont enregistrés dans le dossier Mantra de votre profil, séparés du logiciel : une mise à jour ne les efface pas.",
+faq_title:"Questions fréquentes",
+q1:"C'est vraiment gratuit ?",a1:"Oui. Pas de version payante, pas d'inscription, pas de publicité. La licence d'utilisation gratuite s'affiche à l'installation : vous pouvez l'utiliser et le transmettre, mais pas le vendre.",
+q2:"Que signifie alpha ?",a2:"Les logiciels sont utilisés sur de vrais matchs, mais peuvent contenir des bugs et évoluer d'une version à l'autre. Gardez une copie de vos projets.",
+q3:"Puis-je utiliser Mantra for Basket sans caméra 360° ?",a3:"Oui. Il faut la vidéo du match et, vivement conseillé, une vidéo dédiée au tableau : stable et de même durée.",
+q4:"Comment signaler un problème ?",a4:"Ouvrez une issue dans la section Issues de la page GitHub du logiciel en décrivant ce que vous faisiez.",
+foot:"Distribués gratuitement.",
+preview:"APERÇU · La publication aura lieu à la fin des tests : les téléchargements ne sont pas encore actifs.",
+size_mfb:"téléchargement ~120 Mo",
+size_360:"téléchargement ~2,2 Go",
+m360_files:"Le téléchargement comprend Mantra360_Setup.exe et des fichiers .bin : enregistrez-les tous dans le même dossier.",
+req_size:"Téléchargement et espace",
+req_size_v:"Mantra for Basket : téléchargement d'environ 120 Mo, environ 0,5 Go installé. Mantra 360 : téléchargement d'environ 2,2 Go (PyTorch et le modèle de détection inclus, fonctionne hors ligne), environ 6,5 Go installé. Plus la place pour vos vidéos.",
+q5:"Windows affiche « Windows a protégé votre ordinateur » : est-ce normal ?",
+a5:"Oui : les installateurs n'ont pas de signature numérique payante, donc au premier lancement Windows SmartScreen affiche cet avertissement. Cliquez sur « Informations complémentaires » puis « Exécuter quand même ». Téléchargez les logiciels uniquement depuis cette page.",
+q6:"Pourquoi Mantra 360 est-il si volumineux ?",
+a6:"Il contient le moteur d'intelligence artificielle (PyTorch avec prise en charge NVIDIA) et le modèle qui reconnaît joueurs et ballon : il fonctionne tout de suite, même hors ligne. Le téléchargement est découpé en plusieurs fichiers de moins de 2 Go."}
+};
+
+function setLang(l){
+  if(!T[l]) l="it";
+  const d=T[l];
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const v=d[el.dataset.i]; if(v==null) return;
+    if(el.dataset.html) el.innerHTML=v; else el.textContent=v;
+  });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+  const gm=document.getElementById("guide-mfb"); if(gm) gm.href=l==="it"?"guida_mfb.html":"guida_mfb_"+l+".html";
+  try{localStorage.setItem("mantra-lang",l)}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.l)));
+
+function applyLinks(){
+  for(const k of ["mfb","m360"]){
+    const id=k==="mfb"?"mfb":"360";
+    for(const [el,suf] of [[document.getElementById("dl-"+id),"/releases/latest"],[document.getElementById("rel-"+id),"/releases"]]){
+      if(LINKS[k]){el.href=LINKS[k]+suf;el.classList.remove("soon");el.removeAttribute("aria-disabled");}
+      else{el.removeAttribute("href");el.classList.add("soon");el.setAttribute("aria-disabled","true");}
+    }
+  }
+  for(const [id,url] of [["ct-disc",LINKS.mfb&&LINKS.mfb+"/discussions"],["ct-iss-mfb",LINKS.mfb&&LINKS.mfb+"/issues"],["ct-iss-360",LINKS.m360&&LINKS.m360+"/issues"]]){
+    const el=document.getElementById(id);
+    if(url){el.href=url;el.classList.remove("soon");el.removeAttribute("aria-disabled");}
+    else{el.removeAttribute("href");el.classList.add("soon");el.setAttribute("aria-disabled","true");}
+  }
+  document.getElementById("preview").hidden=!PREVIEW;
+}
+applyLinks();
+/* indirizzo email composto qui, cosi' i programmi che raccolgono indirizzi dalle pagine non lo trovano scritto */
+(function(){const u=["Mantra","Software","House"].join(""),d=["proton","me"].join("."),a=u+"@"+d;
+  const el=document.getElementById("ct-mail");el.href="mailto:"+a;document.getElementById("ct-mail-txt").textContent=a;})();
+
+document.querySelectorAll(".frame img").forEach(img=>{
+  const miss=()=>img.parentElement.classList.add("missing");
+  if(img.complete && !img.naturalWidth) miss(); img.addEventListener("error",miss);
+});
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll(".shots").forEach(g=>g.hidden=g.dataset.g!==b.dataset.g);
+}));
+
+let start=null;
+try{start=localStorage.getItem("mantra-lang")}catch(e){}
+if(!start){const n=(navigator.language||"it").slice(0,2).toLowerCase();start=T[n]?n:"it";}
+setLang(start);
+</script>
+
+</body></html>
