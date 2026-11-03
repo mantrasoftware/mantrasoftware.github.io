@@ -258,7 +258,7 @@ footer .label{font-size:12px}
       <div class="cta">
         <a class="btn amber" href="#programmi" data-i="hero_cta"></a>
         <a class="btn ghost" href="#flusso" data-i="hero_how"></a>
-        <a class="btn ghost" href="https://youtu.be/qrvzGwwC36k" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg><span data-i="hero_video"></span></a>
+        <a class="btn ghost" id="btn-video" href="https://youtu.be/qrvzGwwC36k" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg><span data-i="hero_video"></span></a>
       </div>
       <div class="note" data-i="hero_note"></div>
     </div>
@@ -661,6 +661,16 @@ q6:"Pourquoi Mantra 360 est-il si volumineux ?",
 a6:"Il contient le moteur d'intelligence artificielle (PyTorch avec prise en charge NVIDIA) et le modèle qui reconnaît joueurs et ballon : il fonctionne tout de suite, même hors ligne. Le téléchargement est découpé en plusieurs fichiers de moins de 2 Go."}
 };
 
+/* video promo per lingua: [spot orizzontale, Short verticale per telefono] */
+const VIDEOS={it:["https://youtu.be/qrvzGwwC36k","https://www.youtube.com/shorts/ZURQGzojdZM"],
+en:["https://youtu.be/ekmt1zcQRvc","https://www.youtube.com/shorts/qjdVW2ivZ7U"],
+es:["https://youtu.be/aTiECTBGy4E","https://www.youtube.com/shorts/GjcU--EoTkc"],
+fr:["https://youtu.be/DcitCk7RT6U","https://www.youtube.com/shorts/FxofLKxm8Qg"]};
+function setVideo(l){
+  const bv=document.getElementById("btn-video"); if(!bv) return;
+  const v=VIDEOS[l]||VIDEOS.it, phone=window.matchMedia("(max-width:700px)").matches;
+  bv.href=phone?v[1]:v[0];
+}
 function setLang(l){
   if(!T[l]) l="it";
   const d=T[l];
@@ -671,6 +681,7 @@ function setLang(l){
   });
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
   const gm=document.getElementById("guide-mfb"); if(gm) gm.href=l==="it"?"guida_mfb.html":"guida_mfb_"+l+".html";
+  setVideo(l);
   try{localStorage.setItem("mantra-lang",l)}catch(e){}
 }
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.l)));
