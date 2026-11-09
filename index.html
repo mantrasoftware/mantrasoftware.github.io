@@ -124,6 +124,31 @@ nav.links a:hover{color:var(--fg)}
 .shot figcaption{font-size:14px;color:var(--muted)}
 @media (max-width:720px){.shots{grid-template-columns:1fr}.shot:first-child{grid-row:auto}.shot:first-child .frame{aspect-ratio:16/9;height:auto;min-height:0}}
 
+
+/* highlights vs dirette */
+.hl-title em{font-style:normal;color:var(--amber)}
+.hl-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hl-grid > *{min-width:0}
+.hl-grid p{margin:0 0 14px;color:var(--muted);font-size:17px;max-width:58ch}
+.hl-grid p strong{color:var(--fg);font-weight:600}
+.cmp{background:var(--board);border-radius:14px;padding:24px 22px;color:#f4efe2;box-shadow:0 0 0 6px #1d2427,0 24px 60px rgba(0,0,0,.35);font-family:var(--f-mono)}
+.cmp .rowc{margin-bottom:22px}
+.cmp .rowc:last-of-type{margin-bottom:6px}
+.cmp .lab{display:flex;justify-content:space-between;gap:12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#9aa5a3;margin-bottom:8px}
+.cmp .lab b{font-weight:400;color:#f4efe2}
+.cmp .bar{height:18px;border-radius:4px}
+.cmp .bar.long{background:repeating-linear-gradient(90deg,#3a4446 0 22px,#2c3537 22px 24px)}
+.cmp .bar.short{width:14%;min-width:40px;background:#ffb444;box-shadow:0 0 16px rgba(255,170,60,.45)}
+.cmp .rowc.hl .lab b{color:#ffb444}
+.cmp .foot{border-top:1px dashed #333c3e;margin-top:18px;padding-top:12px;font-size:13px;color:#9aa5a3;letter-spacing:.06em}
+.cmp .foot b{color:#3fe0cf;font-weight:400}
+.hl-points{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.hl-points li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.hl-points b{font-family:var(--f-display);text-transform:uppercase;font-size:22px;font-weight:800;line-height:1.05;color:var(--amber)}
+.hl-points span{color:var(--muted);font-size:15px}
+@media (max-width:900px){.hl-grid{grid-template-columns:1fr}.hl-points{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.hl-points{grid-template-columns:1fr}}
+
 /* products */
 section{padding-block:56px}
 .sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
@@ -268,6 +293,33 @@ footer .label{font-size:12px}
   </figure>
   <div class="wrap"><p class="priv" data-i="priv_note"></p></div>
  </div>
+
+
+  <section id="highlights">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label" data-i="hl_eyebrow">Dopo la partita</div>
+        <h2 data-i="hl_title" data-html="1" class="hl-title">Tutta la partita la riguarda solo l’allenatore.<br><em>Gli highlights li guardano tutti.</em></h2>
+      </div>
+      <div class="hl-grid">
+        <div>
+          <p data-i="hl_p1">La diretta serve a chi non può esserci. Ma il giorno dopo giocatori, famiglie e tifosi vogliono rivedere i canestri, le azioni più belle, il finale punto a punto. Bastano degli highlights fatti bene: si guardano volentieri e si condividono.</p>
+          <p data-i="hl_p2" data-html="1">Mantra parte proprio da qui: dalla registrazione della partita costruisce <strong>highlights veri</strong>, con il <strong>punteggio letto dal tabellone</strong>, il tempo e i falli in sovrimpressione, e le <strong>grafiche della tua squadra</strong>.</p>
+        </div>
+        <div class="cmp" aria-hidden="true">
+          <div class="rowc"><div class="lab"><span data-i="hl_cmp1">Partita registrata</span><b data-i="hl_cmp1v">Tutta</b></div><div class="bar long"></div></div>
+          <div class="rowc hl"><div class="lab"><span data-i="hl_cmp2">Highlights Mantra</span><b data-i="hl_cmp2v">Solo il meglio</b></div><div class="bar short"></div></div>
+          <div class="foot" data-i="hl_cmp_foot" data-html="1">Canestri, punteggio e grafiche · <b>pronti da condividere</b></div>
+        </div>
+      </div>
+      <ul class="hl-points">
+        <li><b data-i="hl_b1">Brevi e da condividere</b><span data-i="hl_t1">Solo le azioni che contano, pronte per WhatsApp, Instagram e YouTube.</span></li>
+        <li><b data-i="hl_b2">Il punteggio giusto, sempre</b><span data-i="hl_t2">Niente da inserire a mano: lo legge dal tabellone del palazzetto.</span></li>
+        <li><b data-i="hl_b3">Con le riprese che hai già</b><span data-i="hl_t3">Camera 360°, registrazione della diretta o di una camera automatica, la tua videocamera: basta che nel video si veda il tabellone.</span></li>
+        <li><b data-i="hl_b4">Gratis, senza abbonamenti</b><span data-i="hl_t4">Si scarica, si installa e funziona anche senza internet.</span></li>
+      </ul>
+    </div>
+  </section>
 
   <section id="programmi">
     <div class="wrap">
@@ -470,7 +522,7 @@ footer .label{font-size:12px}
         </div>
         <div class="ct">
           <b data-i="ct_mail_t"></b><p data-i="ct_mail"></p>
-          <div class="actions"><a class="btn ghost mail" id="ct-mail"><span id="ct-mail-txt">MantraSoftwareHouse [at] proton.me</span></a></div>
+          <div class="actions"><a class="btn ghost mail" id="ct-mail"><span id="ct-mail-txt">mantrasoftware2026 [at] gmail.com</span></a></div>
         </div>
       </div>
     </div>
@@ -502,6 +554,7 @@ hero_title:"Dalla partita registrata al <em>video da condividere</em>",
 hero_sub:"Due programmi gratuiti per squadre e appassionati: Mantra 360 dirige la ripresa a 360°, Mantra for Basket legge il tabellone e monta highlights con le tue grafiche.",
 hero_cta:"Scarica gratis",hero_video:"Guarda il video",hero_how:"Come funziona",hero_note:"Versioni alpha · Windows 10/11 64 bit · gratis, nessuna licenza da acquistare",
 home:"CASA",guest:"OSPITI",fouls:"FALLI",
+hl_eyebrow:"Dopo la partita",hl_title:"Tutta la partita la riguarda solo l’allenatore.<br><em>Gli highlights li guardano tutti.</em>",hl_p1:"La diretta serve a chi non può esserci. Ma il giorno dopo giocatori, famiglie e tifosi vogliono rivedere i canestri, le azioni più belle, il finale punto a punto. Bastano degli highlights fatti bene: si guardano volentieri e si condividono.",hl_p2:"Mantra parte proprio da qui: dalla registrazione della partita costruisce <strong>highlights veri</strong>, con il <strong>punteggio letto dal tabellone</strong>, il tempo e i falli in sovrimpressione, e le <strong>grafiche della tua squadra</strong>.",hl_cmp1:"Partita registrata",hl_cmp1v:"Tutta",hl_cmp2:"Highlights Mantra",hl_cmp2v:"Solo il meglio",hl_cmp_foot:"Canestri, punteggio e grafiche · <b>pronti da condividere</b>",hl_b1:"Brevi e da condividere",hl_t1:"Solo le azioni che contano, pronte per WhatsApp, Instagram e YouTube.",hl_b2:"Il punteggio giusto, sempre",hl_t2:"Niente da inserire a mano: lo legge dal tabellone del palazzetto.",hl_b3:"Con le riprese che hai già",hl_t3:"Camera 360°, registrazione della diretta o di una camera automatica, la tua videocamera: basta che nel video si veda il tabellone.",hl_b4:"Gratis, senza abbonamenti",hl_t4:"Si scarica, si installa e funziona anche senza internet.",
 prod_eyebrow:"Due programmi, gratis",prod_title:"Scegli da dove partire",
 mfb_tag:"Montaggio, dati e grafiche",
 mfb_desc:"Legge il tabellone dal video, ripulisce i dati e monta highlights con punteggio, tempo e falli in sovrimpressione.",
@@ -543,6 +596,7 @@ hero_title:"From recorded game to <em>shareable video</em>",
 hero_sub:"Two free programs for teams and enthusiasts: Mantra 360 directs your 360° footage, Mantra for Basket reads the scoreboard and cuts highlights with your own graphics.",
 hero_cta:"Download free",hero_video:"Watch the video",hero_how:"How it works",hero_note:"Alpha releases · Windows 10/11 64-bit · free, nothing to buy",
 home:"HOME",guest:"GUEST",fouls:"FOULS",
+hl_eyebrow:"After the game",hl_title:"Only the coach rewatches the whole game.<br><em>Everyone watches the highlights.</em>",hl_p1:"A live stream is for those who can’t be there. But the next day, players, families and fans want to see the baskets again, the best plays, the close finish. Well-made highlights are all it takes: people enjoy watching them and share them.",hl_p2:"That’s where Mantra starts: from the game recording it builds <strong>real highlights</strong>, with the <strong>score read from the scoreboard</strong>, the clock and fouls on screen, and <strong>your team’s graphics</strong>.",hl_cmp1:"Recorded game",hl_cmp1v:"All of it",hl_cmp2:"Mantra highlights",hl_cmp2v:"Only the best",hl_cmp_foot:"Baskets, score and graphics · <b>ready to share</b>",hl_b1:"Short and shareable",hl_t1:"Only the plays that matter, ready for WhatsApp, Instagram and YouTube.",hl_b2:"Always the right score",hl_t2:"Nothing to type in: it reads the score from the gym’s scoreboard.",hl_b3:"With the footage you already have",hl_t3:"A 360° camera, a live-stream or automatic-camera recording, your own camcorder: all it needs is the scoreboard visible in the video.",hl_b4:"Free, no subscription",hl_t4:"Download it, install it, and it even works offline.",
 prod_eyebrow:"Two programs, free",prod_title:"Pick your starting point",
 mfb_tag:"Editing, data and graphics",
 mfb_desc:"Reads the scoreboard from video, cleans the data and cuts highlights with score, clock and fouls on screen.",
@@ -584,6 +638,7 @@ hero_title:"Del partido grabado al <em>vídeo para compartir</em>",
 hero_sub:"Dos programas gratuitos para equipos y aficionados: Mantra 360 realiza tu grabación 360° y Mantra for Basket lee el marcador y monta highlights con tus gráficos.",
 hero_cta:"Descargar gratis",hero_video:"Ver el vídeo",hero_how:"Cómo funciona",hero_note:"Versiones alpha · Windows 10/11 64 bits · gratis, nada que comprar",
 home:"LOCAL",guest:"VISITA",fouls:"FALTAS",
+hl_eyebrow:"Después del partido",hl_title:"El partido entero solo lo vuelve a ver el entrenador.<br><em>Los highlights los ven todos.</em>",hl_p1:"El directo sirve a quien no puede estar. Pero al día siguiente, jugadores, familias y aficionados quieren volver a ver las canastas, las mejores jugadas, el final ajustado. Bastan unos buenos highlights: se ven con gusto y se comparten.",hl_p2:"Mantra empieza justo aquí: a partir de la grabación del partido monta <strong>highlights de verdad</strong>, con el <strong>resultado leído del marcador</strong>, el tiempo y las faltas sobreimpresos, y los <strong>gráficos de tu equipo</strong>.",hl_cmp1:"Partido grabado",hl_cmp1v:"Entero",hl_cmp2:"Highlights Mantra",hl_cmp2v:"Solo lo mejor",hl_cmp_foot:"Canastas, resultado y gráficos · <b>listos para compartir</b>",hl_b1:"Cortos y para compartir",hl_t1:"Solo las jugadas que importan, listas para WhatsApp, Instagram y YouTube.",hl_b2:"Siempre el resultado correcto",hl_t2:"Nada que introducir a mano: lo lee del marcador del pabellón.",hl_b3:"Con las grabaciones que ya tienes",hl_t3:"Cámara 360°, grabación del directo o de una cámara automática, tu videocámara: basta con que el marcador se vea en el vídeo.",hl_b4:"Gratis, sin suscripciones",hl_t4:"Se descarga, se instala y funciona incluso sin internet.",
 prod_eyebrow:"Dos programas, gratis",prod_title:"Elige por dónde empezar",
 mfb_tag:"Montaje, datos y gráficos",
 mfb_desc:"Lee el marcador del vídeo, limpia los datos y monta highlights con marcador, tiempo y faltas en pantalla.",
@@ -625,6 +680,7 @@ hero_title:"Du match enregistré à la <em>vidéo à partager</em>",
 hero_sub:"Deux logiciels gratuits pour les clubs et les passionnés : Mantra 360 réalise votre captation 360°, Mantra for Basket lit le tableau d'affichage et monte des highlights avec vos habillages.",
 hero_cta:"Télécharger gratuitement",hero_video:"Voir la vidéo",hero_how:"Fonctionnement",hero_note:"Versions alpha · Windows 10/11 64 bits · gratuit, rien à acheter",
 home:"LOCAUX",guest:"VISITEURS",fouls:"FAUTES",
+hl_eyebrow:"Après le match",hl_title:"Le match entier, seul l’entraîneur le revoit.<br><em>Les highlights, tout le monde les regarde.</em>",hl_p1:"Le direct sert à ceux qui ne peuvent pas être là. Mais le lendemain, joueurs, familles et supporters veulent revoir les paniers, les plus belles actions, la fin serrée. Il suffit de bons highlights : on les regarde avec plaisir et on les partage.",hl_p2:"C’est là que Mantra commence : à partir de l’enregistrement du match, il monte de <strong>vrais highlights</strong>, avec le <strong>score lu sur le tableau d’affichage</strong>, le chrono et les fautes à l’écran, et les <strong>graphismes de votre équipe</strong>.",hl_cmp1:"Match enregistré",hl_cmp1v:"En entier",hl_cmp2:"Highlights Mantra",hl_cmp2v:"Le meilleur",hl_cmp_foot:"Paniers, score et graphismes · <b>prêts à partager</b>",hl_b1:"Courts et faciles à partager",hl_t1:"Seulement les actions qui comptent, prêtes pour WhatsApp, Instagram et YouTube.",hl_b2:"Toujours le bon score",hl_t2:"Rien à saisir à la main : il lit le score sur le tableau d’affichage de la salle.",hl_b3:"Avec les images que vous avez déjà",hl_t3:"Caméra 360°, enregistrement du direct ou d’une caméra automatique, votre caméscope : il suffit que le tableau d’affichage soit visible dans la vidéo.",hl_b4:"Gratuit, sans abonnement",hl_t4:"On le télécharge, on l’installe, et il fonctionne même sans internet.",
 prod_eyebrow:"Deux logiciels, gratuits",prod_title:"Choisissez votre point de départ",
 mfb_tag:"Montage, données et habillage",
 mfb_desc:"Lit le tableau d'affichage dans la vidéo, nettoie les données et monte des highlights avec score, chrono et fautes à l'écran.",
@@ -703,7 +759,7 @@ function applyLinks(){
 }
 applyLinks();
 /* indirizzo email composto qui, cosi' i programmi che raccolgono indirizzi dalle pagine non lo trovano scritto */
-(function(){const u=["Mantra","Software","House"].join(""),d=["proton","me"].join("."),a=u+"@"+d;
+(function(){const u=["mantra","software","2026"].join(""),d=["gmail","com"].join("."),a=u+"@"+d;
   const el=document.getElementById("ct-mail");el.href="mailto:"+a;document.getElementById("ct-mail-txt").textContent=a;})();
 
 document.querySelectorAll(".frame img").forEach(img=>{
