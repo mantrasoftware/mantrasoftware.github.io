@@ -269,49 +269,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <!-- 04 -->
     <section class="ch" id="geoscanner">
       <div class="ch-head"><span class="where">04 · ACQUISIZIONE</span><h2>GEOSCANNER</h2>
-        <p>Legge il tabellone fotogramma per fotogramma e scrive i dati della partita: tempo, punteggio, falli e periodo. La preparazione dipende da come la camera inquadra il tabellone: puoi salvarla e riusarla finché la camera resta nella stessa posizione.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 2 · guida/mfb-02-geoscanner.jpg</b>GEOSCANNER durante la mappatura: la finestra di regolazione di una cifra con i 7 punti sui segmenti, a destra la griglia MAPPATURA OCR (verde = pronta).</div></div><figcaption>Mappatura di una cifra: un punto per segmento. La riga <span class="ui">PROSSIMO PASSO</span> ti dice sempre cosa manca.</figcaption></figure>
+        <p>Legge il tabellone fotogramma per fotogramma e scrive i dati della partita: tempo, punteggio, falli e periodo. La finestra è divisa in quattro tappe, che vedi in alto: <span class="ui">Video</span>, <span class="ui">Tabellone</span>, <span class="ui">Calibrazione</span>, <span class="ui">Analisi</span>. Vai avanti con <span class="ui">AVANTI</span> e indietro con <span class="ui">INDIETRO</span>, oppure clicca direttamente su una tappa. Sopra le tappe c'è sempre l'anteprima del tabellone, con le zone mappate disegnate sopra.</p></div>
+      <h3>Tappa 1 · Video</h3>
+      <p>Se nella cartella RAW dell'unità il programma trova il video del tabellone, lo carica da solo e lo scrive vicino a <span class="ui">SEGNALE</span>, con «(auto)». Altrimenti premi <span class="ui">1. CARICA VIDEO TABELLONE</span>. Con il cursore sotto l'anteprima scegli un fotogramma in cui il tabellone si vede bene.</p>
+      <h3>Tappa 2 · Tipo di tabellone</h3>
+      <p>Rispondi a due domande.</p>
+      <ul class="dots">
+        <li><em>Come mostra il tempo?</em> <span class="ui">Tipo A</span>: sempre MM:SS, senza decimi. <span class="ui">Tipo B</span>: MM:SS, nell'ultimo minuto passa a secondi e decimi. <span class="ui">Tipo C</span>: cinque cifre sempre visibili, con i decimi.</li>
+        <li><em>Come mostra i falli di squadra?</em> Non li mostra, cifre a 7 segmenti oppure pallini LED.</li>
+      </ul>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 2b · guida/mfb-02b-tipo-tabellone.jpg</b>La tappa 2 di GEOSCANNER: scelta del tipo di tabellone e dei falli di squadra.</div></div><figcaption>La tappa 2: il tipo di tabellone e come mostra i falli.</figcaption></figure>
+      <h3>Tappa 3 · Calibrazione</h3>
+      <p>Qui insegni al programma dove leggere.</p>
       <ol class="steps">
-        <li><div><p><strong>Carica il video del tabellone</strong> con <span class="ui">1. CARICA VIDEO TABELLONE</span>.</p></div></li>
-        <li><div><p><strong>Scegli com'è fatto il tabellone.</strong> In <span class="ui">TOPOLOGIA TABELLONE</span>:</p>
-          <ul class="dots">
-            <li><span class="ui">TIPO A</span>: mostra sempre MM:SS, senza decimi;</li>
-            <li><span class="ui">TIPO B</span>: nell'ultimo minuto passa a secondi e decimi (SS.d);</li>
-            <li><span class="ui">TIPO C</span>: mostra sempre i decimi (MM:SS.d).</li>
-          </ul>
-          <p>In <span class="ui">MODALITÀ FALLI DI SQUADRA</span> scegli se i falli sono cifre a 7 segmenti, pallini LED oppure se ignorarli.</p></div></li>
-        <li><div><p><strong>Imposta le fondamenta</strong> con <span class="ui">IMPOSTA FONDAMENTA</span>:</p>
-          <ul class="dots">
-            <li>clicca i <strong>4 angoli</strong> del tabellone (<kbd>R</kbd> per ricominciare);</li>
-            <li>premi <kbd>Spazio</kbd> per creare il <strong>fantasma</strong>: il programma scorre velocemente tutto il video e costruisce un'immagine pulita del tabellone. <kbd>Spazio</kbd> mette in pausa, <kbd>Esc</kbd> prosegue;</li>
-            <li>riquadra l'<strong>ancora</strong>, una parte del tabellone che non cambia mai, che serve a seguire piccoli movimenti della ripresa;</li>
-            <li>riquadra l'<strong>area del periodo</strong>.</li>
-          </ul></div></li>
-        <li><div><p><strong>Mappa le cifre</strong> nella griglia <span class="ui">MAPPATURA OCR</span>: clicca una cifra (rossa = da fare), riquadrala e posiziona i punti sui segmenti. Quando è verde è pronta. Nel riquadro: clic per posare, trascina per spostare, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> per 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> larghezza, <kbd>Z</kbd>/<kbd>X</kbd> altezza, <kbd>Invio</kbd> per confermare.</p></div></li>
-        <li><div><p><strong>Campiona i periodi</strong> (facoltativo, ma necessario se il video contiene più periodi). Il programma deve vedere come appare l'indicazione del periodo sul tabellone in ognuno di essi:</p>
-          <ul class="dots">
-            <li>con la barra <span class="ui">TIMELINE VIDEO</span> sposta il video finché sul tabellone compare il primo periodo e campionalo con <span class="ui">CAMPIONA PERIODO</span>, usando il mirino;</li>
-            <li>sposta di nuovo la barra fino a un punto in cui il tabellone mostra il periodo successivo e campionalo allo stesso modo;</li>
-            <li>ripeti per ogni periodo presente nel video.</li>
-          </ul>
-          <p>Così, durante l'analisi, il programma riconosce da solo il cambio di periodo.</p></div></li>
-        <li><div><p><strong>Avvia l'analisi</strong> con <span class="ui">AVVIA ANALISI TURBO</span>. La <span class="ui">MARCIA</span> decide quanti fotogrammi saltare tra una lettura e l'altra: 1 è la massima precisione, 25 la massima velocità. Puoi fermare con <kbd>Q</kbd>. A fine analisi senti un avviso a voce.</p></div></li>
-        <li><div><p>Premi <span class="ui">APRI REFINERY</span> per controllare i dati.</p></div></li>
+        <li><div><p>Premi <span class="ui">IMPOSTA FONDAMENTA</span>. Clicca i <strong>4 angoli</strong> del tabellone (<kbd>R</kbd> per ricominciare), poi premi <kbd>Spazio</kbd>: il programma scorre il video e costruisce un'immagine pulita del tabellone, il <strong>fantasma</strong> (<kbd>Spazio</kbd> mette in pausa, <kbd>Esc</kbd> prosegue). Poi riquadra l'<strong>ancora</strong>, una parte del tabellone che non cambia mai, e l'<strong>area del periodo</strong>.</p></div></li>
+        <li><div><p>Nella griglia <span class="ui">MAPPATURA OCR</span> clicca una cifra (rossa = da fare, verde = mappata) e segna i 7 punti sulle barre del segmento. Sono quattro cifre per il punteggio, quattro per il timer più i decimi, e una per squadra per i falli. Nel riquadro: clic per posare, trascina per spostare, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> per 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> larghezza, <kbd>Z</kbd>/<kbd>X</kbd> altezza, <kbd>Invio</kbd> per confermare.</p></div></li>
+        <li><div><p><strong>Facoltativo, ma necessario se il video contiene più periodi:</strong> in <span class="ui">RICONOSCIMENTO DEL QUARTO</span> vai a un momento del primo periodo e premi <span class="ui">1Q</span>, poi <span class="ui">2Q</span>, <span class="ui">3Q</span>, <span class="ui">4Q</span> e <span class="ui">OT</span>. Senza questo passo il periodo si imposta in REFINERY.</p></div></li>
       </ol>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 10 · guida/mfb-10-analisi.jpg</b>L'analisi in corso: la finestra MANTRA ENGINE mostra in diretta tempo, periodo, punteggio e falli letti dal tabellone.</div></div><figcaption>Durante l'analisi vedi in diretta cosa sta leggendo il programma.</figcaption></figure>
-      <div class="note"><span class="label">Stessa inquadratura, zero lavoro</span><p>Con <span class="ui">ESPORTA PRESET</span> salvi fondamenta e mappatura; la volta successiva, se la camera è nella stessa posizione e inquadra il tabellone allo stesso modo, <span class="ui">IMPORTA PRESET</span> e puoi partire subito con l'analisi. Se la camera si è spostata, anche di poco, rifai le fondamenta.</p></div>
-      <p><span class="ui">ATTIVA FILTRI</span>, <span class="ui">SOGLIA B/N</span> e <span class="ui">CONTRASTO</span> cambiano solo l'anteprima: servono a vedere meglio, non cambiano la lettura dei numeri.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 2 · guida/mfb-02-geoscanner.jpg</b>La tappa 3 di GEOSCANNER: imposta fondamenta, mappatura OCR e riconoscimento del quarto.</div></div><figcaption>Mappatura delle cifre: rosso = da fare, verde = mappata. Sotto l'anteprima le zone sono disegnate sul tabellone.</figcaption></figure>
+      <p>La <strong>stabilizzazione è automatica</strong>: se la camera si muove, il programma allinea ogni fotogramma a quello di calibrazione, e sull'anteprima compare <span class="ui">STAB</span> quando corregge.</p>
+      <h3>Tappa 4 · Analisi</h3>
+      <p>Scegli la <span class="ui">MARCIA</span>: quanti fotogrammi salta tra una lettura e l'altra (1 = massima precisione, 25 = massima velocità). Premi <span class="ui">AVVIA ANALISI TURBO</span>. Accanto all'anteprima compare <span class="ui">ANALISI IN CORSO</span>, con tempo, periodo, punteggio e falli letti in diretta e lo stato della stabilizzazione. Puoi fermare con <span class="ui">FERMA ANALISI (Q)</span> o passare al quarto successivo con <span class="ui">QUARTO +1 (P)</span>. A fine analisi senti un avviso a voce e si attiva <span class="ui">APRI REFINERY</span>, per controllare i dati.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 10 · guida/mfb-10-analisi.jpg</b>GEOSCANNER durante l'analisi: la vista in diretta accanto all'anteprima del tabellone.</div></div><figcaption>Durante l'analisi vedi in diretta cosa sta leggendo il programma.</figcaption></figure>
+      <div class="note"><span class="label">Stessa inquadratura, zero lavoro</span><p>Con la riga <span class="ui">RESET · IMPORTA · ESPORTA</span> della tappa 3 salvi fondamenta e mappatura e li riusi: se la camera è nella stessa posizione e inquadra il tabellone allo stesso modo puoi partire subito con l'analisi. Se la camera si è spostata, anche di poco, rifai le fondamenta.</p></div>
+      <p><span class="ui">ATTIVA FILTRI</span>, <span class="ui">SOGLIA B/N</span> e <span class="ui">CONTRASTO</span>, sotto l'anteprima, cambiano solo ciò che vedi: servono a vedere meglio, non cambiano la lettura dei numeri.</p>
     </section>
 
     <!-- 05 -->
     <section class="ch" id="refinery">
       <div class="ch-head"><span class="where">05 · REVISIONE</span><h2>REFINERY</h2>
-        <p>Nessuna lettura automatica è perfetta. REFINERY trova da solo le righe sospette, ti mostra il fotogramma corrispondente e ti dà gli strumenti per correggerle in fretta. Alla fine salva <span class="ui">match_data_correct.json</span>.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 3 · guida/mfb-03-refinery.jpg</b>REFINERY con una riga in anomalia selezionata, il fotogramma del video a destra e CHIRURGIA ATOMICA in basso.</div></div><figcaption>Elenco dei dati, fotogramma della riga e strumenti di correzione.</figcaption></figure>
+        <p>Nessuna lettura automatica è perfetta. REFINERY trova da solo le righe sospette, ti mostra il fotogramma corrispondente e le corregge in fretta. Alla fine salva <span class="ui">match_data_correct.json</span>.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 3 · guida/mfb-03-refinery.jpg</b>REFINERY con una riga in anomalia selezionata, RIPARA in alto, LIVE CHECK e MODIFICA RIGA.</div></div><figcaption>Elenco dei dati, fotogramma della riga, RIPARA in alto e MODIFICA RIGA in basso.</figcaption></figure>
+      <h3>Ripara</h3>
+      <p>Il riquadro viola in alto è il pulsante principale. Dice quante correzioni ha già pronte (per esempio «129 correzioni pronte: 8 punti, 118 falli, 3 tempi»). <span class="ui">RIPARA</span> corregge in un colpo solo picchi di punti e falli, transizioni sporche, falli trascinati a inizio quarto e tempi dubbi. Chiede conferma e puoi annullare con <span class="ui">ANNULLA</span>.</p>
       <h3>Il controllo</h3>
       <ol class="steps">
-        <li><div><p>Con <span class="ui">CARICA VIDEO</span> apri il video della partita: ogni riga che selezioni mostra il suo fotogramma. Se video e dati non sono allineati, sposta l'<span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> e <span class="ui">&gt;&gt;</span> = 1 secondo, <span class="ui">&lt;</span> e <span class="ui">&gt;</span> = 1 fotogramma).</p></div></li>
-        <li><div><p>Usa <span class="ui">PULISCI</span> per eliminare in automatico picchi di punti e falli e i falli trascinati a inizio quarto, e <span class="ui">⚓ AUTO</span> per trovare l'inizio dell'ultimo minuto di ogni quarto.</p></div></li>
+        <li><div><p><strong>VISUAL CHECK:</strong> con <span class="ui">CARICA VIDEO</span> apri il video della partita (si carica da solo se il programma lo trova): ogni riga che selezioni mostra il suo fotogramma. Se video e dati non sono allineati, sposta l'<span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> e <span class="ui">&gt;&gt;</span> = 1 secondo, <span class="ui">&lt;</span> e <span class="ui">&gt;</span> = 1 fotogramma).</p></div></li>
+        <li><div><p><strong>LIVE CHECK:</strong> conta i canestri trovati per Casa e Ospiti (tiri liberi, da 2 e da 3) e li confronta con il punteggio finale. Sotto <em>Punti</em> dice «tornano» oppure la differenza; sotto <em>Falli</em> e <em>Tempo</em> segnala le righe da controllare. Si aggiorna a ogni correzione.</p></div></li>
         <li><div><p>Passa da un'anomalia all'altra con <kbd>F8</kbd> (indietro: <kbd>Maiusc</kbd>+<kbd>F8</kbd>) o con <span class="ui">Solo anomalie</span>, e correggi.</p></div></li>
         <li><div><p>Premi <span class="ui">SALVA E CHIUDI</span>.</p></div></li>
       </ol>
@@ -330,14 +324,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <thead><tr><th>Strumento</th><th>Cosa fa</th></tr></thead>
         <tbody>
           <tr><td>⚓ GIRO DI BOA</td><td>Dalla riga selezionata fino a fine quarto, converte il tempo in secondi e decimi (ultimo minuto).</td></tr>
+          <tr><td>⚓ AUTO</td><td>Trova l'inizio dell'ultimo minuto di ogni quarto.</td></tr>
           <tr><td>🔗 UNISCI</td><td>Dà a tutte le righe selezionate, contigue, punteggio e falli dell'ultima.</td></tr>
-          <tr><td>🧹 PULISCI</td><td>Cerca e corregge picchi, transizioni sporche e falli trascinati.</td></tr>
+          <tr><td>🛠 RIPARA</td><td>Corregge in un colpo solo picchi, transizioni sporche, falli trascinati e tempi dubbi. Chiede conferma.</td></tr>
           <tr><td>🪄 SPALMA TEMPO</td><td>Distribuisce il tempo in modo uniforme tra la prima e l'ultima riga selezionata (almeno 3).</td></tr>
           <tr><td>⟲ ANNULLA</td><td>Annulla l'ultima modifica; il numero accanto dice quante se ne possono annullare.</td></tr>
           <tr><td>⇄ SWAP</td><td>Cambia il formato del tempo delle righe selezionate tra MM:SS e SS.D.</td></tr>
         </tbody></table></div>
-      <h3>Chirurgia atomica</h3>
-      <p>Per correggere a mano: seleziona una o più righe, scrivi solo le celle da cambiare (le celle vuote restano invariate) e premi <kbd>Invio</kbd> o <span class="ui">APPLICA MODIFICHE</span>. Il cursore passa da solo alla cella successiva mentre scrivi. <kbd>Spazio</kbd> copia i valori dalla riga precedente, <kbd>Ctrl</kbd>+<kbd>Z</kbd> annulla.</p>
+      <h3>Modifica riga (chirurgia atomica)</h3>
+      <p>Per correggere a mano: seleziona una o più righe, scrivi solo le celle da cambiare (le celle vuote restano invariate; il cursore passa da solo alla successiva) e premi <kbd>Invio</kbd> o <span class="ui">APPLICA MODIFICHE</span>. <kbd>Spazio</kbd> copia i valori dalla riga precedente, <kbd>Ctrl</kbd>+<kbd>Z</kbd> annulla.</p>
       <div class="note"><span class="label">Righe contigue</span><p>UNISCI e SPALMA TEMPO lavorano su righe una dopo l'altra: se hai attivo <span class="ui">Solo anomalie</span> o <span class="ui">Solo canestri</span>, alcune righe sono nascoste. Disattiva i filtri prima di usarli.</p></div>
     </section>
 

@@ -270,49 +270,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <!-- 04 -->
     <section class="ch" id="geoscanner">
       <div class="ch-head"><span class="where">04 · CAPTURE</span><h2>GEOSCANNER</h2>
-        <p>Reads the scoreboard frame by frame and writes the match data: clock, score, fouls and period. The setup depends on how the camera frames the scoreboard: you can save it and reuse it as long as the camera stays in the same position.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 2 · guida/mfb-02-geoscanner.jpg</b>GEOSCANNER while mapping: the tuning window of one digit with the 7 points on the segments, and the OCR MAPPING grid on the right (green = ready).</div></div><figcaption>Mapping a digit: one point per segment. The <span class="ui">NEXT STEP</span> line always tells you what is missing.</figcaption></figure>
+        <p>Reads the scoreboard frame by frame and writes the match data: clock, score, fouls and period. The window is split into four steps, shown at the top: <span class="ui">Video</span>, <span class="ui">Scoreboard</span>, <span class="ui">Calibration</span>, <span class="ui">Analysis</span>. Move forward with <span class="ui">NEXT</span> and back with <span class="ui">BACK</span>, or click a step directly. Above the steps there is always the scoreboard preview, with the mapped areas drawn on it.</p></div>
+      <h3>Step 1 · Video</h3>
+      <p>If the program finds the scoreboard video in the unit's RAW folder, it loads it by itself and writes it next to <span class="ui">SIGNAL</span>, followed by “(auto)”. Otherwise press <span class="ui">1. LOAD SCOREBOARD VIDEO</span>. With the slider under the preview, pick a frame where the scoreboard is clearly visible.</p>
+      <h3>Step 2 · Scoreboard type</h3>
+      <p>Answer two questions.</p>
+      <ul class="dots">
+        <li><em>How does it show the time?</em> <span class="ui">Type A</span>: always MM:SS, no tenths. <span class="ui">Type B</span>: MM:SS, in the last minute it switches to seconds and tenths. <span class="ui">Type C</span>: five digits always visible, with tenths.</li>
+        <li><em>How does it show team fouls?</em> It doesn't show them, 7-segment digits, or LED dots.</li>
+      </ul>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 2b · guida/mfb-02b-tipo-tabellone.jpg</b>GEOSCANNER step 2: choosing the scoreboard type and team fouls.</div></div><figcaption>Step 2: the scoreboard type and how it shows fouls.</figcaption></figure>
+      <h3>Step 3 · Calibration</h3>
+      <p>Here you teach the program where to read.</p>
       <ol class="steps">
-        <li><div><p><strong>Load the scoreboard video</strong> with <span class="ui">1. LOAD SCOREBOARD VIDEO</span>.</p></div></li>
-        <li><div><p><strong>Choose what the scoreboard looks like.</strong> In <span class="ui">SCOREBOARD TOPOLOGY</span>:</p>
-          <ul class="dots">
-            <li><span class="ui">TYPE A</span>: always shows MM:SS, no tenths;</li>
-            <li><span class="ui">TYPE B</span>: in the last minute it switches to seconds and tenths (SS.d);</li>
-            <li><span class="ui">TYPE C</span>: always shows tenths (MM:SS.d).</li>
-          </ul>
-          <p>In <span class="ui">TEAM FOULS MODE</span> choose whether fouls are 7-segment digits or LED dots, or whether to ignore them.</p></div></li>
-        <li><div><p><strong>Set the foundations</strong> with <span class="ui">SET FOUNDATIONS</span>:</p>
-          <ul class="dots">
-            <li>click the <strong>4 corners</strong> of the scoreboard (<kbd>R</kbd> to start again);</li>
-            <li>press <kbd>Space</kbd> to create the <strong>ghost</strong>: the program runs quickly through the whole video and builds a clean image of the scoreboard. <kbd>Space</kbd> pauses, <kbd>Esc</kbd> continues;</li>
-            <li>draw a box around the <strong>anchor</strong>, a part of the scoreboard that never changes, used to follow small movements of the shot;</li>
-            <li>draw a box around the <strong>period area</strong>.</li>
-          </ul></div></li>
-        <li><div><p><strong>Map the digits</strong> in the <span class="ui">OCR MAPPING</span> grid: click a digit (red = to do), draw a box around it and place the points on the segments. When it turns green it is ready. In the box: click to place, drag to move, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> for 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> width, <kbd>Z</kbd>/<kbd>X</kbd> height, <kbd>Enter</kbd> to confirm.</p></div></li>
-        <li><div><p><strong>Sample the periods</strong> (optional, but needed if the video contains more than one period). The program must see what the period indicator on the scoreboard looks like in each of them:</p>
-          <ul class="dots">
-            <li>with the <span class="ui">VIDEO TIMELINE</span> bar move the video until the scoreboard shows the first period, then sample it with <span class="ui">SAMPLE PERIOD</span>, using the crosshair;</li>
-            <li>move the bar again to a point where the scoreboard shows the next period and sample it the same way;</li>
-            <li>repeat for every period in the video.</li>
-          </ul>
-          <p>This way, during the analysis, the program recognises the change of period by itself.</p></div></li>
-        <li><div><p><strong>Start the analysis</strong> with <span class="ui">START TURBO ANALYSIS</span>. The <span class="ui">GEAR</span> decides how many frames to skip between one reading and the next: 1 is maximum precision, 25 maximum speed. You can stop with <kbd>Q</kbd>. When the analysis ends you hear a spoken notice.</p></div></li>
-        <li><div><p>Press <span class="ui">OPEN REFINERY</span> to check the data.</p></div></li>
+        <li><div><p>Press <span class="ui">SET FOUNDATIONS</span>. Click the <strong>4 corners</strong> of the scoreboard (<kbd>R</kbd> to start again), then press <kbd>Space</kbd>: the program runs through the video and builds a clean image of the scoreboard, the <strong>ghost</strong> (<kbd>Space</kbd> pauses, <kbd>Esc</kbd> continues). Then draw a box around the <strong>anchor</strong>, a part of the scoreboard that never changes, and around the <strong>period area</strong>.</p></div></li>
+        <li><div><p>In the <span class="ui">OCR MAPPING</span> grid click a digit (red = to do, green = mapped) and mark the 7 points on the segment bars. There are four digits for the score, four for the clock plus the tenths, and one for each team's fouls. In the box: click to place, drag to move, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> for 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> width, <kbd>Z</kbd>/<kbd>X</kbd> height, <kbd>Enter</kbd> to confirm.</p></div></li>
+        <li><div><p><strong>Optional, but needed if the video contains more than one period:</strong> in <span class="ui">PERIOD RECOGNITION</span> go to a moment in the first period and press <span class="ui">1Q</span>, then <span class="ui">2Q</span>, <span class="ui">3Q</span>, <span class="ui">4Q</span> and <span class="ui">OT</span>. Without this step the period is set in REFINERY.</p></div></li>
       </ol>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 10 · guida/mfb-10-analisi.jpg</b>The analysis running: the MANTRA ENGINE window shows live the clock, period, score and fouls read from the scoreboard.</div></div><figcaption>During the analysis you see live what the program is reading.</figcaption></figure>
-      <div class="note"><span class="label">Same framing, zero work</span><p>With <span class="ui">EXPORT PRESET</span> you save foundations and mapping; next time, if the camera is in the same position and frames the scoreboard the same way, use <span class="ui">IMPORT PRESET</span> and you can start the analysis straight away. If the camera has moved, even slightly, redo the foundations.</p></div>
-      <p><span class="ui">ENABLE FILTERS</span>, <span class="ui">B/W THRESHOLD</span> and <span class="ui">CONTRAST</span> only change the preview: they help you see better, they do not change how the numbers are read.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 2 · guida/mfb-02-geoscanner.jpg</b>GEOSCANNER step 3: set foundations, OCR mapping and period recognition.</div></div><figcaption>Mapping the digits: red = to do, green = mapped. The areas are drawn on the scoreboard in the preview.</figcaption></figure>
+      <p><strong>Stabilization is automatic</strong>: if the camera moves, the program aligns every frame to the calibration frame, and <span class="ui">STAB</span> appears on the preview when it corrects.</p>
+      <h3>Step 4 · Analysis</h3>
+      <p>Choose the <span class="ui">GEAR</span>: how many frames to skip between one reading and the next (1 = maximum precision, 25 = maximum speed). Press <span class="ui">START TURBO ANALYSIS</span>. Next to the preview, <span class="ui">ANALYSIS RUNNING</span> shows live the clock, period, score and fouls being read, and the state of the stabilization. You can stop with <span class="ui">STOP ANALYSIS (Q)</span> or move to the next period with <span class="ui">PERIOD +1 (P)</span>. When it ends you hear a spoken notice and <span class="ui">OPEN REFINERY</span> becomes active, to check the data.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 10 · guida/mfb-10-analisi.jpg</b>GEOSCANNER during the analysis: the live view next to the scoreboard preview.</div></div><figcaption>During the analysis you see live what the program is reading.</figcaption></figure>
+      <div class="note"><span class="label">Same framing, zero work</span><p>With the <span class="ui">RESET · IMPORT · EXPORT</span> row of step 3 you save foundations and mapping and reuse them: if the camera is in the same position and frames the scoreboard the same way, you can start the analysis straight away. If the camera has moved, even slightly, redo the foundations.</p></div>
+      <p><span class="ui">ENABLE FILTERS</span>, <span class="ui">B/W THRESHOLD</span> and <span class="ui">CONTRAST</span>, under the preview, only change what you see: they help you see better, they do not change how the numbers are read.</p>
     </section>
 
     <!-- 05 -->
     <section class="ch" id="refinery">
       <div class="ch-head"><span class="where">05 · REVIEW</span><h2>REFINERY</h2>
-        <p>No automatic reading is perfect. REFINERY finds the suspicious rows by itself, shows you the matching frame and gives you the tools to fix them quickly. At the end it saves <span class="ui">match_data_correct.json</span>.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 3 · guida/mfb-03-refinery.jpg</b>REFINERY with an anomaly row selected, the video frame on the right and ATOMIC SURGERY below.</div></div><figcaption>Data list, frame of the row and correction tools.</figcaption></figure>
+        <p>No automatic reading is perfect. REFINERY finds the suspicious rows by itself, shows you the matching frame and fixes them quickly. At the end it saves <span class="ui">match_data_correct.json</span>.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 3 · guida/mfb-03-refinery.jpg</b>REFINERY with an anomaly row selected, REPAIR at the top, LIVE CHECK and EDIT ROW.</div></div><figcaption>Data list, frame of the row, REPAIR at the top and EDIT ROW below.</figcaption></figure>
+      <h3>Repair</h3>
+      <p>The purple block at the top is the main button. It tells you how many fixes it already has ready (for example “129 fixes ready: 8 scores, 118 fouls, 3 times”). <span class="ui">REPAIR</span> fixes spikes in points and fouls, dirty transitions, fouls carried over at the start of a quarter and doubtful times in one go. It asks for confirmation and you can undo it with <span class="ui">UNDO</span>.</p>
       <h3>The check</h3>
       <ol class="steps">
-        <li><div><p>With <span class="ui">LOAD VIDEO</span> open the game video: every row you select shows its frame. If video and data are not aligned, move the <span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> and <span class="ui">&gt;&gt;</span> = 1 second, <span class="ui">&lt;</span> and <span class="ui">&gt;</span> = 1 frame).</p></div></li>
-        <li><div><p>Use <span class="ui">CLEAN</span> to automatically remove spikes in points and fouls and fouls carried over at the start of a quarter, and <span class="ui">⚓ AUTO</span> to find the start of the last minute of every quarter.</p></div></li>
+        <li><div><p><strong>VISUAL CHECK:</strong> with <span class="ui">LOAD VIDEO</span> open the game video (it loads by itself if the program finds it): every row you select shows its frame. If video and data are not aligned, move the <span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> and <span class="ui">&gt;&gt;</span> = 1 second, <span class="ui">&lt;</span> and <span class="ui">&gt;</span> = 1 frame).</p></div></li>
+        <li><div><p><strong>LIVE CHECK:</strong> counts the baskets found for Home and Guest (free throws, 2 and 3 pointers) and compares them with the final score. Under <em>Score</em> it says “match” or the difference; under <em>Fouls</em> and <em>Time</em> it flags the rows to check. It updates after every fix.</p></div></li>
         <li><div><p>Jump from one anomaly to the next with <kbd>F8</kbd> (back: <kbd>Shift</kbd>+<kbd>F8</kbd>) or with <span class="ui">Anomalies only</span>, and fix them.</p></div></li>
         <li><div><p>Press <span class="ui">SAVE &amp; CLOSE</span>.</p></div></li>
       </ol>
@@ -331,14 +325,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
         <tbody>
           <tr><td>⚓ LAST MINUTE</td><td>From the selected row to the end of the quarter, converts the clock to seconds and tenths (last minute).</td></tr>
+          <tr><td>⚓ AUTO</td><td>Finds the start of the last minute of every quarter.</td></tr>
           <tr><td>🔗 MERGE</td><td>Gives all the selected, adjacent rows the score and fouls of the last one.</td></tr>
-          <tr><td>🧹 CLEAN</td><td>Finds and fixes spikes, dirty transitions and carried-over fouls.</td></tr>
+          <tr><td>🛠 REPAIR</td><td>Fixes spikes, dirty transitions, carried-over fouls and doubtful times in one go. Asks for confirmation.</td></tr>
           <tr><td>🪄 AUTO-FILL</td><td>Spreads the clock evenly between the first and the last selected row (at least 3).</td></tr>
           <tr><td>⟲ UNDO</td><td>Undoes the last change; the number next to it says how many can be undone.</td></tr>
           <tr><td>⇄ SWAP</td><td>Switches the clock format of the selected rows between MM:SS and SS.D.</td></tr>
         </tbody></table></div>
-      <h3>Atomic surgery</h3>
-      <p>To correct by hand: select one or more rows, type only the cells to change (empty cells stay as they are) and press <kbd>Enter</kbd> or <span class="ui">APPLY CHANGES</span>. The cursor jumps to the next cell by itself while you type. <kbd>Space</kbd> copies the values from the previous row, <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes.</p>
+      <h3>Edit row (atomic surgery)</h3>
+      <p>To correct by hand: select one or more rows, type only the cells to change (empty cells stay as they are; the cursor jumps to the next one by itself) and press <kbd>Enter</kbd> or <span class="ui">APPLY CHANGES</span>. <kbd>Space</kbd> copies the values from the previous row, <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes.</p>
       <div class="note"><span class="label">Adjacent rows</span><p>MERGE and AUTO-FILL work on rows that follow one another: if <span class="ui">Anomalies only</span> or <span class="ui">Baskets only</span> is on, some rows are hidden. Turn the filters off before using them.</p></div>
     </section>
 

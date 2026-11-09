@@ -270,49 +270,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <!-- 04 -->
     <section class="ch" id="geoscanner">
       <div class="ch-head"><span class="where">04 · ACQUISITION</span><h2>GEOSCANNER</h2>
-        <p>Lit le tableau image par image et écrit les données du match : temps, score, fautes et période. La préparation dépend de la façon dont la caméra cadre le tableau : vous pouvez l'enregistrer et la réutiliser tant que la caméra reste au même endroit.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 2 · guida/mfb-02-geoscanner.jpg</b>GEOSCANNER pendant le mappage : la fenêtre de réglage d'un chiffre avec les 7 points sur les segments et, à droite, la grille MAPPAGE OCR (vert = prêt).</div></div><figcaption>Mappage d'un chiffre : un point par segment. La ligne <span class="ui">ÉTAPE SUIVANTE</span> vous dit toujours ce qui manque.</figcaption></figure>
+        <p>Lit le tableau image par image et écrit les données du match : temps, score, fautes et période. La fenêtre est divisée en quatre étapes, affichées en haut : <span class="ui">Vidéo</span>, <span class="ui">Tableau</span>, <span class="ui">Calibrage</span>, <span class="ui">Analyse</span>. Avancez avec <span class="ui">SUIVANT</span> et revenez avec <span class="ui">RETOUR</span>, ou cliquez directement sur une étape. Au-dessus des étapes, l'aperçu du tableau est toujours affiché, avec les zones mappées dessinées dessus.</p></div>
+      <h3>Étape 1 · Vidéo</h3>
+      <p>Si le logiciel trouve la vidéo du tableau dans le dossier RAW de l'unité, il la charge tout seul et l'écrit à côté de <span class="ui">SIGNAL</span>, avec « (auto) ». Sinon, appuyez sur <span class="ui">1. CHARGER VIDÉO TABLEAU</span>. Avec le curseur sous l'aperçu, choisissez une image où le tableau est bien visible.</p>
+      <h3>Étape 2 · Type de tableau</h3>
+      <p>Répondez à deux questions.</p>
+      <ul class="dots">
+        <li><em>Comment affiche-t-il le temps ?</em> <span class="ui">Type A</span> : toujours MM:SS, sans dixièmes. <span class="ui">Type B</span> : MM:SS, dans la dernière minute il passe aux secondes et dixièmes. <span class="ui">Type C</span> : cinq chiffres toujours visibles, avec les dixièmes.</li>
+        <li><em>Comment affiche-t-il les fautes d'équipe ?</em> Il ne les affiche pas, chiffres à 7 segments ou points LED.</li>
+      </ul>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 2b · guida/mfb-02b-tipo-tabellone.jpg</b>L'étape 2 de GEOSCANNER : choix du type de tableau et des fautes d'équipe.</div></div><figcaption>L'étape 2 : le type de tableau et la façon dont il affiche les fautes.</figcaption></figure>
+      <h3>Étape 3 · Calibrage</h3>
+      <p>Ici vous apprenez au logiciel où lire.</p>
       <ol class="steps">
-        <li><div><p><strong>Chargez la vidéo du tableau</strong> avec <span class="ui">1. CHARGER VIDÉO TABLEAU</span>.</p></div></li>
-        <li><div><p><strong>Indiquez comment est fait le tableau.</strong> Dans <span class="ui">TOPOLOGIE DU TABLEAU</span> :</p>
-          <ul class="dots">
-            <li><span class="ui">TYPE A</span> : affiche toujours MM:SS, sans dixièmes ;</li>
-            <li><span class="ui">TYPE B</span> : dans la dernière minute, passe aux secondes et dixièmes (SS.d) ;</li>
-            <li><span class="ui">TYPE C</span> : affiche toujours les dixièmes (MM:SS.d).</li>
-          </ul>
-          <p>Dans <span class="ui">MODE FAUTES D'ÉQUIPE</span>, choisissez si les fautes sont des chiffres à 7 segments ou des points LED, ou s'il faut les ignorer.</p></div></li>
-        <li><div><p><strong>Posez les fondations</strong> avec <span class="ui">CALIBRAGE FONDATIONS</span> :</p>
-          <ul class="dots">
-            <li>cliquez sur les <strong>4 coins</strong> du tableau (<kbd>R</kbd> pour recommencer) ;</li>
-            <li>appuyez sur <kbd>Espace</kbd> pour créer le <strong>fantôme</strong> : le logiciel parcourt rapidement toute la vidéo et construit une image propre du tableau. <kbd>Espace</kbd> met en pause, <kbd>Échap</kbd> continue ;</li>
-            <li>encadrez l'<strong>ancrage</strong>, une partie du tableau qui ne change jamais et qui sert à suivre les petits mouvements de la prise ;</li>
-            <li>encadrez la <strong>zone de la période</strong>.</li>
-          </ul></div></li>
-        <li><div><p><strong>Mappez les chiffres</strong> dans la grille <span class="ui">MAPPAGE OCR</span> : cliquez sur un chiffre (rouge = à faire), encadrez-le et placez les points sur les segments. Quand il est vert, il est prêt. Dans le cadre : clic pour poser, glisser pour déplacer, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> pour 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> largeur, <kbd>Z</kbd>/<kbd>X</kbd> hauteur, <kbd>Entrée</kbd> pour confirmer.</p></div></li>
-        <li><div><p><strong>Échantillonnez les périodes</strong> (facultatif, mais nécessaire si la vidéo contient plusieurs périodes). Le logiciel doit voir comment l'indication de la période apparaît sur le tableau dans chacune d'elles :</p>
-          <ul class="dots">
-            <li>avec la barre <span class="ui">TIMELINE VIDÉO</span>, déplacez la vidéo jusqu'à ce que le tableau affiche la première période et échantillonnez-la avec <span class="ui">ÉCHANTILLON PÉRIODE</span>, en utilisant le viseur ;</li>
-            <li>déplacez de nouveau la barre jusqu'à un moment où le tableau affiche la période suivante et échantillonnez-la de la même façon ;</li>
-            <li>répétez pour chaque période présente dans la vidéo.</li>
-          </ul>
-          <p>Ainsi, pendant l'analyse, le logiciel reconnaît tout seul le changement de période.</p></div></li>
-        <li><div><p><strong>Lancez l'analyse</strong> avec <span class="ui">DÉMARRER ANALYSE TURBO</span>. La <span class="ui">VITESSE</span> décide combien d'images sauter entre deux lectures : 1 est la précision maximale, 25 la vitesse maximale. Vous pouvez arrêter avec <kbd>Q</kbd>. À la fin de l'analyse, un message vocal vous prévient.</p></div></li>
-        <li><div><p>Appuyez sur <span class="ui">OUVRIR REFINERY</span> pour vérifier les données.</p></div></li>
+        <li><div><p>Appuyez sur <span class="ui">CALIBRAGE FONDATIONS</span>. Cliquez sur les <strong>4 coins</strong> du tableau (<kbd>R</kbd> pour recommencer), puis appuyez sur <kbd>Espace</kbd> : le logiciel parcourt la vidéo et construit une image propre du tableau, le <strong>fantôme</strong> (<kbd>Espace</kbd> met en pause, <kbd>Échap</kbd> continue). Encadrez ensuite l'<strong>ancrage</strong>, une partie du tableau qui ne change jamais, et la <strong>zone de la période</strong>.</p></div></li>
+        <li><div><p>Dans la grille <span class="ui">MAPPAGE OCR</span>, cliquez sur un chiffre (rouge = à faire, vert = mappé) et marquez les 7 points sur les barres des segments. Il y a quatre chiffres pour le score, quatre pour le chrono plus les dixièmes, et un par équipe pour les fautes. Dans le cadre : clic pour poser, glisser pour déplacer, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> pour 1 pixel, <kbd>Q</kbd>/<kbd>E</kbd> largeur, <kbd>Z</kbd>/<kbd>X</kbd> hauteur, <kbd>Entrée</kbd> pour confirmer.</p></div></li>
+        <li><div><p><strong>Facultatif, mais nécessaire si la vidéo contient plusieurs périodes :</strong> dans <span class="ui">RECONNAISSANCE DE LA PÉRIODE</span>, allez à un moment de la première période et appuyez sur <span class="ui">1Q</span>, puis <span class="ui">2Q</span>, <span class="ui">3Q</span>, <span class="ui">4Q</span> et <span class="ui">OT</span>. Sans cette étape, la période se règle dans REFINERY.</p></div></li>
       </ol>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 10 · guida/mfb-10-analisi.jpg</b>L'analyse en cours : la fenêtre MANTRA ENGINE montre en direct le temps, la période, le score et les fautes lus sur le tableau.</div></div><figcaption>Pendant l'analyse, vous voyez en direct ce que lit le logiciel.</figcaption></figure>
-      <div class="note"><span class="label">Même cadrage, zéro travail</span><p>Avec <span class="ui">EXPORTER PRÉRÉGLAGE</span>, vous enregistrez fondations et mappage ; la fois suivante, si la caméra est au même endroit et cadre le tableau de la même façon, utilisez <span class="ui">IMPORTER PRÉRÉGLAGE</span> et vous pouvez lancer l'analyse aussitôt. Si la caméra a bougé, même un peu, refaites les fondations.</p></div>
-      <p><span class="ui">ACTIVER FILTRES</span>, <span class="ui">SEUIL N/B</span> et <span class="ui">CONTRASTE</span> ne changent que l'aperçu : ils servent à mieux voir, ils ne changent pas la lecture des chiffres.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 2 · guida/mfb-02-geoscanner.jpg</b>L'étape 3 de GEOSCANNER : fondations, mappage OCR et reconnaissance de la période.</div></div><figcaption>Mappage des chiffres : rouge = à faire, vert = mappé. Dans l'aperçu, les zones sont dessinées sur le tableau.</figcaption></figure>
+      <p>La <strong>stabilisation est automatique</strong> : si la caméra bouge, le logiciel aligne chaque image sur celle du calibrage, et <span class="ui">STAB</span> apparaît sur l'aperçu quand il corrige.</p>
+      <h3>Étape 4 · Analyse</h3>
+      <p>Choisissez la <span class="ui">VITESSE</span> : combien d'images sauter entre deux lectures (1 = précision maximale, 25 = vitesse maximale). Appuyez sur <span class="ui">DÉMARRER ANALYSE TURBO</span>. À côté de l'aperçu, <span class="ui">ANALYSE EN COURS</span> montre en direct le temps, la période, le score et les fautes lus, ainsi que l'état de la stabilisation. Vous pouvez arrêter avec <span class="ui">ARRÊTER L'ANALYSE (Q)</span> ou passer au quart-temps suivant avec <span class="ui">QUART +1 (P)</span>. À la fin, un message vocal vous prévient et <span class="ui">OUVRIR REFINERY</span> devient actif, pour vérifier les données.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 10 · guida/mfb-10-analisi.jpg</b>GEOSCANNER pendant l'analyse : la vue en direct à côté de l'aperçu du tableau.</div></div><figcaption>Pendant l'analyse, vous voyez en direct ce que lit le logiciel.</figcaption></figure>
+      <div class="note"><span class="label">Même cadrage, zéro travail</span><p>Avec la ligne <span class="ui">RÉINIT. · IMPORTER · EXPORTER</span> de l'étape 3, vous enregistrez fondations et mappage et vous les réutilisez : si la caméra est au même endroit et cadre le tableau de la même façon, vous pouvez lancer l'analyse aussitôt. Si la caméra a bougé, même un peu, refaites les fondations.</p></div>
+      <p><span class="ui">ACTIVER FILTRES</span>, <span class="ui">SEUIL N/B</span> et <span class="ui">CONTRASTE</span>, sous l'aperçu, ne changent que ce que vous voyez : ils servent à mieux voir, ils ne changent pas la lecture des chiffres.</p>
     </section>
 
     <!-- 05 -->
     <section class="ch" id="refinery">
       <div class="ch-head"><span class="where">05 · RÉVISION</span><h2>REFINERY</h2>
-        <p>Aucune lecture automatique n'est parfaite. REFINERY trouve tout seul les lignes suspectes, vous montre l'image correspondante et vous donne les outils pour les corriger vite. À la fin, il enregistre <span class="ui">match_data_correct.json</span>.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 3 · guida/mfb-03-refinery.jpg</b>REFINERY avec une ligne en anomalie sélectionnée, l'image de la vidéo à droite et CHIRURGIE ATOMIQUE en bas.</div></div><figcaption>Liste des données, image de la ligne et outils de correction.</figcaption></figure>
+        <p>Aucune lecture automatique n'est parfaite. REFINERY trouve tout seul les lignes suspectes, vous montre l'image correspondante et les corrige vite. À la fin, il enregistre <span class="ui">match_data_correct.json</span>.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Capture 3 · guida/mfb-03-refinery.jpg</b>REFINERY avec une ligne en anomalie sélectionnée, RÉPARER en haut, LIVE CHECK et MODIFIER LA LIGNE.</div></div><figcaption>Liste des données, image de la ligne, RÉPARER en haut et MODIFIER LA LIGNE en bas.</figcaption></figure>
+      <h3>Réparer</h3>
+      <p>Le bloc violet en haut est le bouton principal. Il indique combien de corrections sont déjà prêtes (par exemple « 129 corrections prêtes : 8 points, 118 fautes, 3 temps »). <span class="ui">RÉPARER</span> corrige en une fois les pics de points et de fautes, les transitions sales, les fautes reportées au début d'un quart-temps et les temps douteux. Il demande confirmation et vous pouvez annuler avec <span class="ui">ANNULER</span>.</p>
       <h3>La vérification</h3>
       <ol class="steps">
-        <li><div><p>Avec <span class="ui">CHARGER VIDÉO</span>, ouvrez la vidéo du match : chaque ligne sélectionnée affiche son image. Si la vidéo et les données ne sont pas alignées, déplacez l'<span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> et <span class="ui">&gt;&gt;</span> = 1 seconde, <span class="ui">&lt;</span> et <span class="ui">&gt;</span> = 1 image).</p></div></li>
-        <li><div><p>Utilisez <span class="ui">NETTOYER</span> pour supprimer automatiquement les pics de points et de fautes et les fautes reportées au début d'un quart-temps, et <span class="ui">⚓ AUTO</span> pour trouver le début de la dernière minute de chaque quart-temps.</p></div></li>
+        <li><div><p><strong>CONTRÔLE VISUEL :</strong> avec <span class="ui">CHARGER VIDÉO</span>, ouvrez la vidéo du match (elle se charge toute seule si le logiciel la trouve) : chaque ligne sélectionnée affiche son image. Si la vidéo et les données ne sont pas alignées, déplacez l'<span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> et <span class="ui">&gt;&gt;</span> = 1 seconde, <span class="ui">&lt;</span> et <span class="ui">&gt;</span> = 1 image).</p></div></li>
+        <li><div><p><strong>LIVE CHECK :</strong> compte les paniers trouvés pour Domicile et Visiteurs (lancers francs, à 2 et à 3 points) et les compare au score final. Sous <em>Points</em>, il indique « cohérents » ou l'écart ; sous <em>Fautes</em> et <em>Temps</em>, il signale les lignes à vérifier. Il se met à jour après chaque correction.</p></div></li>
         <li><div><p>Passez d'une anomalie à l'autre avec <kbd>F8</kbd> (en arrière : <kbd>Maj</kbd>+<kbd>F8</kbd>) ou avec <span class="ui">Anomalies seules</span>, et corrigez.</p></div></li>
         <li><div><p>Appuyez sur <span class="ui">SAUVER ET FERMER</span>.</p></div></li>
       </ol>
@@ -331,14 +325,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <thead><tr><th>Outil</th><th>Ce qu'il fait</th></tr></thead>
         <tbody>
           <tr><td>⚓ DERNIÈRE MINUTE</td><td>De la ligne sélectionnée jusqu'à la fin du quart-temps, convertit le temps en secondes et dixièmes (dernière minute).</td></tr>
+          <tr><td>⚓ AUTO</td><td>Trouve le début de la dernière minute de chaque quart-temps.</td></tr>
           <tr><td>🔗 FUSIONNER</td><td>Donne à toutes les lignes sélectionnées, contiguës, le score et les fautes de la dernière.</td></tr>
-          <tr><td>🧹 NETTOYER</td><td>Cherche et corrige les pics, les transitions sales et les fautes reportées.</td></tr>
+          <tr><td>🛠 RÉPARER</td><td>Corrige en une fois pics, transitions sales, fautes reportées et temps douteux. Demande confirmation.</td></tr>
           <tr><td>🪄 LISSER TEMPS</td><td>Répartit le temps de façon régulière entre la première et la dernière ligne sélectionnée (au moins 3).</td></tr>
           <tr><td>⟲ ANNULER</td><td>Annule la dernière modification ; le nombre à côté indique combien on peut en annuler.</td></tr>
           <tr><td>⇄ SWAP</td><td>Bascule le format du temps des lignes sélectionnées entre MM:SS et SS.D.</td></tr>
         </tbody></table></div>
-      <h3>Chirurgie atomique</h3>
-      <p>Pour corriger à la main : sélectionnez une ou plusieurs lignes, saisissez seulement les cellules à changer (les cellules vides restent inchangées) et appuyez sur <kbd>Entrée</kbd> ou <span class="ui">APPLIQUER (ENTRÉE)</span>. Le curseur passe tout seul à la cellule suivante pendant la saisie. <kbd>Espace</kbd> copie les valeurs de la ligne précédente, <kbd>Ctrl</kbd>+<kbd>Z</kbd> annule.</p>
+      <h3>Modifier la ligne (chirurgie atomique)</h3>
+      <p>Pour corriger à la main : sélectionnez une ou plusieurs lignes, saisissez seulement les cellules à changer (les cellules vides restent inchangées ; le curseur passe tout seul à la suivante) et appuyez sur <kbd>Entrée</kbd> ou <span class="ui">APPLIQUER (ENTRÉE)</span>. <kbd>Espace</kbd> copie les valeurs de la ligne précédente, <kbd>Ctrl</kbd>+<kbd>Z</kbd> annule.</p>
       <div class="note"><span class="label">Lignes contiguës</span><p>FUSIONNER et LISSER TEMPS travaillent sur des lignes qui se suivent : si <span class="ui">Anomalies seules</span> ou <span class="ui">Paniers seuls</span> est activé, certaines lignes sont masquées. Désactivez les filtres avant de les utiliser.</p></div>
     </section>
 

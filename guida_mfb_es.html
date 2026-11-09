@@ -270,49 +270,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <!-- 04 -->
     <section class="ch" id="geoscanner">
       <div class="ch-head"><span class="where">04 · CAPTURA</span><h2>GEOSCANNER</h2>
-        <p>Lee el marcador fotograma a fotograma y escribe los datos del partido: tiempo, tanteo, faltas y periodo. La preparación depende de cómo encuadra la cámara el marcador: puedes guardarla y reutilizarla mientras la cámara siga en la misma posición.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 2 · guida/mfb-02-geoscanner.jpg</b>GEOSCANNER durante el mapeo: la ventana de ajuste de una cifra con los 7 puntos en los segmentos y, a la derecha, la cuadrícula MAPEO OCR (verde = lista).</div></div><figcaption>Mapeo de una cifra: un punto por segmento. La línea <span class="ui">SIGUIENTE PASO</span> te dice siempre qué falta.</figcaption></figure>
+        <p>Lee el marcador fotograma a fotograma y escribe los datos del partido: tiempo, tanteo, faltas y periodo. La ventana está dividida en cuatro pasos, que ves arriba: <span class="ui">Vídeo</span>, <span class="ui">Marcador</span>, <span class="ui">Calibración</span>, <span class="ui">Análisis</span>. Avanzas con <span class="ui">SIGUIENTE</span> y vuelves con <span class="ui">ATRÁS</span>, o haces clic directamente en un paso. Sobre los pasos siempre está la vista previa del marcador, con las zonas mapeadas dibujadas encima.</p></div>
+      <h3>Paso 1 · Vídeo</h3>
+      <p>Si el programa encuentra el vídeo del marcador en la carpeta RAW de la unidad, lo carga solo y lo escribe junto a <span class="ui">SEÑAL</span>, con «(auto)». Si no, pulsa <span class="ui">1. CARGAR VIDEO MARCADOR</span>. Con el cursor bajo la vista previa elige un fotograma donde el marcador se vea bien.</p>
+      <h3>Paso 2 · Tipo de marcador</h3>
+      <p>Responde a dos preguntas.</p>
+      <ul class="dots">
+        <li><em>¿Cómo muestra el tiempo?</em> <span class="ui">Tipo A</span>: siempre MM:SS, sin décimas. <span class="ui">Tipo B</span>: MM:SS, en el último minuto pasa a segundos y décimas. <span class="ui">Tipo C</span>: cinco cifras siempre visibles, con décimas.</li>
+        <li><em>¿Cómo muestra las faltas de equipo?</em> No las muestra, cifras de 7 segmentos o puntos LED.</li>
+      </ul>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 2b · guida/mfb-02b-tipo-tabellone.jpg</b>El paso 2 de GEOSCANNER: elección del tipo de marcador y de las faltas de equipo.</div></div><figcaption>El paso 2: el tipo de marcador y cómo muestra las faltas.</figcaption></figure>
+      <h3>Paso 3 · Calibración</h3>
+      <p>Aquí enseñas al programa dónde leer.</p>
       <ol class="steps">
-        <li><div><p><strong>Carga el vídeo del marcador</strong> con <span class="ui">1. CARGAR VIDEO MARCADOR</span>.</p></div></li>
-        <li><div><p><strong>Elige cómo es el marcador.</strong> En <span class="ui">TOPOLOGÍA DEL MARCADOR</span>:</p>
-          <ul class="dots">
-            <li><span class="ui">TIPO A</span>: muestra siempre MM:SS, sin décimas;</li>
-            <li><span class="ui">TIPO B</span>: en el último minuto pasa a segundos y décimas (SS.d);</li>
-            <li><span class="ui">TIPO C</span>: muestra siempre las décimas (MM:SS.d).</li>
-          </ul>
-          <p>En <span class="ui">MODO FALTAS DE EQUIPO</span> elige si las faltas son cifras de 7 segmentos o puntos LED, o si ignorarlas.</p></div></li>
-        <li><div><p><strong>Establece las bases</strong> con <span class="ui">ESTABLECER BASES</span>:</p>
-          <ul class="dots">
-            <li>haz clic en las <strong>4 esquinas</strong> del marcador (<kbd>R</kbd> para empezar de nuevo);</li>
-            <li>pulsa <kbd>Espacio</kbd> para crear el <strong>fantasma</strong>: el programa recorre rápidamente todo el vídeo y construye una imagen limpia del marcador. <kbd>Espacio</kbd> pausa, <kbd>Esc</kbd> continúa;</li>
-            <li>enmarca el <strong>ancla</strong>, una parte del marcador que nunca cambia y que sirve para seguir los pequeños movimientos de la grabación;</li>
-            <li>enmarca el <strong>área del periodo</strong>.</li>
-          </ul></div></li>
-        <li><div><p><strong>Mapea las cifras</strong> en la cuadrícula <span class="ui">MAPEO OCR</span>: haz clic en una cifra (roja = pendiente), enmárcala y coloca los puntos en los segmentos. Cuando está verde está lista. En el recuadro: clic para colocar, arrastra para mover, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> para 1 píxel, <kbd>Q</kbd>/<kbd>E</kbd> anchura, <kbd>Z</kbd>/<kbd>X</kbd> altura, <kbd>Intro</kbd> para confirmar.</p></div></li>
-        <li><div><p><strong>Muestrea los periodos</strong> (opcional, pero necesario si el vídeo contiene más de un periodo). El programa debe ver cómo aparece la indicación del periodo en el marcador en cada uno de ellos:</p>
-          <ul class="dots">
-            <li>con la barra <span class="ui">TIMELINE VIDEO</span> mueve el vídeo hasta que el marcador muestre el primer periodo y muestréalo con <span class="ui">MUESTRA PERIODO</span>, usando el visor;</li>
-            <li>mueve de nuevo la barra hasta un punto en el que el marcador muestre el periodo siguiente y muestréalo igual;</li>
-            <li>repite para cada periodo presente en el vídeo.</li>
-          </ul>
-          <p>Así, durante el análisis, el programa reconoce solo el cambio de periodo.</p></div></li>
-        <li><div><p><strong>Inicia el análisis</strong> con <span class="ui">INICIAR ANÁLISIS TURBO</span>. La <span class="ui">MARCHA</span> decide cuántos fotogramas saltar entre una lectura y la siguiente: 1 es la máxima precisión, 25 la máxima velocidad. Puedes parar con <kbd>Q</kbd>. Al terminar el análisis oyes un aviso de voz.</p></div></li>
-        <li><div><p>Pulsa <span class="ui">ABRIR REFINERY</span> para revisar los datos.</p></div></li>
+        <li><div><p>Pulsa <span class="ui">ESTABLECER BASES</span>. Haz clic en las <strong>4 esquinas</strong> del marcador (<kbd>R</kbd> para empezar de nuevo) y pulsa <kbd>Espacio</kbd>: el programa recorre el vídeo y construye una imagen limpia del marcador, el <strong>fantasma</strong> (<kbd>Espacio</kbd> pausa, <kbd>Esc</kbd> continúa). Después enmarca el <strong>ancla</strong>, una parte del marcador que nunca cambia, y el <strong>área del periodo</strong>.</p></div></li>
+        <li><div><p>En la cuadrícula <span class="ui">MAPEO OCR</span> haz clic en una cifra (roja = pendiente, verde = mapeada) y marca los 7 puntos en las barras de los segmentos. Son cuatro cifras para el tanteo, cuatro para el cronómetro más las décimas, y una por equipo para las faltas. En el recuadro: clic para colocar, arrastra para mover, <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> para 1 píxel, <kbd>Q</kbd>/<kbd>E</kbd> anchura, <kbd>Z</kbd>/<kbd>X</kbd> altura, <kbd>Intro</kbd> para confirmar.</p></div></li>
+        <li><div><p><strong>Opcional, pero necesario si el vídeo contiene más de un periodo:</strong> en <span class="ui">RECONOCIMIENTO DEL PERIODO</span> ve a un momento del primer periodo y pulsa <span class="ui">1Q</span>, luego <span class="ui">2Q</span>, <span class="ui">3Q</span>, <span class="ui">4Q</span> y <span class="ui">OT</span>. Sin este paso, el periodo se establece en REFINERY.</p></div></li>
       </ol>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 10 · guida/mfb-10-analisi.jpg</b>El análisis en curso: la ventana MANTRA ENGINE muestra en directo tiempo, periodo, tanteo y faltas leídos del marcador.</div></div><figcaption>Durante el análisis ves en directo lo que está leyendo el programa.</figcaption></figure>
-      <div class="note"><span class="label">Mismo encuadre, cero trabajo</span><p>Con <span class="ui">EXPORTAR PRESET</span> guardas bases y mapeo; la próxima vez, si la cámara está en la misma posición y encuadra el marcador del mismo modo, usa <span class="ui">IMPORTAR PRESET</span> y puedes empezar enseguida el análisis. Si la cámara se ha movido, aunque sea un poco, rehaz las bases.</p></div>
-      <p><span class="ui">ACTIVAR FILTROS</span>, <span class="ui">UMBRAL B/N</span> y <span class="ui">CONTRASTE</span> solo cambian la vista previa: sirven para ver mejor, no cambian la lectura de los números.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 2 · guida/mfb-02-geoscanner.jpg</b>El paso 3 de GEOSCANNER: establecer bases, mapeo OCR y reconocimiento del periodo.</div></div><figcaption>Mapeo de las cifras: rojo = pendiente, verde = mapeada. En la vista previa las zonas están dibujadas sobre el marcador.</figcaption></figure>
+      <p>La <strong>estabilización es automática</strong>: si la cámara se mueve, el programa alinea cada fotograma con el de calibración y en la vista previa aparece <span class="ui">STAB</span> cuando corrige.</p>
+      <h3>Paso 4 · Análisis</h3>
+      <p>Elige la <span class="ui">MARCHA</span>: cuántos fotogramas salta entre una lectura y la siguiente (1 = máxima precisión, 25 = máxima velocidad). Pulsa <span class="ui">INICIAR ANÁLISIS TURBO</span>. Junto a la vista previa, <span class="ui">ANÁLISIS EN CURSO</span> muestra en directo tiempo, periodo, tanteo y faltas que se leen, y el estado de la estabilización. Puedes parar con <span class="ui">DETENER ANÁLISIS (Q)</span> o pasar al cuarto siguiente con <span class="ui">CUARTO +1 (P)</span>. Al terminar oyes un aviso de voz y se activa <span class="ui">ABRIR REFINERY</span>, para revisar los datos.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 10 · guida/mfb-10-analisi.jpg</b>GEOSCANNER durante el análisis: la vista en directo junto a la vista previa del marcador.</div></div><figcaption>Durante el análisis ves en directo lo que está leyendo el programa.</figcaption></figure>
+      <div class="note"><span class="label">Mismo encuadre, cero trabajo</span><p>Con la fila <span class="ui">REINICIO · IMPORTAR · EXPORTAR</span> del paso 3 guardas bases y mapeo y los reutilizas: si la cámara está en la misma posición y encuadra el marcador del mismo modo, puedes empezar enseguida el análisis. Si la cámara se ha movido, aunque sea un poco, rehaz las bases.</p></div>
+      <p><span class="ui">ACTIVAR FILTROS</span>, <span class="ui">UMBRAL B/N</span> y <span class="ui">CONTRASTE</span>, bajo la vista previa, solo cambian lo que ves: sirven para ver mejor, no cambian la lectura de los números.</p>
     </section>
 
     <!-- 05 -->
     <section class="ch" id="refinery">
       <div class="ch-head"><span class="where">05 · REVISIÓN</span><h2>REFINERY</h2>
-        <p>Ninguna lectura automática es perfecta. REFINERY encuentra solo las filas sospechosas, te muestra el fotograma correspondiente y te da las herramientas para corregirlas rápido. Al final guarda <span class="ui">match_data_correct.json</span>.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 3 · guida/mfb-03-refinery.jpg</b>REFINERY con una fila con anomalía seleccionada, el fotograma del vídeo a la derecha y CIRUGÍA ATÓMICA abajo.</div></div><figcaption>Lista de datos, fotograma de la fila y herramientas de corrección.</figcaption></figure>
+        <p>Ninguna lectura automática es perfecta. REFINERY encuentra solo las filas sospechosas, te muestra el fotograma correspondiente y las corrige rápido. Al final guarda <span class="ui">match_data_correct.json</span>.</p></div>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Captura 3 · guida/mfb-03-refinery.jpg</b>REFINERY con una fila con anomalía seleccionada, REPARAR arriba, LIVE CHECK y EDITAR FILA.</div></div><figcaption>Lista de datos, fotograma de la fila, REPARAR arriba y EDITAR FILA abajo.</figcaption></figure>
+      <h3>Reparar</h3>
+      <p>El bloque violeta de arriba es el botón principal. Te dice cuántas correcciones tiene ya listas (por ejemplo «129 correcciones listas: 8 puntos, 118 faltas, 3 tiempos»). <span class="ui">REPARAR</span> corrige de una vez picos de puntos y faltas, transiciones sucias, faltas arrastradas al inicio del cuarto y tiempos dudosos. Pide confirmación y puedes deshacer con <span class="ui">DESHACER</span>.</p>
       <h3>La revisión</h3>
       <ol class="steps">
-        <li><div><p>Con <span class="ui">CARGAR VIDEO</span> abre el vídeo del partido: cada fila que seleccionas muestra su fotograma. Si vídeo y datos no están alineados, mueve el <span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> y <span class="ui">&gt;&gt;</span> = 1 segundo, <span class="ui">&lt;</span> y <span class="ui">&gt;</span> = 1 fotograma).</p></div></li>
-        <li><div><p>Usa <span class="ui">LIMPIAR</span> para eliminar automáticamente los picos de puntos y faltas y las faltas arrastradas al inicio del cuarto, y <span class="ui">⚓ AUTO</span> para encontrar el inicio del último minuto de cada cuarto.</p></div></li>
+        <li><div><p><strong>CHEQUEO VISUAL:</strong> con <span class="ui">CARGAR VIDEO</span> abre el vídeo del partido (se carga solo si el programa lo encuentra): cada fila que seleccionas muestra su fotograma. Si vídeo y datos no están alineados, mueve el <span class="ui">OFFSET</span> (<span class="ui">&lt;&lt;</span> y <span class="ui">&gt;&gt;</span> = 1 segundo, <span class="ui">&lt;</span> y <span class="ui">&gt;</span> = 1 fotograma).</p></div></li>
+        <li><div><p><strong>LIVE CHECK:</strong> cuenta las canastas encontradas de Casa y Visitantes (tiros libres, de 2 y de 3) y las compara con el tanteo final. En <em>Puntos</em> dice «cuadran» o la diferencia; en <em>Faltas</em> y <em>Tiempo</em> señala las filas por revisar. Se actualiza tras cada corrección.</p></div></li>
         <li><div><p>Pasa de una anomalía a otra con <kbd>F8</kbd> (atrás: <kbd>Mayús</kbd>+<kbd>F8</kbd>) o con <span class="ui">Solo anomalías</span>, y corrige.</p></div></li>
         <li><div><p>Pulsa <span class="ui">GUARDAR Y CERRAR</span>.</p></div></li>
       </ol>
@@ -331,14 +325,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <thead><tr><th>Herramienta</th><th>Qué hace</th></tr></thead>
         <tbody>
           <tr><td>⚓ ÚLTIMO MINUTO</td><td>Desde la fila seleccionada hasta el final del cuarto, convierte el tiempo en segundos y décimas (último minuto).</td></tr>
+          <tr><td>⚓ AUTO</td><td>Encuentra el inicio del último minuto de cada cuarto.</td></tr>
           <tr><td>🔗 UNIR</td><td>Da a todas las filas seleccionadas, contiguas, el tanteo y las faltas de la última.</td></tr>
-          <tr><td>🧹 LIMPIAR</td><td>Busca y corrige picos, transiciones sucias y faltas arrastradas.</td></tr>
+          <tr><td>🛠 REPARAR</td><td>Corrige de una vez picos, transiciones sucias, faltas arrastradas y tiempos dudosos. Pide confirmación.</td></tr>
           <tr><td>🪄 INTERPOLAR</td><td>Reparte el tiempo de forma uniforme entre la primera y la última fila seleccionada (al menos 3).</td></tr>
           <tr><td>⟲ DESHACER</td><td>Deshace el último cambio; el número de al lado dice cuántos se pueden deshacer.</td></tr>
           <tr><td>⇄ SWAP</td><td>Cambia el formato del tiempo de las filas seleccionadas entre MM:SS y SS.D.</td></tr>
         </tbody></table></div>
-      <h3>Cirugía atómica</h3>
-      <p>Para corregir a mano: selecciona una o más filas, escribe solo las celdas que quieres cambiar (las celdas vacías no cambian) y pulsa <kbd>Intro</kbd> o <span class="ui">APLICAR (ENTER)</span>. El cursor pasa solo a la celda siguiente mientras escribes. <kbd>Espacio</kbd> copia los valores de la fila anterior, <kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace.</p>
+      <h3>Editar fila (cirugía atómica)</h3>
+      <p>Para corregir a mano: selecciona una o más filas, escribe solo las celdas que quieres cambiar (las vacías no cambian; el cursor pasa solo a la siguiente) y pulsa <kbd>Intro</kbd> o <span class="ui">APLICAR (ENTER)</span>. <kbd>Espacio</kbd> copia los valores de la fila anterior, <kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace.</p>
       <div class="note"><span class="label">Filas contiguas</span><p>UNIR e INTERPOLAR trabajan sobre filas seguidas: si tienes activo <span class="ui">Solo anomalías</span> o <span class="ui">Solo canastas</span>, algunas filas están ocultas. Desactiva los filtros antes de usarlos.</p></div>
     </section>
 
