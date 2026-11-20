@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Guida Mantra for Basket</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Guida completa di Mantra for Basket: dall'HUB a GEOSCANNER, REFINERY, STUDIO, AUTOPILOT, BAKE, SKINMAPPER e STATISTICHE.">
+<meta name="description" content="Guida completa di Mantra for Basket: dall'HUB a GEOSCANNER, REFINERY, STUDIO, AUTOPILOT, BAKE, SKINMAPPER e STATISTICHE. Periodi della partita, cartelli e partita intera.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Share+Tech+Mono&display=swap">
@@ -136,7 +136,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href="index.html">Mantra <span>for Basket</span></a>
-    <span class="label">Guida · versione 1.0 Alpha</span>
+    <span class="label">Guida · versione 2.0 Alpha</span>
     <nav class="langs" aria-label="Lingua / Language"><a href="guida_mfb.html" hreflang="it" aria-current="true">IT</a><a href="guida_mfb_en.html" hreflang="en">EN</a><a href="guida_mfb_es.html" hreflang="es">ES</a><a href="guida_mfb_fr.html" hreflang="fr">FR</a></nav>
     <a class="back" href="index.html">← Torna alla pagina dei download</a>
   </div>
@@ -145,7 +145,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <div class="wrap intro">
   <div class="label">Manuale d'uso</div>
   <h1>Guida a Mantra for Basket</h1>
-  <p>Dal video della partita al video con punteggio, tempo e falli in sovrimpressione. Questa guida segue l'ordine in cui lavori davvero: prepari la partita nell'HUB, leggi il tabellone, correggi i dati, fai la regia ed esporti.</p>
+  <p>Dal video della partita al video con punteggio, tempo e falli in sovrimpressione. Questa guida segue l'ordine in cui lavori davvero: prepari la partita nell'HUB, leggi il tabellone, correggi i dati, fai la regia ed esporti, un periodo alla volta. Alla fine BAKE può unire tutti i quarti in un solo video, con i cartelli di inizio e fine.</p>
   <div class="chips"><span class="chip">Windows 10/11</span><span class="chip">Italiano</span><span class="chip">English · Español · Français</span></div>
 </div>
 
@@ -176,7 +176,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p>Cosa serve, come riprendere la partita, come si installa e dove finiscono i tuoi dati.</p></div>
       <h3>Cosa ti serve</h3>
       <ul class="dots">
-        <li><strong>Il video della partita</strong> (.mp4, .mov, .mkv, .avi). Se la partita è registrata in più file consecutivi, ogni file sarà una <em>unit</em>.</li>
+        <li><strong>Il video della partita</strong> (.mp4, .mov, .mkv, .avi), di solito uno per ogni periodo: nella partita ogni periodo ha la sua <em>unit</em> (Q1, Q2…).</li>
         <li><strong>Il video del tabellone</strong>: è altamente consigliato usare un video dedicato, meglio una ripresa stretta sul tabellone in cui tempo, punteggio e falli si leggono bene. Due cose sono fondamentali: la ripresa deve essere <strong>stabile</strong>, il più fissa possibile, e deve avere <strong>la stessa durata del video della partita</strong>. Con Mantra 360 lo ottieni ritagliato in automatico.</li>
         <li><strong>I loghi delle squadre</strong>: PNG con sfondo trasparente, meglio se quadrati e di almeno 300 pixel. Nel programma trovi sei loghi di esempio per provare.</li>
       </ul>
@@ -211,14 +211,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <section class="ch" id="hub">
       <div class="ch-head"><span class="where">02 · HUB</span><h2>L'HUB e la partita</h2>
         <p>L'HUB è la plancia: scegli la partita su cui lavorare e da lì apri ogni modulo, sempre sui file giusti.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 1 · guida/mfb-01-hub.jpg</b>L'HUB con la scheda PROGETTO aperta: partita, unit e la colonna FLUSSO DI LAVORO.</div></div><figcaption>La scheda PROGETTO dell'HUB.</figcaption></figure>
-      <h3>Partita e unit</h3>
-      <p>Una <strong>partita</strong> è una cartella con le due squadre e la data. Dentro ci sono una o più <strong>unit</strong>: ogni unit è un blocco continuo di registrazione, per esempio 01 per il primo periodo, 02 per il secondo e 05 per l'overtime. Ogni unit ha le sue cartelle RAW (video), DATA (dati) e RENDER (video finiti).</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 1 · guida/mfb-01-hub.jpg</b>L'HUB con la scheda PROGETTO aperta: partita con la data, il riquadro PERIODI (Q1, Q2…) e la colonna FLUSSO DI LAVORO.</div></div><figcaption>La scheda PROGETTO dell'HUB: la partita e i suoi periodi.</figcaption></figure>
+      <h3>Partita e periodi</h3>
+      <p>Una <strong>partita</strong> è una cartella con le due squadre e la data. Dentro c'è una <strong>unit</strong> per ogni periodo: Q1 è la UNIT_01, Q2 la UNIT_02 e così via; i supplementari sono Q5, Q6… Ogni unit ha le sue cartelle RAW (video), DATA (dati) e RENDER (video finiti).</p>
       <ol class="steps">
-        <li><div><p>Nella scheda <span class="ui">PROGETTO</span> scrivi <span class="ui">SQUADRA CASA</span> e <span class="ui">SQUADRA OSPITI</span> e premi <span class="ui">CREA NUOVO AMBIENTE MATCH</span>. Per una partita già creata usa <span class="ui">Apri partita esistente</span>.</p></div></li>
-        <li><div><p>In <span class="ui">UNIT (PERIODO)</span> scegli una unit esistente o scrivi il numero di una nuova in <span class="ui">Nuova n.</span></p></div></li>
-        <li><div><p>Premi <span class="ui">CONFERMA E APRI LE AREE DI LAVORO</span>. In alto compare <span class="ui">LAVORO ATTIVO SU:</span> con partita e unit, e le schede dei moduli si sbloccano.</p></div></li>
+        <li><div><p>Nella scheda <span class="ui">PROGETTO</span> scrivi <span class="ui">SQUADRA CASA</span> e <span class="ui">SQUADRA OSPITI</span>.</p></div></li>
+        <li><div><p>Controlla <span class="ui">Data:</span>: parte con la data di oggi; se la partita è di un altro giorno scrivila come gg/mm/aaaa. È la data che compare nei cartelli di inizio e fine.</p></div></li>
+        <li><div><p>In <span class="ui">Periodi:</span> scrivi quanti sono (4 = quattro quarti) e premi <span class="ui">CREA NUOVO AMBIENTE MATCH</span>. Per una partita già creata usa <span class="ui">Apri partita esistente</span>.</p></div></li>
+        <li><div><p>Nel riquadro <span class="ui">PERIODI</span> clicca il periodo su cui vuoi lavorare (Q1, Q2…) e premi <span class="ui">CONFERMA E APRI LE AREE DI LAVORO</span>. In alto compare <span class="ui">LAVORO ATTIVO SU:</span> con partita e unit, e le schede dei moduli si sbloccano.</p></div></li>
       </ol>
+      <h3>Supplementari, periodi mancanti e data</h3>
+      <ul class="dots">
+        <li><span class="ui">+ AGGIUNGI PERIODO</span> aggiunge un supplementare (Q5, poi Q6…).</li>
+        <li><span class="ui">- RIMUOVI PERIODO SCELTO</span> toglie il periodo selezionato, anche in mezzo (per esempio un quarto che non hai ripreso: Q1, Q3, Q4 va bene). Funziona solo se la sua unit è <strong>vuota</strong>, così non si perde nessun file. Se quel periodo è aperto nelle aree di lavoro, premi prima <span class="ui">CAMBIA PARTITA / SBLOCCA</span>.</li>
+        <li><span class="ui">Cambia data...</span>, sotto la partita scelta, corregge la data di una partita già creata.</li>
+        <li>Le partite create con le versioni precedenti mostrano ancora <span class="ui">UNIT (PERIODO)</span>, come prima. Con <span class="ui">Crea i periodi...</span> le trasformi: le unit che ci sono restano com'erano (la UNIT_01 diventa Q1) e si aggiungono quelle che mancano.</li>
+      </ul>
       <h3>Le schede</h3>
       <div class="tbl"><table>
         <thead><tr><th>Scheda</th><th>Modulo</th><th>A cosa serve</th></tr></thead>
@@ -230,7 +238,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <tr><td>ESPORTA</td><td>BAKE</td><td>Crea il video finale con la grafica.</td></tr>
           <tr><td>STATISTICHE</td><td>STATS</td><td>Infografiche dell'andamento della partita e file per Excel.</td></tr>
           <tr><td>ARCHIVIO</td><td>—</td><td>Cartelle della partita, importazione ed esportazione dei file.</td></tr>
-          <tr><td>MANTRA 360 ↗</td><td>Mantra 360</td><td>Compare solo se Mantra 360 è installato: lo apre già sulla unit attiva.</td></tr>
+          <tr><td>MANTRA 360 ↗</td><td>Mantra 360</td><td>Compare solo se Mantra 360 è installato: lo apre sulla partita scelta e ogni quarto esporta nella sua unit.</td></tr>
           <tr><td>AIUTO · INFO</td><td>—</td><td>Questa guida, primi passi, contatti, versione e crediti.</td></tr>
         </tbody></table></div>
       <p>La colonna <span class="ui">STATO DELLA UNIT</span> mostra a che punto sei: video sorgente, dati letti dal tabellone, dati corretti, progetto di regia, video finiti. Ogni voce diventa <span class="ui">✓ Dati presenti</span> quando il modulo ha fatto il suo lavoro.</p>
@@ -241,7 +249,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <div><i>3</i><b>STUDIO</b><span>squadre e grafica</span></div>
           <div><i>4</i><b>AUTOPILOT</b><span>sceglie le azioni</span></div>
           <div><i>5</i><b>BAKE</b><span>crea il video</span></div>
-        </div></div>
+        </div>
+        <p style="margin-top:10px">Lo fai per ogni periodo. Quando la regia di tutti i quarti è fatta, BAKE li unisce nella partita intera (capitolo 08).</p></div>
+      <h3>Con Mantra 360</h3>
+      <p>Se riprendi con una camera 360° e hai installato anche Mantra 360, crea prima la partita con i periodi nell'HUB, sceglila e premi la scheda <span class="ui">MANTRA 360 ↗</span>. Mantra 360 si apre sulla stessa partita e, quarto per quarto, mette nella cartella RAW della unit giusta il video del tabellone per GEOSCANNER e poi il video HD della partita. Quarti e unit si abbinano per nome (Q1 con Q1), anche se un quarto manca. Come si lavora in Mantra 360 è spiegato nella sua guida.</p>
     </section>
 
     <!-- 03 -->
@@ -291,7 +302,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h3>Tappa 4 · Analisi</h3>
       <p>Scegli la <span class="ui">MARCIA</span>: quanti fotogrammi salta tra una lettura e l'altra (1 = massima precisione, 25 = massima velocità). Premi <span class="ui">AVVIA ANALISI TURBO</span>. Accanto all'anteprima compare <span class="ui">ANALISI IN CORSO</span>, con tempo, periodo, punteggio e falli letti in diretta e lo stato della stabilizzazione. Puoi fermare con <span class="ui">FERMA ANALISI (Q)</span> o passare al quarto successivo con <span class="ui">QUARTO +1 (P)</span>. A fine analisi senti un avviso a voce e si attiva <span class="ui">APRI REFINERY</span>, per controllare i dati.</p>
       <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 10 · guida/mfb-10-analisi.jpg</b>GEOSCANNER durante l'analisi: la vista in diretta accanto all'anteprima del tabellone.</div></div><figcaption>Durante l'analisi vedi in diretta cosa sta leggendo il programma.</figcaption></figure>
-      <div class="note"><span class="label">Stessa inquadratura, zero lavoro</span><p>Con la riga <span class="ui">RESET · IMPORTA · ESPORTA</span> della tappa 3 salvi fondamenta e mappatura e li riusi: se la camera è nella stessa posizione e inquadra il tabellone allo stesso modo puoi partire subito con l'analisi. Se la camera si è spostata, anche di poco, rifai le fondamenta.</p></div>
+      <div class="note"><span class="label">Stessa inquadratura, zero lavoro</span><p>Con il menu <span class="ui">⋯ Reset · Importa · Esporta</span> della tappa 2 (Tipo di tabellone) salvi fondamenta e mappatura e li riusi: se la camera è nella stessa posizione e inquadra il tabellone allo stesso modo puoi partire subito con l'analisi. Se la camera si è spostata, anche di poco, rifai le fondamenta.</p>
+        <p style="margin-top:8px"><strong>Dal secondo quarto in poi</strong> è il caso tipico: <span class="ui">IMPORTA</span> si apre già nella cartella della partita, così trovi subito la calibrazione del quarto prima. GEOSCANNER usa sempre il video del tabellone del quarto su cui stai lavorando, mai quello del quarto da cui hai importato la calibrazione.</p></div>
       <p><span class="ui">ATTIVA FILTRI</span>, <span class="ui">SOGLIA B/N</span> e <span class="ui">CONTRASTO</span>, sotto l'anteprima, cambiano solo ciò che vedi: servono a vedere meglio, non cambiano la lettura dei numeri.</p>
     </section>
 
@@ -342,7 +354,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p>Imposta la partita e prepara la regia in tre passi. Quello che vedi nell'anteprima è quello che uscirà nel video finale, anche nella dimensione delle scritte.</p></div>
       <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 4 · guida/mfb-04-studio.jpg</b>STUDIO con le due squadre impostate (loghi di esempio), skin BasketCourt e l'ANTEPRIMA GRAFICA.</div></div><figcaption>I tre passi di STUDIO e l'anteprima grafica. <span class="priv">Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.</span></figcaption></figure>
       <ol class="steps">
-        <li><div><p><strong>Partita.</strong> Scegli il <span class="ui">VIDEO PARTITA</span> e, se il tabellone è in una ripresa separata, il <span class="ui">VIDEO OCR</span>. Se non trova i dati corretti da REFINERY, STUDIO ti chiede se usare quelli grezzi di GEOSCANNER. <span class="ui">CARICA PROGETTO</span> riapre un lavoro salvato; <span class="ui">GESTISCI TAGLI (CLIPPER)</span> mostra l'elenco delle clip per modificarle o eliminarle.</p></div></li>
+        <li><div><p><strong>Partita.</strong> Scegli il <span class="ui">VIDEO PARTITA</span> e, se il tabellone è in una ripresa separata, il <span class="ui">VIDEO OCR</span>. Se la unit contiene i video di Mantra 360, STUDIO li carica da solo: il video HD più recente della cartella RAW e il video del tabellone che dura uguale, con la scritta «(auto)». Puoi sempre sceglierne altri con gli stessi pulsanti, e una scelta fatta a mano non viene cambiata. Se non trova i dati corretti da REFINERY, STUDIO ti chiede se usare quelli grezzi di GEOSCANNER. <span class="ui">CARICA PROGETTO</span> riapre un lavoro salvato; <span class="ui">GESTISCI TAGLI (CLIPPER)</span> mostra l'elenco delle clip per modificarle o eliminarle.</p></div></li>
         <li><div><p><strong>Look e squadre.</strong> Scegli la <span class="ui">Grafica</span> (la skin). Per ogni squadra: nome, colore di <span class="ui">Sfondo</span> e di <span class="ui">Bordo</span>, <span class="ui">Testo Nero</span> se il nome si legge meglio scuro, e il <span class="ui">Logo</span>. Il <span class="ui">LOGO EVENTO</span> è facoltativo: con la skin MyCity puoi usare una delle città in <span class="ui">assets\logos\Citta</span>.</p>
           <p>Con <span class="ui">Grafica ridotta: posizione</span> scegli l'angolo in cui compare il punteggio piccolo durante l'azione; <span class="ui">Grafica grande</span> dice quanti secondi resta quella grande a inizio e fine clip. Prova le due versioni con <span class="ui">Grande</span> e <span class="ui">Ridotta</span> sotto l'anteprima.</p></div></li>
         <li><div><p><strong>Regia.</strong> Indica il periodo da cui parte il video, il <span class="ui">Timer (min)</span> iniziale del periodo e se attivare gli effetti sul punteggio. Poi premi <span class="ui">ENTRA IN REGIA (AUTOPILOT)</span>.</p></div></li>
@@ -354,16 +366,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <section class="ch" id="autopilot">
       <div class="ch-head"><span class="where">07 · REGIA</span><h2>AUTOPILOT</h2>
         <p>La sala regia: guardi la partita, scegli le azioni da tenere (le <em>clip</em>) e correggi punteggio e grafica dove serve. Quasi tutto si fa da tastiera; <kbd>?</kbd> mostra la legenda completa.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 5 · guida/mfb-05-autopilot.jpg</b>AUTOPILOT: video in alto, elenco delle clip, timeline con le corsie CLIP / PUNTI / FALLI / PERIODO.</div></div><figcaption>Le corsie della timeline: clip, punti, falli e periodo. <span class="priv">Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 5 · guida/mfb-05-autopilot.jpg</b>AUTOPILOT: video in alto, elenco delle clip e riquadro CARTELLI a lato, timeline con le corsie CLIP / PUNTI / FALLI / PERIODO e CARTELLI.</div></div><figcaption>Le corsie della timeline: clip, punti, falli, periodo e cartelli. <span class="priv">Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.</span></figcaption></figure>
       <h3>Il modo più veloce</h3>
       <ol class="steps">
         <li><div><p>Premi <kbd>H</kbd>: AUTOPILOT crea una clip intorno a ogni canestro della partita. <kbd>C</kbd> fa lo stesso solo per la squadra di casa, <kbd>O</kbd> per gli ospiti.</p></div></li>
         <li><div><p>Regola quanto prendere prima e dopo ogni canestro: <kbd>W</kbd>/<kbd>E</kbd> per l'inizio, <kbd>T</kbd>/<kbd>Y</kbd> per la fine, un secondo alla volta.</p></div></li>
         <li><div><p>Scorri le clip con le frecce e togli quelle che non ti piacciono con <kbd>D</kbd>. Unisci due clip vicine selezionandole e premendo <kbd>N</kbd>.</p></div></li>
-        <li><div><p>Esci e salva con <kbd>Q</kbd> (o <span class="ui">ESCI E SALVA</span>, da cliccare due volte).</p></div></li>
+        <li><div><p>Esci e salva con <kbd>Q</kbd> o con <span class="ui">Salva e chiudi</span>.</p></div></li>
       </ol>
+      <div class="note warn"><span class="label">Clip doppie o sovrapposte</span><p>Se due clip sono uguali o una entra nell'altra, AUTOPILOT te lo segnala: nella timeline la clip doppia ha il bordo rosso e la parte sovrapposta un tratteggio rosso, nell'elenco la riga è rossa con un avviso e anche il titolo CLIP lo segnala. Nel video finale quel pezzo si vedrebbe due volte. AUTOPILOT non cambia niente da solo: correggi tu (<kbd>D</kbd> per eliminare, <kbd>N</kbd> per unire). Se esci lo stesso, ti chiede conferma.</p></div>
       <h3>Clip a mano</h3>
       <p><kbd>R</kbd> inizia a registrare una clip e <kbd>R</kbd> di nuovo la chiude. Con <kbd>[</kbd> e <kbd>]</kbd> segni l'inizio e la fine della partita da esportare. <kbd>B</kbd> sceglie per la clip selezionata la grafica grande o ridotta; premuto più volte cambia anche l'angolo della grafica ridotta.</p>
+      <h3>Cartelli</h3>
+      <p>Nel riquadro <span class="ui">CARTELLI</span> scegli, quarto per quarto, i cartelli da mettere nel video. Durano 4 secondi ciascuno e prendono squadre, colori e loghi scelti in STUDIO, la data della partita dall'HUB e i punteggi dai dati.</p>
+      <ul class="dots">
+        <li><span class="ui">Iniziale</span>: data, loghi e nomi delle squadre.</li>
+        <li><span class="ui">Quarto</span>: come l'iniziale, con il periodo (per esempio «2° QUARTO» o «1° SUPPLEMENTARE») e il punteggio con cui si riparte.</li>
+        <li><span class="ui">Finale</span>: il punteggio alla fine del video. Dice «FINALE» solo nell'ultimo periodo della partita; negli altri dice per esempio «FINE 2° QUARTO».</li>
+        <li><span class="ui">Statistiche:</span> <span class="ui">Vantaggio</span>, <span class="ui">Andamento</span> e <span class="ui">Tiri</span>, da spuntare una per una, 4 secondi ciascuna. Scegli se mostrano solo questo quarto (<span class="ui">del quarto</span>) o tutta la partita fino a questo quarto (<span class="ui">partita fino a qui</span>).</li>
+      </ul>
+      <p>L'ordine è fisso: in testa l'iniziale e poi il quarto, in coda il finale e poi le statistiche. Valgono sia per gli highlight sia per il quarto intero. Poi scegli come mostrarli:</p>
+      <ul class="dots">
+        <li><span class="ui">Tutto schermo</span>: i cartelli si aggiungono <strong>prima</strong> e <strong>dopo</strong> il video, in silenzio. Per vederli, clicca nella corsia CARTELLI: a sinistra quelli prima del video, a destra quelli dopo. Il monitor li mostra in sequenza; un clic o il Play interrompono l'anteprima.</li>
+        <li><span class="ui">Sopra il video</span>: i cartelli compaiono al centro dell'immagine mentre la partita scorre, e intanto la grafica del punteggio si nasconde. Nella corsia CARTELLI ogni cartello è un blocco colorato: trascinalo nel punto in cui vuoi che compaia. Quando il cursore della timeline è dentro un blocco, il monitor ti mostra il cartello.</li>
+      </ul>
+      <div class="note"><span class="label">Sopra il video, senza clip in più</span><p>Non serve creare una clip apposta per i cartelli. AUTOPILOT li mette in fila da solo all'inizio della prima clip e alla fine dell'ultima, senza accavallarli; se li sposti a mano restano dove li metti. Negli highlight, un cartello che cade fuori dalle clip viene agganciato all'inizio della prima clip o alla fine dell'ultima. La prima volta le statistiche impiegano qualche secondo a comparire nel monitor: vengono preparate una volta sola.</p></div>
       <h3>Tasti</h3>
       <div class="tbl"><table>
         <thead><tr><th>Tasto</th><th>Azione</th></tr></thead>
@@ -397,7 +424,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <section class="ch" id="bake">
       <div class="ch-head"><span class="where">08 · ESPORTA</span><h2>BAKE</h2>
         <p>Crea il video finale: taglia le clip, aggiunge la grafica e usa la scheda video del computer per andare il più veloce possibile.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 6 · guida/mfb-06-bake.jpg</b>BAKE con il progetto caricato, l'ANTEPRIMA WYSIWYG e il riquadro ESPORTAZIONE &amp; QUALITÀ.</div></div><figcaption>L'anteprima di BAKE è identica al video che verrà creato. <span class="priv">Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 6 · guida/mfb-06-bake.jpg</b>BAKE con il progetto caricato, l'ANTEPRIMA WYSIWYG, il riquadro ESPORTAZIONE &amp; QUALITÀ e, in basso, QUARTI DA ESPORTARE.</div></div><figcaption>L'anteprima di BAKE è identica al video che verrà creato. <span class="priv">Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.</span></figcaption></figure>
       <ol class="steps">
         <li><div><p><span class="ui">CARICA PROGETTO O CONFIG</span>: se arrivi da STUDIO è già caricato. Se il video originale è stato spostato, BAKE ti chiede dove si trova.</p></div></li>
         <li><div><p>Controlla squadre, evento e <span class="ui">SKIN</span>. Con <span class="ui">PLAY ANTEPRIMA</span> guardi il risultato prima di esportare, alla velocità che scegli.</p></div></li>
@@ -418,10 +445,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
             </tbody></table></div></div></li>
         <li><div><p>Se ti servono, attiva <span class="ui">Genera Marker (EDL + CSV)</span>: un marcatore per ogni canestro, da importare nei programmi di montaggio. Poi premi <span class="ui">AVVIA PROCESSO</span>. A fine lavoro senti un avviso a voce.</p></div></li>
       </ol>
+      <p>I cartelli scelti in AUTOPILOT entrano da soli nel video: non c'è niente da impostare in BAKE.</p>
+      <h3>Un quarto o tutta la partita</h3>
+      <p>Nelle partite con i periodi, in basso, vicino ad <span class="ui">AVVIA PROCESSO</span>, c'è il riquadro <span class="ui">QUARTI DA ESPORTARE</span>. Accanto a ogni quarto vedi a che punto è:</p>
+      <ul class="dots">
+        <li><span class="ui">✔ pronto</span>: la regia è stata salvata in AUTOPILOT;</li>
+        <li><span class="ui">✖ regia non fatta</span>: apri quel quarto nell'HUB e fai la regia;</li>
+        <li><span class="ui">— non ripreso (si salta)</span>: nella unit non c'è il video; la partita si compone con i quarti che ci sono.</li>
+      </ul>
+      <ol class="steps">
+        <li><div><p>Spunta cosa esportare: <strong>un quarto</strong> crea solo quel quarto, nella sua cartella RENDER; <strong>più quarti</strong>, o <span class="ui">Tutta la partita</span>, crea un solo video con i quarti uno dopo l'altro. Senza spunte BAKE esporta il progetto caricato, come prima. <span class="ui">↻</span> aggiorna l'elenco se intanto hai finito una regia.</p></div></li>
+        <li><div><p>Scegli preset e tipo di file come per un quarto solo e premi <span class="ui">AVVIA PROCESSO</span>.</p></div></li>
+        <li><div><p>BAKE esporta i quarti uno alla volta, ognuno con la sua regia, la sua grafica e i suoi cartelli, poi li unisce senza rifare il lavoro, con stacco netto. Il video della partita va nella cartella <span class="ui">RENDER_PARTITA</span> della partita; i video dei singoli quarti restano nelle loro cartelle RENDER.</p></div></li>
+      </ol>
+      <p>Se dai quarti escono gli highlight, ottieni gli highlight della partita; se escono i quarti interi, la partita completa. Alla fine del video della partita c'è sempre un cartello di chiusura di Mantra di 4 secondi, nella lingua del programma.</p>
       <h3>Il risultato</h3>
       <div class="shots2">
       <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 11 · guida/mfb-11-risultato-grande.jpg</b>Un fotogramma del video finito con la grafica grande.</div></div><figcaption>Grafica grande, a inizio e fine clip. <span class="priv">Le persone sono sfocate per la loro privacy: non è un effetto del programma, il video esportato è nitido.</span></figcaption></figure>
       <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 12 · guida/mfb-12-risultato-ridotta.jpg</b>Un fotogramma del video finito con la grafica ridotta in un angolo.</div></div><figcaption>Grafica ridotta, durante il gioco. <span class="priv">Sfocatura per la privacy, come sopra.</span></figcaption></figure>
+      </div>
+      <div class="shots2">
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 13 · guida/mfb-13-cartello-quarto.jpg</b>Il cartello di inizio quarto a tutto schermo: data, loghi, squadre, «2° QUARTO» e il punteggio con cui si riparte.</div></div><figcaption>Cartello di inizio quarto, a tutto schermo.</figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Schermata 14 · guida/mfb-14-cartello-sopra.jpg</b>Un fotogramma del video finito con il cartello finale sopra il video.</div></div><figcaption>Cartello finale sopra il video. <span class="priv">Sfocatura per la privacy, come sopra.</span></figcaption></figure>
       </div>
       <div class="note"><span class="label">La scheda video</span><p>Sotto le opzioni BAKE scrive quale codificatore usa (NVIDIA, AMD, Intel). Se compare <span class="ui">Nessuna GPU utilizzabile: si usa la CPU</span>, l'esportazione funziona lo stesso ma è più lenta: aggiorna i driver della scheda video.</p></div>
     </section>
@@ -475,6 +520,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p>L'HUB mostra un messaggio con il pulsante <span class="ui">RIPROVA</span>. Il dettaglio dell'errore è nel registro <span class="ui">logs\mantra_hub.log</span> della cartella dati; i moduli avviati senza console scrivono in <span class="ui">logs\console.log</span>. Allega questi file quando segnali un problema: nella scheda AIUTO trovi l'indirizzo email e un pulsante che apre la cartella dei registri.</p></div></details>
       <details class="faq"><summary>L'esportazione è lenta</summary><div>
         <p>Guarda la riga del codificatore in BAKE: se dice CPU, la scheda video non viene usata. Aggiorna i driver e lascia attivo <span class="ui">Decodifica video con la GPU</span>. Per una prova veloce dei tagli usa il preset <span class="ui">FAST CHECK</span>.</p></div></details>
+      <details class="faq"><summary>BAKE non esporta tutta la partita</summary><div>
+        <p>Se compare <span class="ui">Prima fai la regia (AUTOPILOT) di: …</span>, apri nell'HUB i quarti indicati, entra in regia e salva con <kbd>Q</kbd>: un quarto è pronto solo quando la sua regia è salvata. Se compare <span class="ui">I quarti hanno fotogrammi al secondo diversi</span>, i video dei quarti sono stati registrati o esportati con frequenze diverse (per esempio 25 e 30 fps): rifai il video del quarto diverso con la stessa frequenza degli altri.</p></div></details>
+      <details class="faq"><summary>Non riesco a togliere un periodo</summary><div>
+        <p>Si toglie solo un periodo con la unit vuota, perché nessun file vada perso. Se dentro ci sono file che non ti servono, spostali o cancellali tu da Esplora risorse e riprova. Se il periodo è aperto nelle aree di lavoro, premi prima <span class="ui">CAMBIA PARTITA / SBLOCCA</span>.</p></div></details>
       <details class="faq"><summary>Un font della skin non c'è su questo computer</summary><div>
         <p>Se una skin usa un font di Microsoft Office che non è installato (Garamond, Goudy, Eras, Papyrus, Chiller), il programma usa automaticamente un font libero dall'aspetto simile. Per usare i tuoi font, scegli il file in SKINMAPPER: viene copiato nella cartella dati e funziona anche spostando la skin.</p></div></details>
     </section>
@@ -487,10 +536,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <thead><tr><th>Cartella o file</th><th>Contenuto</th></tr></thead>
         <tbody>
           <tr><td>MATCH_ARCHIVE\<em>data_Casa_Vs_Ospiti</em></td><td>Una partita</td></tr>
-          <tr><td>… \_COMMON</td><td>Loghi e risorse comuni a tutte le unit</td></tr>
-          <tr><td>… \UNIT_01\01_RAW</td><td>Video della partita e del tabellone</td></tr>
+          <tr><td>… \_COMMON</td><td>Loghi e risorse comuni a tutti i periodi, i periodi della partita (<span class="ui">partita_quarti.json</span>) e la data (<span class="ui">partita_info.json</span>)</td></tr>
+          <tr><td>… \UNIT_01\01_RAW</td><td>Video della partita e del tabellone del primo periodo (Q1); UNIT_02 è Q2, e così via</td></tr>
           <tr><td>… \UNIT_01\01_DATA</td><td>Dati letti (<span class="ui">match_data.json</span>), corretti (<span class="ui">match_data_correct.json</span>) e progetto di regia</td></tr>
-          <tr><td>… \UNIT_01\01_RENDER</td><td>Video finiti e marker</td></tr>
+          <tr><td>… \UNIT_01\01_RENDER</td><td>Video finiti del periodo e marker</td></tr>
+          <tr><td>… \RENDER_PARTITA</td><td>La partita intera (o gli highlight della partita) creata da BAKE</td></tr>
           <tr><td>assets\skins · fonts · logos</td><td>Le tue skin, i font copiati dalle skin, i loghi</td></tr>
           <tr><td>logs</td><td>Registri da allegare quando segnali un problema</td></tr>
         </tbody></table></div>
@@ -500,7 +550,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </div>
 
 <footer>
-  <div class="wrap"><span>© 2026 Stefano Sala · Mantra for Basket è gratuito.</span><span class="label">Guida 1.0 Alpha · in italiano</span></div>
+  <div class="wrap"><span>© 2026 Stefano Sala · Mantra for Basket è gratuito.</span><span class="label">Guida 2.0 Alpha · in italiano</span></div>
 </footer>
 
 <script>

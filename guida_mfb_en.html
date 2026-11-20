@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mantra for Basket guide</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Complete guide to Mantra for Basket: from the HUB to GEOSCANNER, REFINERY, STUDIO, AUTOPILOT, BAKE, SKINMAPPER and STATISTICS.">
+<meta name="description" content="Complete guide to Mantra for Basket: from the HUB to GEOSCANNER, REFINERY, STUDIO, AUTOPILOT, BAKE, SKINMAPPER and STATISTICS. Match periods, cards and the whole match.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=Share+Tech+Mono&display=swap">
@@ -136,7 +136,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href="index.html">Mantra <span>for Basket</span></a>
-    <span class="label">Guide · version 1.0 Alpha</span>
+    <span class="label">Guide · version 2.0 Alpha</span>
     <nav class="langs" aria-label="Lingua / Language"><a href="guida_mfb.html" hreflang="it">IT</a><a href="guida_mfb_en.html" hreflang="en" aria-current="true">EN</a><a href="guida_mfb_es.html" hreflang="es">ES</a><a href="guida_mfb_fr.html" hreflang="fr">FR</a></nav>
     <a class="back" href="index.html">← Back to the download page</a>
   </div>
@@ -145,7 +145,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <div class="wrap intro">
   <div class="label">User guide</div>
   <h1>Mantra for Basket guide</h1>
-  <p>From the game video to a video with score, clock and fouls on screen. This guide follows the order you actually work in: you set up the game in the HUB, read the scoreboard, correct the data, direct the highlights and export.</p>
+  <p>From the game video to a video with score, clock and fouls on screen. This guide follows the order you actually work in: you set up the game in the HUB, read the scoreboard, correct the data, direct the highlights and export, one period at a time. At the end BAKE can join all the quarters into a single video, with opening and closing cards.</p>
   <div class="chips"><span class="chip">Windows 10/11</span><span class="chip">English</span><span class="chip">Screenshots in Italian</span></div>
 </div>
 
@@ -177,7 +177,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="note"><span class="label">About this guide</span><p>The buttons are named as they appear with English selected in the program (EN, top right). The screenshots show the program in Italian.</p></div>
       <h3>What you need</h3>
       <ul class="dots">
-        <li><strong>The game video</strong> (.mp4, .mov, .mkv, .avi). If the game was recorded in several consecutive files, each file will be a <em>unit</em>.</li>
+        <li><strong>The game video</strong> (.mp4, .mov, .mkv, .avi), usually one for each period: in the match each period has its own <em>unit</em> (Q1, Q2…).</li>
         <li><strong>The scoreboard video</strong>: a dedicated video is strongly recommended, ideally a tight shot of the scoreboard where clock, score and fouls are easy to read. Two things are essential: the shot must be <strong>steady</strong>, as fixed as possible, and it must be <strong>exactly as long as the game video</strong>. With Mantra 360 you get it cropped automatically.</li>
         <li><strong>The team logos</strong>: PNG with a transparent background, ideally square and at least 300 pixels. The program includes six sample logos to try things out.</li>
       </ul>
@@ -212,14 +212,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <section class="ch" id="hub">
       <div class="ch-head"><span class="where">02 · HUB</span><h2>The HUB and the match</h2>
         <p>The HUB is the control desk: you choose the match to work on and open every module from there, always on the right files.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 1 · guida/mfb-01-hub.jpg</b>The HUB with the PROJECT tab open: match, unit and the WORKFLOW column.</div></div><figcaption>The PROJECT tab of the HUB.</figcaption></figure>
-      <h3>Match and unit</h3>
-      <p>A <strong>match</strong> is a folder with the two teams and the date. Inside it there are one or more <strong>units</strong>: each unit is one continuous block of recording, for example 01 for the first period, 02 for the second and 05 for overtime. Each unit has its own RAW (videos), DATA (data) and RENDER (finished videos) folders.</p>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 1 · guida/mfb-01-hub.jpg</b>The HUB with the PROJECT tab open: match with its date, the PERIODS box (Q1, Q2…) and the WORKFLOW column.</div></div><figcaption>The PROJECT tab of the HUB: the match and its periods.</figcaption></figure>
+      <h3>Match and periods</h3>
+      <p>A <strong>match</strong> is a folder with the two teams and the date. Inside it there is one <strong>unit</strong> for each period: Q1 is UNIT_01, Q2 is UNIT_02 and so on; overtimes are Q5, Q6… Each unit has its own RAW (videos), DATA (data) and RENDER (finished videos) folders.</p>
       <ol class="steps">
-        <li><div><p>In the <span class="ui">PROJECT</span> tab type the <span class="ui">HOME TEAM</span> and the <span class="ui">AWAY TEAM</span> and press <span class="ui">CREATE NEW MATCH ENVIRONMENT</span>. For a match you have already created, use <span class="ui">Open existing match</span>.</p></div></li>
-        <li><div><p>In <span class="ui">UNIT (PERIOD)</span> choose an existing unit or type the number of a new one in <span class="ui">New n.</span></p></div></li>
-        <li><div><p>Press <span class="ui">CONFIRM AND OPEN THE WORKSPACES</span>. <span class="ui">ACTIVE WORK ON:</span> appears with match and unit, and the module tabs unlock.</p></div></li>
+        <li><div><p>In the <span class="ui">PROJECT</span> tab type the <span class="ui">HOME TEAM</span> and the <span class="ui">AWAY TEAM</span>.</p></div></li>
+        <li><div><p>Check <span class="ui">Date:</span>: it starts with today's date; if the game was played on another day, type it as dd/mm/yyyy. This is the date shown on the opening and closing cards.</p></div></li>
+        <li><div><p>In <span class="ui">Periods:</span> type how many there are (4 = four quarters) and press <span class="ui">CREATE NEW MATCH ENVIRONMENT</span>. For a match you have already created, use <span class="ui">Open existing match</span>.</p></div></li>
+        <li><div><p>In the <span class="ui">PERIODS</span> box click the period you want to work on (Q1, Q2…) and press <span class="ui">CONFIRM AND OPEN THE WORKSPACES</span>. <span class="ui">ACTIVE WORK ON:</span> appears with match and unit, and the module tabs unlock.</p></div></li>
       </ol>
+      <h3>Overtimes, missing periods and date</h3>
+      <ul class="dots">
+        <li><span class="ui">+ ADD PERIOD</span> adds an overtime (Q5, then Q6…).</li>
+        <li><span class="ui">- REMOVE SELECTED PERIOD</span> removes the selected period, even one in the middle (for example a quarter you did not film: Q1, Q3, Q4 is fine). It only works if its unit is <strong>empty</strong>, so no file is lost. If that period is open in the workspaces, press <span class="ui">CHANGE MATCH / UNLOCK</span> first.</li>
+        <li><span class="ui">Change date...</span>, under the chosen match, corrects the date of a match you have already created.</li>
+        <li>Matches created with earlier versions still show <span class="ui">UNIT (PERIOD)</span>, as before. <span class="ui">Create periods...</span> converts them: the existing units stay as they are (UNIT_01 becomes Q1) and the missing ones are added.</li>
+      </ul>
       <h3>The tabs</h3>
       <div class="tbl"><table>
         <thead><tr><th>Tab</th><th>Module</th><th>What it is for</th></tr></thead>
@@ -231,7 +239,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <tr><td>EXPORT</td><td>BAKE</td><td>Creates the final video with the graphics.</td></tr>
           <tr><td>STATISTICS</td><td>STATS</td><td>Infographics of how the game went and files for Excel.</td></tr>
           <tr><td>ARCHIVE</td><td>—</td><td>Match folders, importing and exporting files.</td></tr>
-          <tr><td>MANTRA 360 ↗</td><td>Mantra 360</td><td>Only appears if Mantra 360 is installed: opens it on the active unit.</td></tr>
+          <tr><td>MANTRA 360 ↗</td><td>Mantra 360</td><td>Only appears if Mantra 360 is installed: opens it on the chosen match, and each quarter exports into its own unit.</td></tr>
           <tr><td>HELP · ABOUT</td><td>—</td><td>This guide, first steps, contacts, version and credits.</td></tr>
         </tbody></table></div>
       <p>The <span class="ui">UNIT STATUS</span> column shows how far you are: source videos, data read from the scoreboard, corrected data, directing project, finished videos. Each item turns into <span class="ui">✓ Data present</span> when the module has done its job.</p>
@@ -242,7 +250,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <div><i>3</i><b>STUDIO</b><span>teams and graphics</span></div>
           <div><i>4</i><b>AUTOPILOT</b><span>picks the plays</span></div>
           <div><i>5</i><b>BAKE</b><span>creates the video</span></div>
-        </div></div>
+        </div>
+        <p style="margin-top:10px">You do this for each period. When the editing of all the quarters is done, BAKE joins them into the whole match (chapter 08).</p></div>
+      <h3>With Mantra 360</h3>
+      <p>If you film with a 360° camera and have also installed Mantra 360, first create the match with its periods in the HUB, choose it and press the <span class="ui">MANTRA 360 ↗</span> tab. Mantra 360 opens on the same match and, quarter by quarter, puts into the RAW folder of the right unit the scoreboard video for GEOSCANNER and then the HD video of the game. Quarters and units are matched by name (Q1 with Q1), even if a quarter is missing. How to work in Mantra 360 is explained in its own guide.</p>
     </section>
 
     <!-- 03 -->
@@ -292,7 +303,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h3>Step 4 · Analysis</h3>
       <p>Choose the <span class="ui">GEAR</span>: how many frames to skip between one reading and the next (1 = maximum precision, 25 = maximum speed). Press <span class="ui">START TURBO ANALYSIS</span>. Next to the preview, <span class="ui">ANALYSIS RUNNING</span> shows live the clock, period, score and fouls being read, and the state of the stabilization. You can stop with <span class="ui">STOP ANALYSIS (Q)</span> or move to the next period with <span class="ui">PERIOD +1 (P)</span>. When it ends you hear a spoken notice and <span class="ui">OPEN REFINERY</span> becomes active, to check the data.</p>
       <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 10 · guida/mfb-10-analisi.jpg</b>GEOSCANNER during the analysis: the live view next to the scoreboard preview.</div></div><figcaption>During the analysis you see live what the program is reading.</figcaption></figure>
-      <div class="note"><span class="label">Same framing, zero work</span><p>With the <span class="ui">RESET · IMPORT · EXPORT</span> row of step 3 you save foundations and mapping and reuse them: if the camera is in the same position and frames the scoreboard the same way, you can start the analysis straight away. If the camera has moved, even slightly, redo the foundations.</p></div>
+      <div class="note"><span class="label">Same framing, zero work</span><p>With the <span class="ui">⋯ Reset · Import · Export</span> menu in step 2 (Scoreboard type) you save foundations and mapping and reuse them: if the camera is in the same position and frames the scoreboard the same way, you can start the analysis straight away. If the camera has moved, even slightly, redo the foundations.</p>
+        <p style="margin-top:8px"><strong>From the second quarter on</strong> this is the usual case: <span class="ui">IMPORT</span> already opens in the match folder, so you find the calibration of the previous quarter right away. GEOSCANNER always uses the scoreboard video of the quarter you are working on, never the one of the quarter you imported the calibration from.</p></div>
       <p><span class="ui">ENABLE FILTERS</span>, <span class="ui">B/W THRESHOLD</span> and <span class="ui">CONTRAST</span>, under the preview, only change what you see: they help you see better, they do not change how the numbers are read.</p>
     </section>
 
@@ -343,7 +355,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p>Sets up the match and prepares the directing in three steps. What you see in the preview is what will come out in the final video, text size included.</p></div>
       <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 4 · guida/mfb-04-studio.jpg</b>STUDIO with both teams set up (sample logos), the BasketCourt skin and the GRAPHICS PREVIEW.</div></div><figcaption>The three steps of STUDIO and the graphics preview. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
       <ol class="steps">
-        <li><div><p><strong>Match.</strong> Choose the <span class="ui">MATCH VIDEO</span> and, if the scoreboard is in a separate recording, the <span class="ui">OCR VIDEO</span>. If it does not find the data corrected by REFINERY, STUDIO asks whether to use the raw GEOSCANNER data. <span class="ui">LOAD PROJECT</span> reopens a saved job; <span class="ui">MANAGE CUTS (CLIPPER)</span> shows the list of clips so you can edit or delete them.</p></div></li>
+        <li><div><p><strong>Match.</strong> Choose the <span class="ui">MATCH VIDEO</span> and, if the scoreboard is in a separate recording, the <span class="ui">OCR VIDEO</span>. If the unit contains the Mantra 360 videos, STUDIO loads them by itself: the most recent HD video in the RAW folder and the scoreboard video with the same length, marked «(auto)». You can always choose others with the same buttons, and a choice made by hand is not changed. If it does not find the data corrected by REFINERY, STUDIO asks whether to use the raw GEOSCANNER data. <span class="ui">LOAD PROJECT</span> reopens a saved job; <span class="ui">MANAGE CUTS (CLIPPER)</span> shows the list of clips so you can edit or delete them.</p></div></li>
         <li><div><p><strong>Look and teams.</strong> Choose the <span class="ui">Graphic</span> (the skin). For each team: name, <span class="ui">Fill</span> and <span class="ui">Border</span> colour, <span class="ui">Black Text</span> if the name reads better dark, and the <span class="ui">Logo</span>. The <span class="ui">EVENT LOGO</span> is optional: with the MyCity skin you can use one of the cities in <span class="ui">assets\logos\Citta</span>.</p>
           <p>With <span class="ui">Compact graphics: position</span> you choose the corner where the small score appears during play; <span class="ui">Big graphics</span> sets how many seconds the big one stays at the start and end of a clip. Try both versions with <span class="ui">Big</span> and <span class="ui">Compact</span> under the preview.</p></div></li>
         <li><div><p><strong>Directing.</strong> Set the period the video starts from, the period's starting <span class="ui">Timer (min)</span> and whether to enable the score effects. Then press <span class="ui">LAUNCH DIRECTOR (AUTOPILOT)</span>.</p></div></li>
@@ -355,16 +367,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <section class="ch" id="autopilot">
       <div class="ch-head"><span class="where">07 · DIRECT</span><h2>AUTOPILOT</h2>
         <p>The control room: you watch the game, choose the plays to keep (the <em>clips</em>) and fix score and graphics where needed. Almost everything is done from the keyboard; <kbd>?</kbd> shows the full legend.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 5 · guida/mfb-05-autopilot.jpg</b>AUTOPILOT: video at the top, list of clips, timeline with the CLIP / POINTS / FOULS / PERIOD lanes.</div></div><figcaption>The timeline lanes: clips, points, fouls and period. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 5 · guida/mfb-05-autopilot.jpg</b>AUTOPILOT: video at the top, list of clips and CARDS box on the side, timeline with the CLIP / POINTS / FOULS / PERIOD and CARDS lanes.</div></div><figcaption>The timeline lanes: clips, points, fouls, period and cards. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
       <h3>The fastest way</h3>
       <ol class="steps">
         <li><div><p>Press <kbd>H</kbd>: AUTOPILOT creates a clip around every basket of the game. <kbd>C</kbd> does the same for the home team only, <kbd>O</kbd> for the away team.</p></div></li>
         <li><div><p>Adjust how much to take before and after each basket: <kbd>W</kbd>/<kbd>E</kbd> for the start, <kbd>T</kbd>/<kbd>Y</kbd> for the end, one second at a time.</p></div></li>
         <li><div><p>Go through the clips with the arrows and remove the ones you don't like with <kbd>D</kbd>. Merge two nearby clips by selecting them and pressing <kbd>N</kbd>.</p></div></li>
-        <li><div><p>Exit and save with <kbd>Q</kbd> (or <span class="ui">Exit &amp; Save</span>, clicked twice).</p></div></li>
+        <li><div><p>Exit and save with <kbd>Q</kbd> or with <span class="ui">Save &amp; close</span>.</p></div></li>
       </ol>
+      <div class="note warn"><span class="label">Duplicate or overlapping clips</span><p>If two clips are the same or one runs into the other, AUTOPILOT tells you: in the timeline the duplicate clip has a red border and the overlapping part red stripes, in the list the row is red with a warning and the CLIP title also reports it. In the finished video that part would be shown twice. AUTOPILOT changes nothing by itself: you fix it (<kbd>D</kbd> to delete, <kbd>N</kbd> to merge). If you exit anyway, it asks you to confirm.</p></div>
       <h3>Clips by hand</h3>
       <p><kbd>R</kbd> starts recording a clip and <kbd>R</kbd> again closes it. With <kbd>[</kbd> and <kbd>]</kbd> you mark the start and end of the part of the game to export. <kbd>B</kbd> chooses big or compact graphics for the selected clip; pressed several times it also changes the corner of the compact graphics.</p>
+      <h3>Cards</h3>
+      <p>In the <span class="ui">CARDS</span> box you choose, quarter by quarter, which cards to put in the video. Each one lasts 4 seconds and takes the teams, colours and logos chosen in STUDIO, the match date from the HUB and the scores from the data.</p>
+      <ul class="dots">
+        <li><span class="ui">Opening</span>: date, logos and team names.</li>
+        <li><span class="ui">Quarter</span>: like the opening card, with the period (for example «2ND QUARTER» or «OVERTIME 1») and the score the game restarts from.</li>
+        <li><span class="ui">Final</span>: the score at the end of the video. It says «FINAL» only in the last period of the match; in the others it says, for example, «END OF 2ND QUARTER».</li>
+        <li><span class="ui">Statistics:</span> <span class="ui">Lead</span>, <span class="ui">Score flow</span> and <span class="ui">Shots</span>, ticked one by one, 4 seconds each. Choose whether they show only this quarter (<span class="ui">of the quarter</span>) or the whole match up to this quarter (<span class="ui">match so far</span>).</li>
+      </ul>
+      <p>The order is fixed: at the start the opening card and then the quarter card, at the end the final card and then the statistics. They work both for highlights and for the whole quarter. Then choose how to show them:</p>
+      <ul class="dots">
+        <li><span class="ui">Full screen</span>: the cards are added <strong>before</strong> and <strong>after</strong> the video, in silence. To see them, click the CARDS lane: on the left the ones before the video, on the right the ones after. The monitor shows them in sequence; a click or Play stops the preview.</li>
+        <li><span class="ui">Over the video</span>: the cards appear in the middle of the picture while the game goes on, and meanwhile the score graphics hide. In the CARDS lane each card is a coloured block: drag it to where you want it to appear. When the timeline cursor is inside a block, the monitor shows you the card.</li>
+      </ul>
+      <div class="note"><span class="label">Over the video, no extra clip</span><p>You do not need to create a clip just for the cards. AUTOPILOT lines them up by itself at the start of the first clip and at the end of the last one, without overlapping them; if you move them by hand they stay where you put them. In highlights, a card that falls outside the clips is attached to the start of the first clip or the end of the last one. The first time, the statistics take a few seconds to appear in the monitor: they are prepared only once.</p></div>
       <h3>Keys</h3>
       <div class="tbl"><table>
         <thead><tr><th>Key</th><th>Action</th></tr></thead>
@@ -398,7 +425,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <section class="ch" id="bake">
       <div class="ch-head"><span class="where">08 · EXPORT</span><h2>BAKE</h2>
         <p>Creates the final video: cuts the clips, adds the graphics and uses the computer's graphics card to go as fast as possible.</p></div>
-      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 6 · guida/mfb-06-bake.jpg</b>BAKE with the project loaded, the WYSIWYG PREVIEW and the EXPORT &amp; QUALITY box.</div></div><figcaption>The BAKE preview is identical to the video that will be created. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 6 · guida/mfb-06-bake.jpg</b>BAKE with the project loaded, the WYSIWYG PREVIEW, the EXPORT &amp; QUALITY box and, at the bottom, QUARTERS TO EXPORT.</div></div><figcaption>The BAKE preview is identical to the video that will be created. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
       <ol class="steps">
         <li><div><p><span class="ui">LOAD PROJECT OR CONFIG</span>: if you come from STUDIO it is already loaded. If the original video has been moved, BAKE asks you where it is.</p></div></li>
         <li><div><p>Check teams, event and <span class="ui">SKIN</span>. With <span class="ui">PLAY PREVIEW</span> you watch the result before exporting, at the speed you choose.</p></div></li>
@@ -419,10 +446,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
             </tbody></table></div></div></li>
         <li><div><p>If you need them, turn on <span class="ui">Generate Markers (EDL + CSV)</span>: one marker for each basket, to import into editing programs. Then press <span class="ui">START PROCESS (TURBO)</span>. When the job is done you hear a spoken notice.</p></div></li>
       </ol>
+      <p>The cards chosen in AUTOPILOT go into the video by themselves: there is nothing to set in BAKE.</p>
+      <h3>One quarter or the whole match</h3>
+      <p>In matches with periods, at the bottom, next to <span class="ui">START PROCESS (TURBO)</span>, there is the <span class="ui">QUARTERS TO EXPORT</span> box. Next to each quarter you see where it stands:</p>
+      <ul class="dots">
+        <li><span class="ui">✔ ready</span>: the editing has been saved in AUTOPILOT;</li>
+        <li><span class="ui">✖ edit not done</span>: open that quarter in the HUB and do the editing;</li>
+        <li><span class="ui">— not filmed (skipped)</span>: there is no video in the unit; the match is put together with the quarters that exist.</li>
+      </ul>
+      <ol class="steps">
+        <li><div><p>Tick what to export: <strong>one quarter</strong> creates only that quarter, in its RENDER folder; <strong>several quarters</strong>, or <span class="ui">Whole match</span>, creates a single video with the quarters one after the other. With nothing ticked BAKE exports the loaded project, as before. <span class="ui">↻</span> refreshes the list if you have finished an edit in the meantime.</p></div></li>
+        <li><div><p>Choose preset and file type as for a single quarter and press <span class="ui">START PROCESS (TURBO)</span>.</p></div></li>
+        <li><div><p>BAKE exports the quarters one at a time, each with its own editing, graphics and cards, then joins them without redoing the work, with a straight cut. The match video goes into the <span class="ui">RENDER_PARTITA</span> folder of the match; the videos of the single quarters stay in their RENDER folders.</p></div></li>
+      </ol>
+      <p>If the quarters give highlights, you get the match highlights; if they give whole quarters, the complete match. At the end of the match video there is always a 4-second Mantra closing card, in the language of the program.</p>
       <h3>The result</h3>
       <div class="shots2">
       <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 11 · guida/mfb-11-risultato-grande.jpg</b>A frame of the finished video with the big graphics.</div></div><figcaption>Big graphics, at the start and end of a clip. <span class="priv">People are blurred to protect their privacy: this is not an effect of the program, the exported video is sharp.</span></figcaption></figure>
       <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 12 · guida/mfb-12-risultato-ridotta.jpg</b>A frame of the finished video with the compact graphics in a corner.</div></div><figcaption>Compact graphics, during play. <span class="priv">Blurred for privacy, as above.</span></figcaption></figure>
+      </div>
+      <div class="shots2">
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 13 · guida/mfb-13-cartello-quarto.jpg</b>The quarter opening card in full screen: date, logos, teams, the quarter and the score the game restarts from.</div></div><figcaption>Quarter opening card, full screen.</figcaption></figure>
+      <figure class="shot"><div class="frame"><div class="ph"><b>Screenshot 14 · guida/mfb-14-cartello-sopra.jpg</b>A frame of the finished video with the final card over the video.</div></div><figcaption>Final card over the video. <span class="priv">Blurred for privacy, as above.</span></figcaption></figure>
       </div>
       <div class="note"><span class="label">The graphics card</span><p>Below the options BAKE shows which encoder it is using (NVIDIA, AMD, Intel). If it says <span class="ui">No usable GPU: using the CPU</span>, the export still works but is slower: update the graphics card drivers.</p></div>
     </section>
@@ -476,6 +521,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p>The HUB shows a message with the <span class="ui">RETRY</span> button. The details of the error are in the <span class="ui">logs\mantra_hub.log</span> file in the data folder; modules started without a console write to <span class="ui">logs\console.log</span>. Attach these files when you report a problem: the HELP tab has the email address and a button that opens the logs folder.</p></div></details>
       <details class="faq"><summary>Exporting is slow</summary><div>
         <p>Look at the encoder line in BAKE: if it says CPU, the graphics card is not being used. Update the drivers and leave <span class="ui">Decode video on the GPU</span> turned on. For a quick check of the cuts use the <span class="ui">FAST CHECK</span> preset.</p></div></details>
+      <details class="faq"><summary>BAKE does not export the whole match</summary><div>
+        <p>If <span class="ui">First edit (AUTOPILOT): …</span> appears, open the quarters listed in the HUB, go into editing and save with <kbd>Q</kbd>: a quarter is ready only when its editing is saved. If <span class="ui">The quarters have different frame rates</span> appears, the videos of the quarters were recorded or exported at different frame rates (for example 25 and 30 fps): redo the video of the odd quarter at the same frame rate as the others.</p></div></details>
+      <details class="faq"><summary>I cannot remove a period</summary><div>
+        <p>Only a period with an empty unit can be removed, so that no file is lost. If it contains files you do not need, move or delete them yourself in File Explorer and try again. If the period is open in the workspaces, press <span class="ui">CHANGE MATCH / UNLOCK</span> first.</p></div></details>
       <details class="faq"><summary>A skin font is missing on this computer</summary><div>
         <p>If a skin uses a Microsoft Office font that is not installed (Garamond, Goudy, Eras, Papyrus, Chiller), the program automatically uses a free font that looks similar. To use your own fonts, choose the file in SKINMAPPER: it is copied into the data folder and keeps working even if you move the skin.</p></div></details>
     </section>
@@ -488,10 +537,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <thead><tr><th>Folder or file</th><th>Contents</th></tr></thead>
         <tbody>
           <tr><td>MATCH_ARCHIVE\<em>date_Home_Vs_Away</em></td><td>One match</td></tr>
-          <tr><td>… \_COMMON</td><td>Logos and resources shared by all units</td></tr>
-          <tr><td>… \UNIT_01\01_RAW</td><td>Game and scoreboard videos</td></tr>
+          <tr><td>… \_COMMON</td><td>Logos and resources shared by all periods, the match periods (<span class="ui">partita_quarti.json</span>) and the date (<span class="ui">partita_info.json</span>)</td></tr>
+          <tr><td>… \UNIT_01\01_RAW</td><td>Game and scoreboard videos of the first period (Q1); UNIT_02 is Q2, and so on</td></tr>
           <tr><td>… \UNIT_01\01_DATA</td><td>Data read (<span class="ui">match_data.json</span>), corrected (<span class="ui">match_data_correct.json</span>) and the directing project</td></tr>
-          <tr><td>… \UNIT_01\01_RENDER</td><td>Finished videos and markers</td></tr>
+          <tr><td>… \UNIT_01\01_RENDER</td><td>Finished videos of the period and markers</td></tr>
+          <tr><td>… \RENDER_PARTITA</td><td>The whole match (or the match highlights) created by BAKE</td></tr>
           <tr><td>assets\skins · fonts · logos</td><td>Your skins, the fonts copied from the skins, the logos</td></tr>
           <tr><td>logs</td><td>Logs to attach when you report a problem</td></tr>
         </tbody></table></div>
@@ -501,7 +551,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </div>
 
 <footer>
-  <div class="wrap"><span>© 2026 Stefano Sala · Mantra for Basket is free.</span><span class="label">Guide 1.0 Alpha · English</span></div>
+  <div class="wrap"><span>© 2026 Stefano Sala · Mantra for Basket is free.</span><span class="label">Guide 2.0 Alpha · English</span></div>
 </footer>
 
 <script>
